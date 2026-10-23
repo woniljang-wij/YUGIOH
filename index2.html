@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>DuelH5 - Đấu bài chiến thuật ngay trên trình duyệt</title>
+	<meta name="description" content="DuelH5 - Rút bài, triệu hồi quái thú, tung bẫy và phép để hạ gục đối thủ. Xây bộ bài của riêng bạn, leo hạng và so tài trực tiếp với người chơi khắp nơi. Chơi ngay trên điện thoại hoặc máy tính, không cần cài đặt!">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="application-name" content="DuelH5">
+	<meta name="apple-mobile-web-app-title" content="DuelH5">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="DuelH5 - Đấu bài chiến thuật ngay trên trình duyệt">
+	<meta property="og:description" content="Rút bài, triệu hồi quái thú, tung bẫy và phép để hạ gục đối thủ. Leo hạng và so tài trực tiếp với người chơi khắp nơi - không cần cài đặt!">
+	<meta property="og:image" content="https://duelh5.com/apple-touch-icon.png?v=20260914">
+	<link rel="icon" href="favicon.ico?v=20260914" sizes="16x16 32x32 48x48">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<!-- Without an icon iOS puts a screenshot of the page on the home screen.
+	     black, not black-translucent: the status bar keeps its own strip
+	     instead of sitting over the top of the HUD. -->
+	<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20260914">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<style>
+		/* A phone browser will happily scroll, bounce or pull-to-refresh the
+		   page out from under the game mid-fight; none of that is reachable
+		   once the frame is pinned. */
+		html, body { margin: 0; padding: 0; background: #000; height: 100%;
+			overflow: hidden; overscroll-behavior: none; touch-action: none; }
+		body, canvas, div { -webkit-user-select: none; user-select: none;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+		#gameCanvas { display: block; touch-action: none; }
+		#bootOverlay { position: fixed; inset: 0; display: flex;
+			align-items: center; justify-content: center; color: #cfc9b8;
+			font: 14px/1.6 system-ui, sans-serif; background: #000; }
+		#bootProgress { width: min(420px, 70vw); height: 6px; margin-top: 12px;
+			accent-color: #cfc9b8; }
+		#rotateHint { display: none; position: fixed; inset: 0; z-index: 20;
+			align-items: center; justify-content: center; text-align: center;
+			color: #fff; background: rgba(0,0,0,.86);
+			font: 18px/1.5 system-ui, sans-serif; padding: 24px; }
+		@media (orientation: portrait) and (max-width: 959px) {
+			#rotateHint { display: flex; }
+		}
+	</style>
+</head>
+<body>
+	<canvas id="gameCanvas" width="960" height="640"></canvas>
+	<div id="bootOverlay"><div><span id="bootStatus">loading</span><br><progress id="bootProgress" max="1" value="0"></progress></div></div>
+	<div id="rotateHint">Vui lòng xoay thiết bị sang ngang để chơi</div>
+
+	<script type="a1b984c8303b3798a1c25da2-text/javascript">
+		window.JDZC_TRACE_MEMBERS = false;
+		/* Object.assign, not a plain assignment: a host that embeds this
+		   page (the iOS app injects at document-start) sets its own
+		   JDZC_CONFIG first, and those values must win. */
+		window.JDZC_CONFIG = Object.assign({
+			resBase: 'res/',
+			/* the game asks Socket_pb for host:port; the bridge in
+			 * jdzc-java listens for WebSockets on 9192 */
+			wsPort: 9192,
+			channel: 'h5',
+			/* the boot watchdog and per-table tracing: for porting, not
+			   for playing */
+			trace: false,
+			/* sd is the skill-card effect used by CardBox/VipStore. The native
+			 * build has it resident from its updater; preload it here so
+			 * lc.animate("sd") sees the atlas frames before the first card draw. */
+			/* General contains the shared chrome; find contains the icon atlas
+			 * used to build FindScene's tabs. CardBoxScene is also a valid direct
+			 * entry point in the H5 harness, while the native LoadingScene has
+			 * already loaded these atlases by the time it can be opened. Keep the
+			 * same invariant here so card_quality/card art never build from a
+			 * missing frame. */
+			preload: [
+				'res/general.lcres', 'res/avatar.lcres', 'res/find.lcres', 'res/effects/sd.lcres',
+				'res/cards_back.lcres', 'res/cards_back2.lcres', 'res/cards_back3.lcres', 'res/cards_back4.lcres',
+				'res/props.lcres', 'res/city.lcres',
+				'res/cards_img_1.lcres', 'res/cards_img_2.lcres', 'res/cards_img_3.lcres',
+				'res/cards_img_4.lcres', 'res/cards_img_5.lcres', 'res/cards_img_6.lcres',
+				'res/cards_img_7.lcres', 'res/cards_img_8.lcres', 'res/cards_img_9.lcres',
+				'res/cards_img_10.lcres'
+			],
+			region: { id: 3002, ip: '127.0.0.1', port: 9191, name: 'TEST' },
+			version: '1.1.0.23',
+		}, window.JDZC_CONFIG || {});
+
+		/* Served over TLS through a proxy (Cloudflare on duelh5.com), the game
+		   server is reached same-origin on 443 via nginx /ws -> :9192, because
+		   the proxy only forwards 80/443. Hosts that name the server
+		   themselves (the iOS shell, a LAN IP page) keep their own values. */
+		if (!window.JDZC_CONFIG.wsUrl && !window.JDZC_CONFIG.wsHost &&
+		    window.location.protocol === 'https:') {
+			window.JDZC_CONFIG.wsUrl = 'wss://' + window.location.host + '/ws';
+		}
+	</script>
+	<script src="dist/lua51.js?v=20260914e" type="a1b984c8303b3798a1c25da2-text/javascript"></script>
+	<script src="js/lua.js?v=20260914e" type="a1b984c8303b3798a1c25da2-text/javascript"></script>
+	<script src="vendor/CCBoot.js?v=20260912a" type="a1b984c8303b3798a1c25da2-text/javascript"></script>
+	<script src="js/boot.js?v=20260914e" type="a1b984c8303b3798a1c25da2-text/javascript"></script>
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="a1b984c8303b3798a1c25da2-|49" defer></script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"36dc33779bfc404ba2f78ccca14c2871","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>

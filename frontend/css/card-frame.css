@@ -1,0 +1,371 @@
+.card-detail__card {
+  box-sizing: border-box;
+  isolation: isolate;
+  padding: 10px;
+  border: 0;
+  border-radius: 8px;
+  background: #070706;
+  box-shadow: 0 9px 24px rgba(0, 0, 0, 0.7);
+}
+
+.card-detail__card--effect,
+.card-detail__card--fusion,
+.card-detail__card--spell,
+.card-detail__card--trap {
+  border: 0;
+  background: #070706;
+  box-shadow: 0 9px 24px rgba(0, 0, 0, 0.7);
+}
+
+.card-detail__frame-canvas {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.card-detail__card > :not(.card-detail__frame-canvas) {
+  position: relative;
+  z-index: 1;
+}
+
+.card-detail__card-art {
+  border-color: #c39a3e;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 231, 158, 0.56),
+    inset 0 0 15px rgba(0, 0, 0, 0.76),
+    0 0 0 1px #211709;
+}
+
+.card-detail__card--effect .card-detail__card-art {
+  border-color: #e5a541;
+}
+
+.card-detail__card--fusion .card-detail__card-art {
+  border-color: #b989d3;
+}
+
+.card-detail__card--spell .card-detail__card-art {
+  border-color: #46e875;
+}
+
+.card-detail__card--trap .card-detail__card-art {
+  border-color: #c54bc5;
+}
+
+.card-detail__card--effect .card-detail__card-header {
+  border-color: #c0803d;
+  background: linear-gradient(180deg, #4a2914, #180d07 82%, #080503);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 222, 159, 0.32),
+    inset 0 0 0 1px rgba(225, 151, 69, 0.24);
+}
+
+.card-detail__card--effect .card-detail__card-stars {
+  background: linear-gradient(
+    90deg,
+    #d99b46 0%,
+    #9c6228 15%,
+    #633c1d 50%,
+    #9c6228 85%,
+    #d99b46 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 228, 164, 0.55),
+    inset 0 -2px 3px rgba(25, 12, 5, 0.68);
+}
+
+.card-detail__card--fusion .card-detail__card-header {
+  border-color: #a26ec0;
+  background: linear-gradient(180deg, #382044, #130b1c 82%, #08050d);
+  box-shadow:
+    inset 0 1px 0 rgba(246, 213, 255, 0.32),
+    inset 0 0 0 1px rgba(187, 123, 222, 0.24);
+}
+
+.card-detail__card--fusion .card-detail__card-stars {
+  background: linear-gradient(
+    90deg,
+    #ba87d7 0%,
+    #8051a0 15%,
+    #492b61 50%,
+    #8051a0 85%,
+    #ba87d7 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(246, 224, 255, 0.55),
+    inset 0 -2px 3px rgba(19, 8, 28, 0.68);
+}
+
+.card-detail__card--spell .card-detail__card-stars {
+  background: linear-gradient(
+    90deg,
+    #85bd73 0%,
+    #477d45 15%,
+    #23472b 50%,
+    #477d45 85%,
+    #85bd73 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(221, 255, 205, 0.5),
+    inset 0 -2px 3px rgba(5, 19, 8, 0.7);
+}
+
+.card-detail__card--spell .card-detail__card-header {
+  border-color: #579665;
+  background: linear-gradient(180deg, #12351d, #07170c 82%, #030a05);
+  box-shadow:
+    inset 0 1px 0 rgba(211, 255, 198, 0.3),
+    inset 0 0 0 1px rgba(103, 201, 116, 0.22);
+}
+
+.card-detail__card--trap .card-detail__card-stars {
+  background: linear-gradient(
+    90deg,
+    #ce8fbc 0%,
+    #8e527f 15%,
+    #512d51 50%,
+    #8e527f 85%,
+    #ce8fbc 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 225, 246, 0.5),
+    inset 0 -2px 3px rgba(23, 7, 23, 0.7);
+}
+
+.card-detail__card--trap .card-detail__card-header {
+  border-color: #a65c97;
+  background: linear-gradient(180deg, #35162f, #160a18 82%, #09050b);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 221, 249, 0.3),
+    inset 0 0 0 1px rgba(211, 105, 187, 0.22);
+}
+
+.card-detail__card .card-detail__card-header,
+.card-detail__card--spell .card-detail__card-header,
+.card-detail__card--trap .card-detail__card-header {
+  --card-name-center-offset: 2.5px;
+  position: relative;
+  box-sizing: border-box;
+  grid-template-columns: minmax(0, 1fr);
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.card-detail__card .card-detail__card-name {
+  position: absolute;
+  left: calc(50% - var(--card-name-center-offset, 0px));
+  box-sizing: border-box;
+  grid-column: 1;
+  width: calc(100% - 44px);
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: clip;
+  transform: translateX(-50%);
+}
+
+.card-detail__card .card-detail__attribute {
+  position: absolute;
+  top: 50%;
+  right: 3px;
+  transform: translateY(-50%);
+}
+
+.card-detail__card .card-detail__card-stars {
+  justify-content: flex-end;
+  gap: clamp(1px, 0.25vw, 4px);
+  box-sizing: border-box;
+  padding: 1px 5px 1px 24px;
+  border-top: 1px solid rgba(255, 236, 176, 0.2);
+  background: transparent;
+  box-shadow: none;
+}
+
+.card-detail__card .card-detail__card-icon {
+  margin-left: auto;
+}
+
+.shop-card__face.card-detail__card {
+  padding: 5px;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.7);
+}
+
+.card-detail__card .card-detail__card-name {
+  color: #fff;
+}
+
+.card-detail__card .card-detail__stats {
+  border-color: #b39449;
+  outline-color: #20190b;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 238, 179, 0.42),
+    inset 0 0 0 1px rgba(95, 68, 21, 0.75);
+}
+
+.card-detail__card--effect .card-detail__card-type {
+  border-color: #e5a541;
+  background: linear-gradient(90deg, #744018, #e5a541 24%, #bb7028 74%, #744018);
+  color: #fff8e4;
+}
+
+.card-detail__card--fusion .card-detail__card-type {
+  border-color: #7845a0;
+  background: linear-gradient(90deg, #49235f, #9b68bd 24%, #71408f 74%, #321941);
+  color: #f8e9ff;
+}
+
+.card-detail__card:not(.card-detail__card--effect):not(.card-detail__card--fusion):not(.card-detail__card--spell):not(.card-detail__card--trap) .card-detail__card-type {
+  border-color: #d6b83a;
+  background: linear-gradient(90deg, #705c10, #d6b83a 24%, #a88918 74%, #705c10);
+  color: #fff8dc;
+}
+
+.card-detail__card--spell .card-detail__card-type,
+.shop-card__face.card-detail__card--spell .card-detail__card-type,
+.shop-reveal__bulk-card-face.card-detail__card--spell .card-detail__card-type {
+  border-color: #46e875;
+  outline-color: #061b0a;
+  background: linear-gradient(90deg, #087b32, #46e875 24%, #19a848 74%, #08712b);
+  color: #efffe9;
+}
+
+.card-detail__card--trap .card-detail__card-type,
+.shop-card__face.card-detail__card--trap .card-detail__card-type,
+.shop-reveal__bulk-card-face.card-detail__card--trap .card-detail__card-type {
+  border-color: #c54bc5;
+  outline-color: #180818;
+  background: linear-gradient(90deg, #5a185f, #c54bc5 24%, #8b288c 74%, #180818);
+  color: #ffeaff;
+}
+
+.card-detail__card--spell .card-detail__card-type,
+.card-detail__card--trap .card-detail__card-type,
+.shop-card__face.card-detail__card--spell .card-detail__card-type,
+.shop-card__face.card-detail__card--trap .card-detail__card-type,
+.shop-reveal__bulk-card-face.card-detail__card--spell .card-detail__card-type,
+.shop-reveal__bulk-card-face.card-detail__card--trap .card-detail__card-type {
+  --type-panel-shadow: #04130a;
+  --type-panel-edge: #0b572d;
+  --type-panel-rim: #20cf65;
+  --type-panel-highlight: rgba(230, 255, 235, 0.78);
+  --type-panel-inner-highlight: rgba(210, 255, 220, 0.48);
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 0.2em 1.2em;
+  border: 3px solid var(--type-panel-rim);
+  outline: 1px solid var(--type-panel-shadow);
+  outline-offset: -5px;
+  background:
+    linear-gradient(180deg, rgba(176, 255, 200, 0.32), transparent 13% 77%, rgba(0, 0, 0, 0.35)),
+    linear-gradient(90deg, var(--type-panel-shadow), var(--type-panel-edge) 5%, #0b321b 16%, #082512 50%, #0b321b 84%, var(--type-panel-edge) 95%, var(--type-panel-shadow));
+  box-shadow:
+    inset 0 2px 0 var(--type-panel-highlight),
+    inset 0 0 0 1px var(--type-panel-inner-highlight),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.76),
+    inset 0 0 14px rgba(0, 0, 0, 0.62),
+    0 2px 0 #06200f,
+    0 4px 0 var(--type-panel-edge),
+    0 6px 0 var(--type-panel-shadow),
+    0 8px 7px rgba(0, 0, 0, 0.62);
+  color: #ffe2ad;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  text-shadow:
+    0 1px 0 #fff0c4,
+    0 2px 0 #68451d,
+    0 3px 5px rgba(0, 0, 0, 0.9);
+  transform: translateZ(2px);
+}
+
+.card-detail__card--trap .card-detail__card-type,
+.shop-card__face.card-detail__card--trap .card-detail__card-type,
+.shop-reveal__bulk-card-face.card-detail__card--trap .card-detail__card-type {
+  --type-panel-shadow: #180818;
+  --type-panel-edge: #5a185f;
+  --type-panel-rim: #c54bc5;
+  --type-panel-highlight: rgba(255, 225, 252, 0.78);
+  --type-panel-inner-highlight: rgba(255, 190, 246, 0.48);
+  background:
+    linear-gradient(180deg, rgba(255, 210, 250, 0.3), transparent 13% 77%, rgba(0, 0, 0, 0.38)),
+    linear-gradient(90deg, var(--type-panel-shadow), var(--type-panel-edge) 5%, #35103a 16%, #200b28 50%, #35103a 84%, var(--type-panel-edge) 95%, var(--type-panel-shadow));
+}
+
+.card-detail__type-ornament {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.card-detail__card-type-label {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  width: max-content;
+  max-width: calc(100% - 96px);
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.shop-card__face.card-detail__card {
+  container-type: inline-size;
+}
+
+.shop-card__face .card-detail__card-stars {
+  gap: clamp(1px, 0.75cqi, 4px);
+  padding: 0.33cqi 1.67cqi 0.33cqi 8cqi;
+}
+
+.shop-card__face.card-detail__card--spell,
+.shop-card__face.card-detail__card--trap {
+  grid-template-rows: auto 7% minmax(0, 1fr) 19%;
+}
+
+.shop-card__face.card-detail__card-type {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: 24px;
+  box-sizing: border-box;
+  place-items: center;
+  padding: 3px 5px;
+  overflow: hidden;
+  font-size: clamp(8px, 4cqi, 12px);
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.shop-card__face.card-detail__card:not(.card-detail__card--spell):not(.card-detail__card--trap) .card-detail__card-type {
+  display: grid;
+}
+
+.shop-card__face.card-detail__card--spell .card-detail__card-type,
+.shop-card__face.card-detail__card--trap .card-detail__card-type {
+  min-height: 0;
+  padding: 0.2em 1.2em;
+  border-width: clamp(1px, 1cqi, 3px);
+  font-size: clamp(10px, 9cqi, 30px);
+  line-height: 1;
+}
+
+.shop-card__face .card-detail__card-type-label {
+  max-width: calc(100% - 72px);
+}

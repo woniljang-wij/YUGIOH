@@ -1,0 +1,3179 @@
+{
+  "source": "Dữ liệu bài tham khảo; tên, chủng tộc và mô tả đã được Việt hóa. Artwork được lưu riêng trong assets/images/artwork.",
+  "cards": [
+    {
+      "id": "m-dark-magician",
+      "externalId": null,
+      "category": "monster",
+      "name": "Phù Thủy Bóng Đêm",
+      "image": "assets/images/artwork/Dark%20Magician.png",
+      "monsterType": "Thường",
+      "attribute": "DARK",
+      "level": 7,
+      "race": "Phù thủy",
+      "atk": 2500,
+      "def": 2100,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "ULTRA RARE",
+      "keyword": "Phù Thủy Đen",
+      "description": "Là một pháp sư, tấn công và phòng thủ đều phải là cấp cao nhất.",
+      "maxCopies": 3,
+      "skills": [],
+      "fusion": [
+        {
+          "materials": [
+            "Phù Thủy Bóng Đêm",
+            "Kiếm Sĩ Diệt Rồng"
+          ],
+          "result": "Kiếm Sĩ Paladin"
+        }
+      ],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-dark-magician-girl",
+      "externalId": null,
+      "category": "monster",
+      "name": "Nữ Phù Thủy Bóng Đêm",
+      "image": "assets/images/artwork/Dark%20Magician%20Girl.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "DARK",
+      "level": 6,
+      "race": "Phù thủy",
+      "atk": 2000,
+      "def": 1700,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "ULTRA RARE",
+      "keyword": "Phù Thủy Đen",
+      "description": "Đệ tử đáng tự hào nhất của pháp sư bóng tối.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Nữ Phù Thủy",
+          "description": "Bài này trên nguyên tắc mang từ khóa \"Nữ Phù Thủy\"."
+        },
+        {
+          "name": "Kế Thừa Ý Chí",
+          "description": "Khi ở trên sân, công tăng bằng tổng số \"Phù Thủy Áo Đen\" và \"Pháp Sư Hỗn Độn\" trong mộ hai bên × 300."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-summoned-skull",
+      "externalId": 70781052,
+      "category": "monster",
+      "name": "Triệu Hồi Quỷ Vương",
+      "image": "assets/images/artwork/Summoned%20Skull.png",
+      "monsterType": "Thường",
+      "attribute": "DARK",
+      "level": 6,
+      "race": "Quỷ",
+      "atk": 2500,
+      "def": 1200,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "ULTRA RARE",
+      "keyword": "Quỷ",
+      "description": "Một con quỷ sở hữu sức mạnh bóng tối, gieo rắc hỗn loạn cho kẻ địch. Trong số các quái thú hệ Quỷ, nó có sức mạnh đáng gờm.",
+      "maxCopies": 3,
+      "skills": [],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-buster-blader",
+      "externalId": 78193831,
+      "category": "monster",
+      "name": "Kiếm Sĩ Diệt Rồng",
+      "image": "assets/images/artwork/Buster%20Blader.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "EARTH",
+      "level": 7,
+      "race": "Chiến binh",
+      "atk": 2600,
+      "def": 2300,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "ULTRA RARE",
+      "keyword": "Chiến binh",
+      "description": "Một kiếm sĩ lão luyện chuyên săn lùng những loài rồng hùng mạnh.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Sát Long",
+          "description": "Lá bài này nhận thêm 500 ATK với mỗi quái thú Rồng đối thủ điều khiển hoặc có trong Mộ của họ."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-celtic-guardian",
+      "externalId": 91152256,
+      "category": "monster",
+      "name": "Người Giám Hộ Celtic",
+      "image": "assets/images/artwork/Celtic%20Guardian.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "EARTH",
+      "level": 4,
+      "race": "Chiến binh",
+      "atk": 1400,
+      "def": 1200,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Chiến binh",
+      "description": "Một hộ vệ Celtic nhanh nhẹn, sử dụng kiếm để bảo vệ đồng minh.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kiếm Thuật Phòng Thủ",
+          "description": "Lá bài này sẽ không bị tiêu diệt bởi những quái thú có 1900 ATK trở lên."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-gazelle-king-of-mythical-beasts",
+      "externalId": 5818798,
+      "category": "monster",
+      "name": "Vua Sư Tử 1 Sừng",
+      "image": "assets/images/artwork/Gazelle%20The%20King%20Of%20Mythical%20Beasts.png",
+      "monsterType": "Thường",
+      "attribute": "EARTH",
+      "level": 4,
+      "race": "Thú",
+      "atk": 1500,
+      "def": 1200,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thú",
+      "description": "Quái thú này di chuyển nhanh đến mức trong mắt người phàm, nó trông như một ảo ảnh.",
+      "maxCopies": 3,
+      "skills": [],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-big-shield-gardna",
+      "externalId": 65240384,
+      "category": "monster",
+      "name": "Chiến Binh Khiên Sắt Gardna",
+      "image": "assets/images/artwork/Big%20Shield%20Gardna.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "EARTH",
+      "level": 4,
+      "race": "Chiến binh",
+      "atk": 100,
+      "def": 2600,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Chiến binh",
+      "description": "Một hộ vệ kiên cường mang chiếc khiên khổng lồ, chuyên bảo vệ đồng minh.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Phản Phép",
+          "description": "Khi Lá Phép nhắm vào lá bài đang úp này được kích hoạt: Lật lá bài này lên thế Phòng thủ và vô hiệu hóa việc kích hoạt đó."
+        },
+        {
+          "name": "Thế Phòng Thủ Bất Ổn",
+          "description": "Nếu lá bài này bị tấn công, nó chuyển sang thế Công kích vào cuối Bước Tính Toán Thiệt Hại."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-berfomet",
+      "externalId": 77207191,
+      "category": "monster",
+      "name": "Berfomet",
+      "image": "assets/images/artwork/Berfomet.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "DARK",
+      "level": 5,
+      "race": "Quỷ",
+      "atk": 1400,
+      "def": 1800,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Quỷ",
+      "description": "Quái thú quỷ dữ kết hợp sức mạnh và tốc độ để áp đảo đối thủ.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Triệu Hồi Thú Huyền Bí",
+          "description": "Khi lá bài này được Triệu hồi Thường hoặc Triệu hồi Lật: Bạn có thể thêm 1 “Gazelle, Vua Thú Huyền Bí” từ Bộ bài lên tay."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-kuriboh",
+      "externalId": 40640057,
+      "category": "monster",
+      "name": "Kuriboh",
+      "image": "assets/images/artwork/Kuriboh.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "DARK",
+      "level": 1,
+      "race": "Quỷ",
+      "atk": 300,
+      "def": 200,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Kuriboh",
+      "description": "Một sinh vật nhỏ bé, lông xù nhưng luôn sẵn sàng bảo vệ chủ nhân.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Lá Chắn Kuriboh",
+          "description": "Trong lúc tính toán thiệt hại, nếu quái thú của đối thủ tấn công: Bạn có thể gửi lá bài này từ tay xuống Mộ để không nhận thiệt hại chiến đấu từ trận chiến đó."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-giant-soldier-of-stone",
+      "externalId": 13039848,
+      "category": "monster",
+      "name": "Chiến Binh Đá Khổng Lồ",
+      "image": "assets/images/artwork/Giant%20Soldier%20Of%20Stone.png",
+      "monsterType": "Thường",
+      "attribute": "EARTH",
+      "level": 3,
+      "race": "Đá",
+      "atk": 1300,
+      "def": 2000,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Đá",
+      "description": "Một chiến binh khổng lồ được tạo nên từ đá. Cú đấm của nó có thể làm rung chuyển mặt đất.",
+      "maxCopies": 3,
+      "skills": [],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-alpha-the-magnet-warrior",
+      "externalId": 99785935,
+      "category": "monster",
+      "name": "Chiến Binh Điện Từ Alpha",
+      "image": "assets/images/artwork/Alpha%20The%20Magnet%20Warrior.png",
+      "monsterType": "Thường",
+      "attribute": "EARTH",
+      "level": 4,
+      "race": "Đá",
+      "atk": 1400,
+      "def": 1700,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Chiến binh Nam Châm",
+      "description": "Alpha, Beta và Gamma hợp nhất thành một để tạo nên quái thú hùng mạnh.",
+      "maxCopies": 3,
+      "skills": [],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-beta-the-magnet-warrior",
+      "externalId": 39256679,
+      "category": "monster",
+      "name": "Kính Nam Châm Beta",
+      "image": "assets/images/artwork/Beta%20The%20Magnet%20Warrior.png",
+      "monsterType": "Thường",
+      "attribute": "EARTH",
+      "level": 4,
+      "race": "Đá",
+      "atk": 1700,
+      "def": 1600,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Chiến binh Nam Châm",
+      "description": "Alpha, Beta và Gamma hợp nhất thành một để tạo nên quái thú hùng mạnh.",
+      "maxCopies": 3,
+      "skills": [],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-gamma-the-magnet-warrior",
+      "externalId": 11549357,
+      "category": "monster",
+      "name": "Chiến Binh Điện Từ Gamma",
+      "image": "assets/images/artwork/Gamma%20The%20Magnet%20Warrior.png",
+      "monsterType": "Thường",
+      "attribute": "EARTH",
+      "level": 4,
+      "race": "Đá",
+      "atk": 1500,
+      "def": 1800,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Chiến binh Nam Châm",
+      "description": "Alpha, Beta và Gamma hợp nhất thành một để tạo nên quái thú hùng mạnh.",
+      "maxCopies": 3,
+      "skills": [],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-valkyrion-the-magna-warrior",
+      "externalId": 75347539,
+      "category": "fusion",
+      "name": "Chiến Binh Kim Loại",
+      "image": "assets/images/artwork/Valkyrion%20The%20Magna%20Warrior.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "EARTH",
+      "level": 8,
+      "race": "Đá",
+      "atk": 3500,
+      "def": 3850,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Chiến binh Nam Châm",
+      "description": "Chiến binh khổng lồ được hợp thành từ sức mạnh của ba chiến binh Nam Châm.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Hợp Thể Nam Châm",
+          "description": "Không thể Triệu hồi Thường hoặc Úp. Chỉ có thể Triệu hồi Đặc biệt từ tay bằng cách Hiến tế Alpha, Beta và Gamma trên tay hoặc sân."
+        },
+        {
+          "name": "Tách Hợp Thể",
+          "description": "Bạn có thể Hiến tế lá bài này, chọn 1 Alpha, 1 Beta và 1 Gamma trong Mộ; Triệu hồi Đặc biệt chúng."
+        }
+      ],
+      "fusion": [
+        {
+          "materials": [
+            "Chiến Binh Nam Châm Alpha",
+            "Kính Nam Châm Beta",
+            "Chiến Binh Điện Từ Gamma"
+          ],
+          "result": "Chiến Binh Kim Loại"
+        }
+      ],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-kings-knight",
+      "externalId": 64788463,
+      "category": "monster",
+      "name": "Nhà Vua Hiệp Sĩ",
+      "image": "assets/images/artwork/King's%20Knight.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "LIGHT",
+      "level": 4,
+      "race": "Chiến binh",
+      "atk": 1600,
+      "def": 1400,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Kỵ sĩ",
+      "description": "Vị kỵ sĩ hoàng gia dẫn dắt bộ ba kỵ sĩ bằng lòng dũng cảm và tinh thần chính nghĩa.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Triệu Hồi Kỵ Sĩ Jack",
+          "description": "Khi lá bài này được Triệu hồi Thường trong lúc bạn điều khiển “Nữ Hoàng Hiệp Sĩ”: Bạn có thể Triệu hồi Đặc biệt 1 “Kỵ Sĩ Jack” từ Bộ bài."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-queens-knight",
+      "externalId": 25652259,
+      "category": "monster",
+      "name": "Nữ Hoàng Hiệp Sĩ",
+      "image": "assets/images/artwork/Queen's%20Knight.png",
+      "monsterType": "Thường",
+      "attribute": "LIGHT",
+      "level": 4,
+      "race": "Chiến binh",
+      "atk": 1500,
+      "def": 1600,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Kỵ sĩ",
+      "description": "Nữ kỵ sĩ này khiến đối thủ bất ngờ, áp đảo họ bằng những đòn tấn công nhanh nhẹn nhưng đầy uyển chuyển.",
+      "maxCopies": 3,
+      "skills": [],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-jacks-knight",
+      "externalId": 90876561,
+      "category": "monster",
+      "name": "Kỵ Sĩ Jack",
+      "image": "assets/images/artwork/Jack's%20Knight.png",
+      "monsterType": "Thường",
+      "attribute": "LIGHT",
+      "level": 5,
+      "race": "Chiến binh",
+      "atk": 1900,
+      "def": 1000,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Kỵ sĩ",
+      "description": "Một kiếm sĩ bậc thầy mạnh mẽ. Kỵ sĩ này trung thành với công lý và có sứ mệnh bảo vệ kẻ yếu.",
+      "maxCopies": 3,
+      "skills": [],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-mystic-horseman",
+      "externalId": 68516705,
+      "category": "monster",
+      "name": "Kỵ Sĩ Nhân Mã Huyền Bí",
+      "image": "assets/images/artwork/Mystic%20Horseman.png",
+      "monsterType": "Thường",
+      "attribute": "EARTH",
+      "level": 4,
+      "race": "Thú",
+      "atk": 1300,
+      "def": 1550,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thú",
+      "description": "Nửa người nửa ngựa, quái thú này nổi tiếng với tốc độ phi thường.",
+      "maxCopies": 3,
+      "skills": [],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-feral-imp",
+      "externalId": 41392891,
+      "category": "monster",
+      "name": "Tiểu Quỷ Hoang Dã",
+      "image": "assets/images/artwork/Feral%20Imp.png",
+      "monsterType": "Thường",
+      "attribute": "DARK",
+      "level": 4,
+      "race": "Quỷ",
+      "atk": 1300,
+      "def": 1400,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Quỷ",
+      "description": "Một tiểu quỷ tinh quái ẩn mình trong bóng tối, chờ thời cơ tấn công kẻ địch mất cảnh giác.",
+      "maxCopies": 3,
+      "skills": [],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-silver-fang",
+      "externalId": 90357090,
+      "category": "monster",
+      "name": "Sói Bạc",
+      "image": "assets/images/artwork/Silver%20Fang.png",
+      "monsterType": "Thường",
+      "attribute": "EARTH",
+      "level": 3,
+      "race": "Thú",
+      "atk": 1200,
+      "def": 800,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thú",
+      "description": "Một con sói tuyết có vẻ ngoài tuyệt đẹp nhưng vô cùng hung dữ khi chiến đấu.",
+      "maxCopies": 3,
+      "skills": [],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "s-monster-reborn",
+      "externalId": 83764719,
+      "category": "spell",
+      "name": "Hồi Sinh Quái Thú",
+      "image": "assets/images/artwork/Monster%20Reborn.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Chọn 1 quái thú trong Mộ của một trong hai người chơi; Triệu hồi Đặc biệt quái thú đó."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "s-pot-of-greed",
+      "externalId": 55144522,
+      "category": "spell",
+      "name": "Chiếc Bình Tham Lam",
+      "image": "assets/images/artwork/Pot%20of%20Greed.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Rút 2 lá bài."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "s-swords-of-revealing-light",
+      "externalId": 72302403,
+      "category": "spell",
+      "name": "Vòng Tròn Kiếm Ánh Sáng",
+      "image": "assets/images/artwork/Swords%20of%20Revealing%20Light.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Sau khi kích hoạt, lá bài này ở lại trên sân và bị phá hủy trong Giai đoạn Kết thúc của lượt thứ ba đối thủ. Khi kích hoạt, nếu đối thủ có quái thú úp, lật ngửa tất cả quái thú họ điều khiển. Khi lá bài này ngửa trên sân, quái thú đối thủ không thể tuyên bố tấn công."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "s-change-of-heart",
+      "externalId": 4031928,
+      "category": "spell",
+      "name": "Trái Tim Hoán Đổi",
+      "image": "assets/images/artwork/Change%20of%20Heart.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Chọn 1 quái thú đối thủ điều khiển; chiếm quyền điều khiển quái thú đó đến Giai đoạn Kết thúc."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "s-brain-control",
+      "externalId": 87910978,
+      "category": "spell",
+      "name": "Tẩy Não",
+      "image": "assets/images/artwork/Brain%20Control.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Chọn 1 quái thú ngửa mà đối thủ điều khiển được Triệu hồi Thường/Đặc Biệt hoặc Úp; chiếm quyền điều khiển quái thú đó đến Giai đoạn Kết thúc."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "s-polymerization",
+      "externalId": 24094653,
+      "category": "spell",
+      "name": "Dung Hợp",
+      "image": "assets/images/artwork/Polymerization.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Triệu hồi Dung hợp 1 quái thú Dung hợp từ Bộ bài Thêm, sử dụng quái thú trên tay hoặc sân làm nguyên liệu Dung hợp."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "s-multiply",
+      "externalId": 40703222,
+      "category": "spell",
+      "name": "Cấp Số Nhân",
+      "image": "assets/images/artwork/Multiply.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Tức Thời",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Tức Thời",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Hiến tế 1 “Kuriboh” ngửa; Triệu hồi Đặc biệt nhiều nhất có thể các “Kuriboh Token” ở thế Phòng thủ. Chúng được Hiến tế để Triệu hồi Hiến tế."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "s-dark-magic-curtain",
+      "externalId": 99789342,
+      "category": "spell",
+      "name": "Áo Choàng Của Ma Thuật Đen",
+      "image": "assets/images/artwork/Dark%20Magic%20Curtain.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Triệu hồi Đặc biệt 1 “Phù Thủy Bóng Đêm” hoặc “Nữ Phù Thủy Bóng Đêm” từ Bộ bài."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "s-thousand-knives",
+      "externalId": 63391643,
+      "category": "spell",
+      "name": "Ngàn Lưỡi Dao Găm",
+      "image": "assets/images/artwork/Thousand%20Knives.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Nếu bạn điều khiển “Phù Thủy Bóng Đêm”: Chọn 1 quái thú đối thủ điều khiển; phá hủy quái thú đó."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "s-magical-dimension",
+      "externalId": 28553439,
+      "category": "spell",
+      "name": "Quan Tài Của Phù Thủy",
+      "image": "assets/images/artwork/Magical%20Dimension.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Tức Thời",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Tức Thời",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Chọn 1 quái thú bạn điều khiển và Hiến tế nó, sau đó Triệu hồi Đặc biệt 1 quái thú Phù thủy từ tay; tiếp theo, bạn có thể phá hủy 1 quái thú trên sân."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "s-mystical-space-typhoon",
+      "externalId": 5318639,
+      "category": "spell",
+      "name": "Lốc Xoáy",
+      "image": "assets/images/artwork/Mystical%20Space%20Typhoon.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Tức Thời",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Tức Thời",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Chọn 1 lá Phép/Bẫy trên sân; phá hủy nó."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi",
+        "kaiba"
+      ]
+    },
+    {
+      "id": "t-mirror-force",
+      "externalId": 44095762,
+      "category": "trap",
+      "name": "Lá Chắn Phản Đòn: Gương Phản Chiếu",
+      "image": "assets/images/artwork/Mirror%20Force.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Thường",
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi quái thú của đối thủ tuyên bố tấn công: Phá hủy tất cả quái thú ở thế Công kích mà đối thủ điều khiển."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "t-magic-cylinder",
+      "externalId": 62279055,
+      "category": "trap",
+      "name": "Chiếc Ống Ma Thuật",
+      "image": "assets/images/artwork/Magic%20Cylinder.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Thường",
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi quái thú của đối thủ tuyên bố tấn công: Vô hiệu hóa đòn tấn công và gây sát thương cho đối thủ bằng ATK của quái thú đó."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "t-spellbinding-circle",
+      "externalId": 18807109,
+      "category": "trap",
+      "name": "Vòng Tròn Pháp Thuật",
+      "image": "assets/images/artwork/Spellbinding%20Circle.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Thường",
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Kích hoạt lá bài này bằng cách chọn 1 quái thú đối thủ điều khiển; quái thú đó không thể tấn công hoặc đổi tư thế chiến đấu. Khi quái thú đó bị phá hủy, phá hủy lá bài này."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "t-magic-jammer",
+      "externalId": 77414722,
+      "category": "trap",
+      "name": "Pháp Trận Quấy Nhiễu",
+      "image": "assets/images/artwork/Magic%20Jammer.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Phản Kích",
+      "rarity": "",
+      "keyword": "Phản Kích",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi Lá Phép được kích hoạt: Vô hiệu hóa việc kích hoạt và phá hủy lá bài đó."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "t-trap-hole",
+      "externalId": 4206964,
+      "category": "trap",
+      "name": "Hầm Bẫy",
+      "image": "assets/images/artwork/Trap%20Hole.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Thường",
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi đối thủ Triệu hồi Thường hoặc Triệu hồi Đặc Biệt 1 quái thú: phá hủy nó."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "t-waboku",
+      "externalId": 12607053,
+      "category": "trap",
+      "name": "Waboku",
+      "image": "assets/images/artwork/Waboku.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Thường",
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Trong lượt này, bạn không nhận sát thương chiến đấu từ quái thú đối thủ. Quái thú bạn điều khiển không thể bị phá hủy trong chiến đấu ở lượt này."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "t-seven-tools-of-the-bandit",
+      "externalId": 3819470,
+      "category": "trap",
+      "name": "Bảy Món Đồ Của Tên Trộm",
+      "image": "assets/images/artwork/Seven%20Tools%20of%20the%20Bandit.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Liên Tục",
+      "rarity": "",
+      "keyword": "Liên Tục",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi Lá Bẫy được kích hoạt: Trả 500 Điểm Sinh Mệnh; vô hiệu hóa việc kích hoạt và phá hủy lá bài đó."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "t-call-of-the-haunted",
+      "externalId": 97077563,
+      "category": "trap",
+      "name": "Tiếng Gọi Của Cái Chết Và Sự Sống",
+      "image": "assets/images/artwork/Call%20of%20the%20Haunted.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Liên tục",
+      "rarity": "",
+      "keyword": "Liên tục",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Chọn 1 quái thú trong Mộ; Triệu hồi Đặc biệt quái thú đó ở thế Tấn Công. Khi lá bài này rời sân, phá hủy quái thú đó. Khi quái thú đó bị phá hủy, phá hủy lá bài này."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "t-magicians-circle",
+      "externalId": 50755,
+      "category": "trap",
+      "name": "Vòng Tròn Của Pháp Thuật",
+      "image": "assets/images/artwork/Magician's%20Circle.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Thường",
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi quái thú Phù thủy tuyên bố tấn công: Mỗi người chơi Triệu hồi Đặc biệt 1 quái thú Phù thủy có ATK từ 2000 trở xuống từ Bộ bài ở thế Tấn Công."
+        }
+      ],
+      "fusion": [],
+      "characterIds": [
+        "yugi"
+      ]
+    },
+    {
+      "id": "m-blue-eyes-white-dragon",
+      "externalId": null,
+      "category": "monster",
+      "name": "Rồng Trắng Mắt Xanh",
+      "image": "assets/images/artwork/Blue-Eyes%20White%20Dragon.png",
+      "monsterType": "Thường",
+      "attribute": "LIGHT",
+      "level": 8,
+      "race": "Rồng",
+      "atk": 3000,
+      "def": 2500,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "ULTRA RARE",
+      "keyword": "Rồng Trắng Mắt Xanh",
+      "description": "Con rồng huyền thoại với sức tấn công và phòng thủ áp đảo.",
+      "maxCopies": 3,
+      "skills": [],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-kaibaman",
+      "externalId": 34627841,
+      "category": "monster",
+      "name": "Kaibaman",
+      "image": "assets/images/artwork/Kaibaman.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "LIGHT",
+      "level": 3,
+      "race": "Chiến binh",
+      "atk": 200,
+      "def": 700,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Rồng Trắng Mắt Xanh",
+      "description": "Một chiến binh tận tụy với Rồng Trắng Mắt Xanh.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Bạn có thể Hiến tế lá bài này; Triệu hồi Đặc biệt 1 “Rồng Trắng Mắt Xanh” từ Bộ Bài hoặc tay."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-ryko-lightsworn-hunter",
+      "externalId": 21502796,
+      "category": "monster",
+      "name": "Ryko, Thợ Săn Lightsworn",
+      "image": "assets/images/artwork/Ryko%2C%20Lightsworn%20Hunter.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "LIGHT",
+      "level": 2,
+      "race": "Thú",
+      "atk": 200,
+      "def": 100,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Lightsworn",
+      "description": "Một thợ săn Lightsworn nhỏ bé nhưng luôn sẵn sàng phá hủy mối đe dọa.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Lật: Áp dụng đồng thời các hiệu ứng sau: phá hủy 1 lá bài trên sân; gửi 3 lá trên cùng Bộ bài của đối thủ vào Mộ."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "t-scrap-iron-scarecrow",
+      "externalId": 98427577,
+      "category": "trap",
+      "name": "Bù Nhìn Sắt Phế Liệu",
+      "image": "assets/images/artwork/Scrap-Iron%20Scarecrow.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Thường",
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi quái thú đối thủ tuyên bố tấn công: Chọn quái thú đang tấn công đó; vô hiệu hóa đòn tấn công, sau đó Úp lá bài này thay vì gửi nó vào Mộ."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-night-assailant",
+      "externalId": 16226786,
+      "category": "monster",
+      "name": "Kẻ Tấn Công Bóng Đêm",
+      "image": "assets/images/artwork/Night%20Assailant.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "DARK",
+      "level": 3,
+      "race": "Quỷ",
+      "atk": 200,
+      "def": 500,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Quỷ",
+      "description": "Một sát thủ ẩn mình trong bóng tối, chuyên phục kích đối thủ.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Lật: Chọn 1 quái thú đối thủ điều khiển; phá hủy nó. Khi lá bài này bị phá hủy và gửi vào Mộ: Chọn 1 lá bài trong Mộ của bạn, ngoại trừ lá bài này; trả nó về tay."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-blue-eyes-alternative-white-dragon",
+      "externalId": 38517737,
+      "category": "monster",
+      "name": "Rồng Trắng Mắt Xanh Thay Thế",
+      "image": "assets/images/artwork/Blue-Eyes%20Alternative%20White%20Dragon.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "LIGHT",
+      "level": 8,
+      "race": "Rồng",
+      "atk": 3000,
+      "def": 2500,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Rồng Trắng Mắt Xanh",
+      "description": "Một biến thể của Rồng Trắng Mắt Xanh, sở hữu sức mạnh tương đương và khả năng phá hủy đáng sợ.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Không thể Triệu hồi Thường hoặc Úp. Trước tiên phải được Triệu hồi Đặc biệt từ tay bằng cách tiết lộ 1 “Rồng Trắng Mắt Xanh” trên tay; mỗi lượt chỉ được Triệu hồi theo cách này 1 lần. Tên lá bài này trở thành “Rồng Trắng Mắt Xanh” khi ở trên sân hoặc trong Mộ. Mỗi lượt 1 lần: Chọn 1 quái thú đối thủ điều khiển; phá hủy nó. Lá bài này không thể tấn công trong lượt kích hoạt hiệu ứng này."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-blue-eyes-solid-dragon",
+      "externalId": 57043986,
+      "category": "monster",
+      "name": "Rồng Trắng Mắt Xanh Thể Rắn",
+      "image": "assets/images/artwork/Blue-Eyes%20Solid%20Dragon.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "LIGHT",
+      "level": 8,
+      "race": "Rồng",
+      "atk": 2500,
+      "def": 2000,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Rồng Trắng Mắt Xanh",
+      "description": "Một con rồng bọc giáp vững chắc, có thể áp chế hiệu ứng của đối thủ.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Nếu lá bài này được Triệu hồi Thường hoặc Đặc biệt: Chọn 1 quái thú ngửa mặt đối thủ điều khiển; vô hiệu hóa hiệu ứng của nó. Khi đối thủ kích hoạt lá bài hoặc hiệu ứng (Hiệu ứng Nhanh): Bạn có thể xáo lá bài này từ sân vào Bộ bài; nếu làm vậy, Triệu hồi Đặc biệt 1 “Rồng Trắng Mắt Xanh” từ Bộ bài. Mỗi hiệu ứng chỉ được sử dụng 1 lần mỗi lượt."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-chaos-emperor-dragon-envoy-of-the-end",
+      "externalId": 82301904,
+      "category": "monster",
+      "name": "Chúa Rồng Hùng Mạnh",
+      "image": "assets/images/artwork/Chaos%20Emperor%20Dragon%20-%20Envoy%20of%20the%20End.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "DARK",
+      "level": 8,
+      "race": "Rồng",
+      "atk": 3000,
+      "def": 2500,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Hỗn Mang",
+      "description": "Chúa Rồng Hùng Mạnh mang đến sự hủy diệt cho mọi lá bài trên sân và trên tay.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Ngọn Lửa Của Địa Ngục",
+          "description": "Không thể Triệu hồi Thường hoặc Úp. Phải được Triệu hồi Đặc biệt từ tay bằng cách loại bỏ 1 quái thú ÁNH SÁNG và 1 quái thú BÓNG TỐI khỏi Mộ. Mỗi lượt 1 lần: Bạn có thể trả 1000 LP; gửi càng nhiều lá bài trên tay và sân của cả hai người chơi vào Mộ càng tốt, sau đó gây 300 sát thương cho đối thủ với mỗi lá được gửi vào Mộ của họ bằng hiệu ứng này."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-the-melody-of-awakening-dragon",
+      "externalId": 48800175,
+      "category": "spell",
+      "name": "Giai Điệu Đánh Thức Rồng",
+      "image": "assets/images/artwork/The%20Melody%20of%20Awakening%20Dragon.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Bỏ 1000 LP; Triệu hồi Đặc Biệt 2 quái thú Rồng từ Bộ bài hoặc trên tay. Chúng không thể tấn công trong lượt này."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-chaos-dragon-levianeer",
+      "externalId": 55878038,
+      "category": "monster",
+      "name": "Rồng Hỗn Mang Levianeer",
+      "image": "assets/images/artwork/Chaos%20Dragon%20Levianeer.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "DARK",
+      "level": 8,
+      "race": "Rồng",
+      "atk": 3000,
+      "def": 0,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Hỗn Mang",
+      "description": "Một con rồng Hỗn Mang được triệu hồi từ sức mạnh của ÁNH SÁNG và BÓNG TỐI.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Điều kiện Triệu hồi",
+          "description": "Không thể Triệu hồi Thường hoặc Úp. Phải được Triệu hồi Đặc biệt từ tay bằng cách loại bỏ 3 quái thú ÁNH SÁNG và/hoặc BÓNG TỐI khỏi Mộ."
+        },
+        {
+          "name": "Hiệu ứng khi Triệu hồi Đặc biệt (Mỗi lượt 1 lần)",
+          "description": "Khi được Triệu hồi theo cách này, áp dụng hiệu ứng tương ứng với thuộc tính của các quái thú đã loại bỏ. Lá bài này không thể tấn công trong phần còn lại của lượt.",
+          "activation": {
+            "limit": "once_per_turn",
+            "selection": "conditional"
+          },
+          "effects": [
+            {
+              "id": "levianeer_light_only",
+              "name": "Chỉ loại bỏ quái thú ÁNH SÁNG",
+              "activationType": "on_special_summon",
+              "condition": "Trong 3 quái thú bị loại bỏ chỉ có thuộc tính ÁNH SÁNG.",
+              "description": "Triệu hồi Đặc biệt 1 quái thú từ Mộ ở thế Phòng thủ."
+            },
+            {
+              "id": "levianeer_dark_only",
+              "name": "Chỉ loại bỏ quái thú BÓNG TỐI",
+              "activationType": "on_special_summon",
+              "condition": "Trong 3 quái thú bị loại bỏ chỉ có thuộc tính BÓNG TỐI.",
+              "description": "Xáo ngẫu nhiên 1 lá trên tay đối thủ vào Bộ bài."
+            },
+            {
+              "id": "levianeer_light_and_dark",
+              "name": "Loại bỏ cả quái thú ÁNH SÁNG và BÓNG TỐI",
+              "activationType": "on_special_summon",
+              "condition": "Trong 3 quái thú bị loại bỏ có cả thuộc tính ÁNH SÁNG lẫn BÓNG TỐI.",
+              "description": "Phá hủy tối đa 2 lá trên sân."
+            }
+          ],
+          "restriction": "Lá bài này không thể tấn công trong phần còn lại của lượt."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-soul-exchange",
+      "externalId": 68005187,
+      "category": "spell",
+      "name": "Tráo Đổi Linh Hồn",
+      "image": "assets/images/artwork/Soul%20Exchange.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Bạn có thể chọn quái thú của đối thủ và thực hiện hiến tế như quái thú của mình."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-odd-eyes-advance-dragon",
+      "externalId": 61391302,
+      "category": "monster",
+      "name": "Rồng Mắt Lẻ Tiến Công",
+      "image": "assets/images/artwork/Odd-Eyes%20Advance%20Dragon.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "DARK",
+      "level": 8,
+      "race": "Rồng",
+      "atk": 3000,
+      "def": 2500,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Mắt Lẻ",
+      "description": "Một con rồng Mắt Lẻ hùng mạnh có thể phá hủy quái thú đối thủ khi được Hiến tế để Triệu hồi.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Có thể Triệu hồi Hiến tế lá bài này bằng cách Hiến tế 1 quái thú Cấp 5 trở lên. Nếu được Triệu hồi Hiến tế: Phá hủy 1 quái thú đối thủ điều khiển; nếu làm vậy, gây sát thương cho đối thủ bằng ATK gốc của quái thú đó. Khi lá bài này phá hủy quái thú trong chiến đấu: Triệu hồi Đặc biệt 1 quái thú Cấp 5 trở lên từ tay hoặc Mộ ở thế Phòng thủ, ngoại trừ “Rồng Mắt Lẻ Tiến Công”. Hiệu ứng này chỉ được sử dụng 1 lần mỗi lượt."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "t-heavy-storm-duster",
+      "externalId": 23924608,
+      "category": "trap",
+      "name": "Cơn Bão Lớn",
+      "image": "assets/images/artwork/Heavy%20Storm%20Duster.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Thường",
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Chọn tối đa 2 lá Phép/Bẫy trên sân; phá hủy chúng."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "t-life-shaver",
+      "externalId": 38105306,
+      "category": "trap",
+      "name": "Sinh Mệnh Mong Manh",
+      "image": "assets/images/artwork/Life%20Shaver.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Thường",
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Đối thủ của bạn bỏ 1 lá bài cho mỗi lượt đã trôi qua kể từ khi lá bài này được Úp (tính lượt của cả hai người chơi)."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-lord-of-d",
+      "externalId": 17985575,
+      "category": "monster",
+      "name": "Thủ Lĩnh Rồng",
+      "image": "assets/images/artwork/Lord%20of%20D..png",
+      "monsterType": "Hiệu quả",
+      "attribute": "DARK",
+      "level": 4,
+      "race": "Phù thủy",
+      "atk": 1200,
+      "def": 1100,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Rồng",
+      "description": "Vị chúa tể bảo vệ các loài Rồng khỏi sự nhắm mục tiêu của đối thủ.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Không người chơi nào có thể chọn quái thú Rồng trên sân làm mục tiêu bằng hiệu ứng lá bài."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-dimension-fusion",
+      "externalId": 23557835,
+      "category": "spell",
+      "name": "Dung Hợp Đa Chiều",
+      "image": "assets/images/artwork/Dimension%20Fusion.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Trả 2000 LP; cả hai người chơi Triệu hồi Đặc biệt càng nhiều quái thú bị loại bỏ khỏi cuộc chơi của mình càng tốt."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-soul-release",
+      "externalId": 5758500,
+      "category": "spell",
+      "name": "Giải Thoát Linh Hồn",
+      "image": "assets/images/artwork/Soul%20Release.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Chọn tối đa 5 lá bài trong một hoặc nhiều Mộ; loại bỏ chúng khỏi cuộc chơi. Nếu là bài của bạn, bạn nhận 500 LP cho mỗi lá; Nếu là bài đối thủ, họ thiệt hại 500 LP cho mỗi lá."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "t-negate-attack",
+      "externalId": 14315573,
+      "category": "trap",
+      "name": "Vô Hiệu Hóa Đòn Tấn Công",
+      "image": "assets/images/artwork/Negate%20Attack.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Phản Kích",
+      "rarity": "",
+      "keyword": "Phản Kích",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi quái thú đối thủ tuyên bố tấn công: Chọn quái thú đang tấn công đó; vô hiệu hóa đòn tấn công, sau đó kết thúc Battle Phase."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-cyber-jar",
+      "externalId": 34124316,
+      "category": "monster",
+      "name": "Bình Cyber",
+      "image": "assets/images/artwork/Cyber%20Jar.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "DARK",
+      "level": 3,
+      "race": "Đá",
+      "atk": 900,
+      "def": 900,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Đá",
+      "description": "Chiếc bình máy móc giải phóng sức mạnh có thể đảo lộn toàn bộ sân đấu.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Lật: Phá hủy tất cả quái thú trên sân. Sau đó, cả hai người chơi rút 5 lá trên cùng Bộ bài của mình; Triệu hồi Đặc biệt tất cả quái thú Cấp 4 trở xuống được lật ra ở thế Tấn công ngửa hoặc Phòng thủ úp, rồi thêm các lá còn lại lên tay. Nếu Bộ bài của người chơi có dưới 5 lá, lật càng nhiều càng tốt."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "t-ring-of-destruction",
+      "externalId": 83555666,
+      "category": "trap",
+      "name": "Vòng Hủy Diệt",
+      "image": "assets/images/artwork/Ring%20of%20Destruction.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Thường",
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Trong lượt của đối thủ: Chọn 1 quái thú đối thủ điều khiển; phá hủy quái thú đó. Nếu làm vậy, gây cho đối thủ lượng sát thương bằng ATK của quái thú đó. Mỗi lượt chỉ được kích hoạt 1 “Vòng Hủy Diệt”."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-spell-reproduction",
+      "externalId": 29228529,
+      "category": "spell",
+      "name": "Sao Chép Ma Thuật",
+      "image": "assets/images/artwork/Spell%20Reproduction.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Gửi 2 lá Phép từ tay vào Mộ, sau đó chọn 1 lá Phép trong Mộ của bạn; thêm nó lên tay."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-emergency-provisions",
+      "externalId": 53046408,
+      "category": "spell",
+      "name": "Thức Ăn Dự Phòng",
+      "image": "assets/images/artwork/Emergency%20Provisions.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Tức Thời",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Tức Thời",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Thảy xúc sắc 6 mặt. Gửi số lá Phép/Bẫy mà bạn hoặc đối thủ điều khiển vào Mộ tương ứng với số nút mà xúc sắc gieo được; nhận 1000 LP cho mỗi lá được gửi bằng hiệu ứng này."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-raigeki",
+      "externalId": 12580477,
+      "category": "spell",
+      "name": "Lôi Kích",
+      "image": "assets/images/artwork/Raigeki.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Phá hủy tất cả quái thú đối thủ điều khiển."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-heavy-storm",
+      "externalId": 19613556,
+      "category": "spell",
+      "name": "Bão Lớn",
+      "image": "assets/images/artwork/Heavy%20Storm.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Phá hủy tất cả lá Phép và Bẫy trên sân đối thủ."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-x-head-cannon",
+      "externalId": 62651957,
+      "category": "monster",
+      "name": "Đại Bác Cannon X",
+      "image": "assets/images/artwork/X-Head%20Cannon.png",
+      "monsterType": "Thường",
+      "attribute": "LIGHT",
+      "level": 4,
+      "race": "Máy móc",
+      "atk": 1800,
+      "def": 1500,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "ABC",
+      "description": "Quái thú với nòng pháo uy lực, có thể kết hợp với những quái thú khác để tung ra nhiều kiểu tấn công.",
+      "maxCopies": 3,
+      "skills": [],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-y-dragon-head",
+      "externalId": 65622692,
+      "category": "monster",
+      "name": "Rồng Chữ Y",
+      "image": "assets/images/artwork/Y-Dragon%20Head.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "LIGHT",
+      "level": 4,
+      "race": "Máy móc",
+      "atk": 1500,
+      "def": 1600,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "ABC",
+      "description": "Một chiến binh máy móc có thể hợp thể với ĐẠI BÁC Cannon X để tăng sức mạnh và bảo vệ đồng đội.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Mỗi lượt 1 lần, chọn 1 “ĐẠI BÁC Cannon X” bạn điều khiển để trang bị lá này cho nó, hoặc tháo lá này ra và Triệu hồi Đặc biệt nó. Quái thú được trang bị tăng 400 ATK/DEF; nếu quái thú đó sắp bị phá hủy trong chiến đấu hoặc bởi hiệu ứng lá bài, thay vào đó hãy phá hủy lá này."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-z-metal-tank",
+      "externalId": 64500000,
+      "category": "monster",
+      "name": "Xe Tăng Bọc Thép Z",
+      "image": "assets/images/artwork/Z-Metal%20Tank.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "LIGHT",
+      "level": 4,
+      "race": "Máy móc",
+      "atk": 1500,
+      "def": 1300,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "ABC",
+      "description": "Một cỗ máy chiến đấu có thể hợp thể với ĐẠI BÁC Cannon X hoặc Rồng Chữ Y để tăng cường sức mạnh.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Mỗi lượt 1 lần, chọn 1 “ĐẠI BÁC Cannon X” hoặc “Rồng Chữ Y” bạn điều khiển để trang bị lá này cho nó, hoặc tháo lá này ra và Triệu hồi Đặc biệt nó. Quái thú được trang bị tăng 600 ATK/DEF; nếu quái thú đó sắp bị phá hủy trong chiến đấu hoặc bởi hiệu ứng lá bài, thay vào đó hãy phá hủy lá này."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-soul-absorption",
+      "externalId": 68073522,
+      "category": "spell",
+      "name": "Hấp Thụ Linh Hồn",
+      "image": "assets/images/artwork/Soul%20Absorption.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Liên tục",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Liên tục",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Mỗi khi có một hoặc nhiều lá bài bị bị gửi vào Mộ hoặc loại bỏ khỏi cuộc chơi: Bạn nhận 500 LP cho mỗi lá."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-a-wingbeat-of-giant-dragon",
+      "externalId": 28596933,
+      "category": "spell",
+      "name": "Rồng Thiêng Đập Cánh",
+      "image": "assets/images/artwork/A%20Wingbeat%20of%20Giant%20Dragon.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Đưa 1 quái thú Rồng Cấp 5 trở lên bạn điều khiển về tay; nếu làm vậy, phá hủy tất cả lá Phép và Bẫy trên sân đối thủ."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-ring-of-defense",
+      "externalId": 58641905,
+      "category": "spell",
+      "name": "Vòng Tròn Phòng Thủ",
+      "image": "assets/images/artwork/Ring%20of%20Defense.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Tức Thời",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Tức Thời",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi bị Quái Thú, Phép hoặc Bẫy gây sát thương sẽ kích hoạt: Làm cho sát thương đó bằng 0."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-3-hump-lacooda",
+      "externalId": 86988864,
+      "category": "monster",
+      "name": "Lạc Đà Ba Bướu",
+      "image": "assets/images/artwork/3-Hump%20Lacooda.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "EARTH",
+      "level": 3,
+      "race": "Thú",
+      "atk": 500,
+      "def": 1500,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thú",
+      "description": "Chỉ khi có đủ ba cá thể cùng xuất hiện, loài lạc đà này mới thể hiện sức mạnh thật sự.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Mỗi lượt 1 lần, Khi phần sân của bạn bị tấn công hoặc bị ảnh hưởng bởi hiệu ứng bài của đối thủ: Phủ nhận nó, sau đó rút 3 lá."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-the-white-stone-of-ancients",
+      "externalId": 71039903,
+      "category": "monster",
+      "name": "Bạch Thạch Cổ Đại",
+      "image": "assets/images/artwork/The%20White%20Stone%20of%20Ancients.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "LIGHT",
+      "level": 1,
+      "race": "Rồng",
+      "atk": 600,
+      "def": 500,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Rồng Trắng Mắt Xanh",
+      "description": "Viên đá cổ xưa lưu giữ sức mạnh của những con Rồng Trắng Mắt Xanh.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Các hiệu ứng (Mỗi lượt chỉ dùng 1 hiệu ứng)",
+          "description": "Hai hiệu ứng có điều kiện kích hoạt riêng. Mỗi lượt chỉ được sử dụng một trong hai hiệu ứng này, tổng cộng 1 lần.",
+          "activation": {
+            "limit": "once_per_turn_shared",
+            "selection": "separate_triggers"
+          },
+          "effects": [
+            {
+              "id": "white_stone_summon_blue_eyes",
+              "name": "Hiệu ứng 1 — Triệu hồi Rồng Trắng Mắt Xanh",
+              "activationType": "after_battle_destroy",
+              "condition": "Khi lá bài này bị phá hủy trong chiến đấu và được đưa vào Mộ.",
+              "description": "Bạn có thể Triệu hồi Đặc biệt 1 “Rồng Trắng Mắt Xanh” từ Bộ bài hoặc tay."
+            },
+            {
+              "id": "white_stone_recover_blue_eyes",
+              "name": "Hiệu ứng 2 — Thêm quái thú từ Mộ lên tay",
+              "activationType": "graveyard_activated",
+              "condition": "Khi lá bài này đang ở trong Mộ.",
+              "cost": "Loại bỏ lá bài này khỏi Mộ.",
+              "description": "Chọn 1 quái thú “Rồng Trắng Mắt Xanh” trong Mộ; thêm nó lên tay."
+            }
+          ]
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-burst-stream-of-destruction",
+      "externalId": 17655904,
+      "category": "spell",
+      "name": "Đạn Pháo Rồng Trắng",
+      "image": "assets/images/artwork/Burst%20Stream%20of%20Destruction.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Nếu bạn điều khiển “Rồng Trắng Mắt Xanh”: Phá hủy tất cả quái thú đối thủ điều khiển. “Rồng Trắng Mắt Xanh” bạn điều khiển không thể tấn công trong lượt kích hoạt lá bài này."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-lancer-lindwurm",
+      "externalId": 46272804,
+      "category": "monster",
+      "name": "Rồng Thương Lindwurm",
+      "image": "assets/images/artwork/Lancer%20Lindwurm.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "WIND",
+      "level": 4,
+      "race": "Rồng",
+      "atk": 1800,
+      "def": 1200,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Rồng",
+      "description": "Lindwurm lao xuyên qua hàng phòng thủ của đối thủ bằng chiếc thương sắc bén.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Nếu lá bài này tấn công quái thú ở thế Phòng thủ, gây sát thương chiến đấu xuyên thấu cho đối thủ."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-return-of-the-dragon-lords",
+      "externalId": 6853254,
+      "category": "spell",
+      "name": "Sự Trở Lại Của Chúa Rồng",
+      "image": "assets/images/artwork/Return%20of%20the%20Dragon%20Lords.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Chọn 1 quái thú Rồng Cấp 7 hoặc 8 trong Mộ của bạn; Triệu hồi Đặc biệt nó. Nếu quái thú Rồng bạn điều khiển sắp bị phá hủy trong chiến đấu hoặc bởi hiệu ứng lá bài, bạn có thể loại bỏ lá bài này khỏi Mộ thay thế."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-maiden-with-eyes-of-blue",
+      "externalId": 88241506,
+      "category": "monster",
+      "name": "Thiếu Nữ Mắt Xanh",
+      "image": "assets/images/artwork/Maiden%20with%20Eyes%20of%20Blue.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "LIGHT",
+      "level": 1,
+      "race": "Phù thủy",
+      "atk": 0,
+      "def": 0,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Rồng Trắng Mắt Xanh",
+      "description": "Thiếu nữ mang trong mình sợi dây liên kết kỳ bí với Rồng Trắng Mắt Xanh.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Các hiệu ứng (Mỗi lượt chỉ dùng 1 hiệu ứng)",
+          "description": "Hai hiệu ứng có điều kiện kích hoạt riêng. Mỗi lượt chỉ được sử dụng một trong hai hiệu ứng này, tổng cộng 1 lần.",
+          "activation": {
+            "limit": "once_per_turn_shared",
+            "selection": "separate_triggers"
+          },
+          "effects": [
+            {
+              "id": "maiden_negate_card_effect",
+              "name": "Hiệu ứng 1 — Phủ nhận hiệu ứng bài",
+              "activationType": "quick_effect",
+              "condition": "Khi lá bài này bị ảnh hưởng bởi hiệu ứng bài của đối thủ.",
+              "description": "Phủ nhận hiệu ứng đó, sau đó Triệu hồi Đặc biệt 1 “Rồng Trắng Mắt Xanh” từ tay, Bộ bài hoặc Mộ."
+            },
+            {
+              "id": "maiden_negate_attack",
+              "name": "Hiệu ứng 2 — Ngăn đòn tấn công",
+              "activationType": "when_declared_as_attack_target",
+              "condition": "Khi lá bài này bị chọn làm mục tiêu tấn công.",
+              "description": "Bạn có thể vô hiệu hóa đòn tấn công và đổi tư thế chiến đấu của lá bài này; sau đó có thể Triệu hồi Đặc biệt 1 “Rồng Trắng Mắt Xanh” từ tay, Bộ bài hoặc Mộ."
+            }
+          ]
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-burning-dragon",
+      "externalId": 8085950,
+      "category": "monster",
+      "name": "Rồng Hỏa Diệm",
+      "image": "assets/images/artwork/Burning%20Dragon.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "FIRE",
+      "level": 8,
+      "race": "Rồng",
+      "atk": 2500,
+      "def": 2100,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Rồng",
+      "description": "Một con rồng lửa dữ dội có thể thiêu rụi toàn bộ Phép và Bẫy trên sân.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Nếu đối thủ điều khiển từ 2 quái thú trở lên và lá bài này ở trên tay: Bạn có thể Triệu hồi Đặc biệt nó. Nếu lá bài này được Triệu hồi Thường hoặc Đặc biệt: Bạn có thể bỏ 1 lá Phép; phá hủy tất cả lá Phép và Bẫy trên sân đối thủ. Mỗi hiệu ứng chỉ được sử dụng 1 lần mỗi lượt."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-vorse-raider",
+      "externalId": 14898066,
+      "category": "monster",
+      "name": "Sát Thủ Địa Ngục",
+      "image": "assets/images/artwork/Vorse%20Raider.png",
+      "monsterType": "Thường",
+      "attribute": "DARK",
+      "level": 4,
+      "race": "Thú chiến binh",
+      "atk": 1900,
+      "def": 1200,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thú chiến binh",
+      "description": "Tên Thú chiến binh độc ác này làm mọi việc tàn bạo có thể tưởng tượng ra và thích thú với điều đó. Chiếc rìu của hắn mang dấu vết của vô số nạn nhân.",
+      "maxCopies": 3,
+      "skills": [],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-reload",
+      "externalId": 22589918,
+      "category": "spell",
+      "name": "Nap Đạn",
+      "image": "assets/images/artwork/Reload.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Tức Thời",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Tức Thời",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Đưa toàn bộ lá bài trên tay vào Bộ bài và xáo trộn; sau đó rút lại số lá bằng đúng số lá đã đưa vào Bộ bài."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-kaiser-seahorse",
+      "externalId": 17444133,
+      "category": "monster",
+      "name": "Hoàng Đế Hải Mã",
+      "image": "assets/images/artwork/Kaiser%20Sea%20Horse.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "LIGHT",
+      "level": 4,
+      "race": "Hải xà",
+      "atk": 1700,
+      "def": 1650,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Hải xà",
+      "description": "Hải mã mang quyền năng hoàng đế, có thể thay thế hai quái thú Hiến tế khi Triệu hồi quái thú ÁNH SÁNG.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Lá bài này có thể được tính là 2 lần Hiến tế khi Triệu hồi Hiến tế một quái thú ÁNH SÁNG."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "t-magical-trick-mirror",
+      "externalId": 85758066,
+      "category": "trap",
+      "name": "Cổ Máy Gương Ma Thuật",
+      "image": "assets/images/artwork/Magical%20Trick%20Mirror.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Thường",
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi quái thú đối thủ tuyên bố tấn công: Chọn 1 lá Phép trong Mộ của đối thủ; Úp nó lên sân của bạn, bạn có thể kích hoạt nó ngay trong lượt này."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "t-robbin-goblin",
+      "externalId": 88279736,
+      "category": "trap",
+      "name": "Tên Trộm Yêu Tinh",
+      "image": "assets/images/artwork/Robbin'%20Goblin.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Liên tục",
+      "rarity": "",
+      "keyword": "Liên tục",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Mỗi khi quái thú bạn điều khiển gây sát thương chiến đấu cho đối thủ, đối thủ bỏ ngẫu nhiên 1 lá trên tay."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "t-cloning",
+      "externalId": 86871614,
+      "category": "trap",
+      "name": "Nhân Bản Quái Thú",
+      "image": "assets/images/artwork/Cloning.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Thường",
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi đối thủ Triệu hồi Thường hoặc Đặc Biệt một quái thú ngửa mặt: Chọn quái thú ngửa mặt đó; Triệu hồi Đặc biệt 1 “Token Nhân Bản” có cùng Loại, Thuộc tính, Cấp, Hiệu ứng kỹ năng (nếu có), ATK và DEF gốc."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-giant-germ",
+      "externalId": 95178994,
+      "category": "monster",
+      "name": "Vi Khuẩn Khổng Lồ",
+      "image": "assets/images/artwork/Giant%20Germ.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "DARK",
+      "level": 2,
+      "race": "Quỷ",
+      "atk": 1000,
+      "def": 100,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Quỷ",
+      "description": "Một mầm bệnh nguy hiểm tiếp tục sinh sôi khi bị tiêu diệt trong chiến đấu.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi lá bài này bị phá hủy trong chiến đấu và gửi vào Mộ: Gây 500 sát thương cho đối thủ, sau đó bạn có thể Triệu hồi Đặc biệt bất kỳ số lượng “Vi Khuẩn Khổng Lồ” nào từ Bộ bài ở thế Phòng thủ ngửa."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-the-flute-of-summoning-dragon",
+      "externalId": 43973174,
+      "category": "spell",
+      "name": "Cây Sáo Gọi Rồng",
+      "image": "assets/images/artwork/The%20Flute%20of%20Summoning%20Dragon.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Triệu hồi Đặc biệt tối đa 2 quái thú Rồng từ tay. Phải có “Chúa Tể D.” trên sân để kích hoạt và giải quyết hiệu ứng này."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-cost-down",
+      "externalId": 23265313,
+      "category": "spell",
+      "name": "Giáng Cấp",
+      "image": "assets/images/artwork/Cost%20Down.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Giảm Cấp của tất cả quái thú trên tay bạn đi 2, kể cả sau khi chúng được Triệu hồi."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "t-crush-card-virus",
+      "externalId": 57728570,
+      "category": "trap",
+      "name": "Virus Tử Thần",
+      "image": "assets/images/artwork/Crush%20Card%20Virus.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Thường",
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Chỉ kích hoạt khi bạn điều khiển một quái thú thuộc tính Bóng Tối có ATK dưới 1000. Nếu quái thú đó bị phá hủy trong chiến đấu: Đối thủ xem toàn bộ quái thú trên tay, trong Bộ Bài và trên sân của họ, sau đó gửi tất cả quái thú có ATK từ 1500 trở lên vào Mộ. Những quái thú được gửi vào Mộ bởi hiệu ứng này không thể được Triệu hồi Đặc Biệt từ Mộ. Nếu lá bài này không còn nằm trong Mộ, hiệu ứng này bị vô hiệu hóa."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-soul-taker",
+      "externalId": 81510157,
+      "category": "spell",
+      "name": "Thợ Săn Linh Hồn",
+      "image": "assets/images/artwork/Soul%20Taker.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Chọn 1 quái thú ngửa mặt đối thủ điều khiển; phá hủy nó, sau đó đối thủ nhận 1000 LP."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-blade-knight",
+      "externalId": 39507162,
+      "category": "monster",
+      "name": "Hiệp Sĩ Khiên Xanh",
+      "image": "assets/images/artwork/Blade%20Knight.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "LIGHT",
+      "level": 4,
+      "race": "Chiến binh",
+      "atk": 1600,
+      "def": 1000,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Chiến binh",
+      "description": "Một kiếm sĩ nhanh nhẹn, càng chiến đấu đơn độc càng trở nên nguy hiểm.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Lá bài này tăng 400 ATK khi bạn có từ 1 lá trở xuống trên tay. Nếu bạn không điều khiển quái thú nào khác, hiệu ứng của quái thú Lật bị lá bài này phá hủy trong chiến đấu sẽ bị vô hiệu hóa."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-shrink",
+      "externalId": 55713623,
+      "category": "spell",
+      "name": "Kính Hiển Vi",
+      "image": "assets/images/artwork/Shrink.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Tức Thời",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Tức Thời",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Chọn 1 quái thú ngửa mặt trên sân; ATK gốc của nó bị giảm một nửa."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "t-trap-jammer",
+      "externalId": 19252988,
+      "category": "trap",
+      "name": "Chặn Bẫy",
+      "image": "assets/images/artwork/Trap%20Jammer.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Phản Kích",
+      "rarity": "",
+      "keyword": "Phản Kích",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi đối thủ kích hoạt Lá Bẫy: Vô hiệu hóa việc kích hoạt và phá hủy lá bài đó."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-de-spell",
+      "externalId": 19159413,
+      "category": "spell",
+      "name": "Giải Trừ Ma Pháp",
+      "image": "assets/images/artwork/De-Spell.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Chọn 1 Lá Phép ngửa hoặc 1 Lá Phép/Bẫy đang úp trên sân; nếu mục tiêu là Lá Phép, phá hủy nó. Nếu mục tiêu đang úp, hãy lật lên để xác nhận, nếu không phải bài phép, úp nó trở lại."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "t-shadow-spell",
+      "externalId": 29267084,
+      "category": "Spell",
+      "name": "Lời Nguyền Bóng Tối",
+      "image": "assets/images/artwork/Shadow%20Spell.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Liên tục",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Liên tục",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Kích hoạt lá bài này bằng cách chọn 1 quái thú ngửa mặt đối thủ điều khiển; nó mất 700 ATK, không thể tấn công hoặc đổi tư thế chiến đấu. Khi quái thú đó rời sân, phá hủy lá bài này."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "t-compulsory-evacuation-device",
+      "externalId": 94192409,
+      "category": "trap",
+      "name": "Cưỡng Chế Tháo Trang Bị",
+      "image": "assets/images/artwork/Compulsory%20Evacuation%20Device.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Thường",
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Chọn 1 quái thú trên sân; trả nó về tay."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-kaiser-vorse-raider",
+      "externalId": 93927067,
+      "category": "monster",
+      "name": "Hoàng Đế Raider",
+      "image": "assets/images/artwork/Kaiser%20Vorse%20Raider.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "DARK",
+      "level": 5,
+      "race": "Thú chiến binh",
+      "atk": 1900,
+      "def": 1200,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thú chiến binh",
+      "description": "Chiến binh Vorse mạnh mẽ có thể tự xuất hiện khi sân bạn trống và trở nên nguy hiểm hơn qua mỗi trận chiến.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Nếu bạn không điều khiển quái thú nào, bạn có thể Triệu hồi Đặc biệt lá bài này từ tay. Nếu lá bài này phá hủy quái thú đối thủ trong chiến đấu: Lá bài này tăng 500 ATK. Nếu lá bài này bị phá hủy trong chiến đấu: Quái thú đã phá hủy nó mất 500 ATK."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-blizzard-dragon",
+      "externalId": 61802346,
+      "category": "monster",
+      "name": "Rồng Băng Giá",
+      "image": "assets/images/artwork/Blizzard%20Dragon.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "WATER",
+      "level": 4,
+      "race": "Rồng",
+      "atk": 1800,
+      "def": 1000,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Rồng",
+      "description": "Một con rồng băng giá có thể đóng băng chuyển động của quái thú đối thủ.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Mỗi lượt 1 lần: Chọn 1 quái thú đối thủ điều khiển; nó không thể đổi tư thế chiến đấu hoặc tuyên bố tấn công cho đến hết lượt kế tiếp của đối thủ."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-counterbalance-card",
+      "externalId": null,
+      "category": "spell",
+      "name": "Ma Thuật Hiến Tế Công Bằng",
+      "image": "assets/images/artwork/Counterbalance.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Liên tục",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Liên tục",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Trong Standby Phase của đối thủ: Đối thủ gửi các lá trên cùng Bộ bài của họ vào Mộ với số lượng bằng số quái thú trên sân."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "s-divine-shield",
+      "externalId": null,
+      "category": "spell",
+      "name": "Khiên Thần Bảo Hộ",
+      "image": "assets/images/artwork/Divine%20Shield.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Tức Thời",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Tức Thời",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Trong lượt này, các quái thú bạn điều khiển không thể bị phá hủy bởi chiến đấu hoặc hiệu ứng lá bài, đồng thời không bị ảnh hưởng bởi hiệu ứng lá bài của đối thủ."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "t-silent-commander",
+      "externalId": null,
+      "category": "trap",
+      "name": "Người Chỉ Huy Câm Lặng",
+      "image": "assets/images/artwork/Silent%20Commander.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Phản Kích",
+      "rarity": "",
+      "keyword": "Phản Kích",
+      "description": "",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi quái thú đối thủ tuyên bố tấn công: Vô hiệu hóa đòn tấn công; nếu làm vậy, kết thúc Battle Phase, sau đó rút 2 lá."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-clone-dragon",
+      "externalId": null,
+      "category": "monster",
+      "name": "Rồng Vô Tính",
+      "image": "assets/images/artwork/Clone%20Dragon.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "LIGHT",
+      "level": 4,
+      "race": "Rồng",
+      "atk": 0,
+      "def": 0,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Rồng",
+      "description": "Một con rồng có khả năng sao chép tên, sức mạnh và hiệu ứng của quái thú khác.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi bạn Triệu hồi một quái thú: Bạn có thể Triệu hồi Đặc biệt lá bài này từ tay; tên, ATK, DEF và hiệu ứng của nó trở thành giống với quái thú được sao chép. Nếu lá bài này bị phá hủy và gửi vào Mộ: Bạn nhận 1000 LP."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["kaiba"]
+    },
+    {
+      "id": "m-black-luster-soldier-envoy-of-the-beginning",
+      "externalId": null,
+      "category": "monster",
+      "name": "Chiến Binh Giáp Đen",
+      "image": "assets/images/artwork/Black%20Luster%20Soldier%20-%20Envoy%20of%20the%20Beginning.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "LIGHT",
+      "level": 8,
+      "race": "Chiến binh",
+      "atk": 3000,
+      "def": 2500,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Chiến binh",
+      "description": "Chiến binh ánh sáng thức tỉnh từ sự hòa quyện của hai nguồn sức mạnh đối nghịch.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Điều kiện Triệu hồi",
+          "description": "Không thể được Triệu hồi Thường/Úp. Phải được Triệu hồi Đặc biệt từ tay bằng cách loại bỏ 1 quái thú LIGHT và 1 quái thú DARK khỏi Mộ của bạn."
+        },
+        {
+          "name": "Chọn 1 hiệu ứng (Mỗi lượt 1 lần)",
+          "description": "Chọn và kích hoạt đúng 1 trong 2 hiệu ứng sau mỗi lượt.",
+          "activation": {
+            "limit": "once_per_turn",
+            "selection": "choose_one"
+          },
+          "effects": [
+            {
+              "id": "banish_monster",
+              "name": "Hiệu ứng 1 — Loại bỏ quái thú",
+              "activationType": "activated",
+              "description": "Chọn 1 quái thú trên sân; loại bỏ nó.",
+              "restriction": "Lá bài này không thể tấn công trong lượt bạn kích hoạt hiệu ứng này."
+            },
+            {
+              "id": "second_attack",
+              "name": "Hiệu ứng 2 — Tấn công lần thứ hai",
+              "activationType": "after_battle_destroy",
+              "condition": "Lá bài này tấn công và phá hủy quái thú đối thủ trong chiến đấu.",
+              "description": "Lá bài này có thể thực hiện đòn tấn công thứ hai liên tiếp."
+            }
+          ]
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["yugi"]
+    },
+    {
+      "id": "m-palladium-oracle-mana",
+      "externalId": null,
+      "category": "monster",
+      "name": "Thần Quan Mana",
+      "image": "assets/images/artwork/Palladium%20Oracle%20Mana.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "LIGHT",
+      "level": 6,
+      "race": "Phù thủy",
+      "atk": 2000,
+      "def": 1700,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Phù thủy",
+      "description": "Thần quan tận tụy bảo vệ các pháp sư và luôn sẵn sàng xuất hiện khi họ gặp nguy hiểm.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "(Hiệu ứng Nhanh): Bạn có thể Triệu hồi Đặc biệt lá bài này từ tay nếu đối thủ kích hoạt một lá bài hoặc hiệu ứng. Khi lá bài này ngửa trên sân, quái thú Phù thủy bạn điều khiển không thể bị phá hủy bởi hiệu ứng bài. Nếu lá bài này bị phá hủy bởi chiến đấu hoặc hiệu ứng bài: Bạn có thể Triệu hồi Đặc biệt 1 “Nữ Phù Thủy Bóng Đêm” từ tay, Bộ Bài hoặc Mộ của bạn; nếu làm vậy, quái thú đó không thể bị phá hủy bởi chiến đấu."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["yugi"]
+    },
+    {
+      "id": "m-sorcerer-of-dark-magic",
+      "externalId": 88619463,
+      "category": "monster",
+      "name": "Pháp Sư Hắc Thuật",
+      "image": "assets/images/artwork/Sorcerer%20of%20Dark%20Magic.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "DARK",
+      "level": 9,
+      "race": "Phù thủy",
+      "atk": 3200,
+      "def": 2800,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Phù thủy",
+      "description": "Pháp sư hắc thuật uy nghi, áp đảo chiến trường và trấn áp những cạm bẫy của đối thủ.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Không thể được Triệu hồi Thường/Úp. Phải được Triệu hồi Đặc biệt từ tay bằng cách Hiến tế 2 quái thú Phù thủy Cấp 6 trở lên trên sân của bạn. Khi đối thủ kích hoạt Lá Bẫy (Hiệu ứng Nhanh): Bạn có thể vô hiệu hóa việc kích hoạt và nếu làm vậy, phá hủy lá bài đó. Khi lá bài này ngửa trên sân, tất cả quái thú đối thủ điều khiển mất 500 ATK cho mỗi quái thú Phù thủy trong Mộ của bạn. Nếu lá bài này được gửi từ sân vào Mộ: Bạn có thể Triệu hồi Đặc biệt 1 quái thú Phù thủy Cấp 6 trở lên từ Bộ Bài hoặc Mộ của bạn, ngoại trừ “Pháp Sư Hắc Thuật”."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["yugi"]
+    },
+    {
+      "id": "s-lightning-storm",
+      "externalId": 14532163,
+      "category": "spell",
+      "name": "Tia Sét Hủy Diệt",
+      "image": "assets/images/artwork/Lightning%20Storm.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "Cơn bão sét quét sạch đội hình hoặc hàng Phép/Bẫy của đối thủ.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Chọn 1 hiệu ứng (Mỗi lượt 1 lần)",
+          "description": "Chọn và kích hoạt đúng 1 trong 2 hiệu ứng sau. Chỉ được kích hoạt 1 lần mỗi lượt.",
+          "activation": {
+            "limit": "once_per_turn",
+            "selection": "choose_one"
+          },
+          "effects": [
+            {
+              "id": "lightning_storm_destroy_attack_monsters",
+              "name": "Hiệu ứng 1 — Phá hủy quái thú",
+              "activationType": "activated",
+              "description": "Phá hủy tất cả quái thú ngửa Tấn công mà đối thủ điều khiển."
+            },
+            {
+              "id": "lightning_storm_destroy_spells_traps",
+              "name": "Hiệu ứng 2 — Phá hủy Phép/Bẫy",
+              "activationType": "activated",
+              "description": "Phá hủy tất cả Lá Phép và Bẫy đối thủ điều khiển."
+            }
+          ]
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["yugi"]
+    },
+    {
+      "id": "s-bond-between-teacher-and-student",
+      "externalId": 60482203,
+      "category": "spell",
+      "name": "Mối Liên Kết Giữa Thầy Và Trò",
+      "image": "assets/images/artwork/Bond%20Between%20Teacher%20and%20Student.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "Mối gắn kết giữa người thầy và học trò gọi thêm đồng minh, cùng che chở cho họ.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Nếu bạn điều khiển “Phù Thủy Bóng Đêm”: Triệu hồi Đặc biệt 1 “Nữ Phù Thủy Bóng Đêm” từ tay, Bộ Bài hoặc Mộ của bạn, sau đó bạn có thể Úp 1 “Ngàn Lưỡi Dao Găm”, “Đòn Tấn Công Thiêu Đốt Bóng Tối”, “Ma Thuật Song Hỏa Bùng Nổ” hoặc “Ma Thuật Song Sinh Bóng Tối” từ Bộ Bài. Bạn có thể loại bỏ lá bài này khỏi Mộ (Hiệu ứng Nhanh): Trong lượt này, “Phù Thủy Bóng Đêm” và “Nữ Phù Thủy Bóng Đêm” bạn điều khiển không thể bị phá hủy trong chiến đấu hoặc bởi hiệu ứng bài của đối thủ."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["yugi"]
+    },
+    {
+      "id": "t-ordeal-of-a-traveler",
+      "externalId": 33396948,
+      "category": "trap",
+      "name": "Thử Thách Kẻ Du Hành",
+      "image": "assets/images/artwork/Ordeal%20of%20a%20Traveler.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Liên tục",
+      "rarity": "",
+      "keyword": "Liên tục",
+      "description": "Một cuộc thử thách tâm trí khiến kẻ tấn công phải đánh cược vào phán đoán của mình.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi quái thú đối thủ tuyên bố tấn công: Đối thủ chọn ngẫu nhiên 1 lá bài trên tay bạn và đoán loại bài (Quái thú, Phép hoặc Bẫy). Nếu lá bài được chọn không thuộc loại mà đối thủ đoán, trả quái thú đang tấn công về tay."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["yugi"]
+    },
+    {
+      "id": "t-dark-bribe",
+      "externalId": null,
+      "category": "trap",
+      "name": "Mua Chuộc",
+      "image": "assets/images/artwork/Dark%20Bribe.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": null,
+      "trapType": "Phản Kích",
+      "rarity": "",
+      "keyword": "Phản Kích",
+      "description": "Một món hối lộ đổi lấy cơ hội vô hiệu hóa và phá hủy lá bài đối thủ vừa kích hoạt.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi đối thủ kích hoạt Lá Phép/Bẫy: Đối thủ rút 1 lá, đồng thời vô hiệu hóa việc kích hoạt và nếu làm vậy, phá hủy lá bài đó."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["yugi"]
+    },
+    {
+      "id": "s-dark-burning-attack",
+      "externalId": null,
+      "category": "spell",
+      "name": "Đòn Tấn Công Thiêu Đốt Bóng Tối",
+      "image": "assets/images/artwork/Dark%20Burning%20Attack.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "Đòn phép bùng nổ thiêu rụi toàn bộ đội hình quái thú của đối thủ.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Nếu bạn điều khiển quái thú “Nữ Phù Thủy Bóng Đêm”: Phá hủy tất cả quái thú đối thủ điều khiển."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["yugi"]
+    },
+    {
+      "id": "s-twin-twisters",
+      "externalId": null,
+      "category": "spell",
+      "name": "Song Bão",
+      "image": "assets/images/artwork/Twin%20Twisters.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Tức Thời",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Tức Thời",
+      "description": "Hai luồng gió xoáy cuốn phăng những lá Phép/Bẫy trên sân và bào mòn Bộ Bài đối thủ.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Bỏ 1 lá bài; chọn tối đa 2 Lá Phép/Bẫy trên sân; phá hủy chúng. Sau đó, gửi 2 lá trên cùng Bộ Bài của đối thủ vào Mộ."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["yugi"]
+    },
+    {
+      "id": "m-breaker-the-magical-warrior",
+      "externalId": null,
+      "category": "monster",
+      "name": "Pháp Sư Chiến Binh",
+      "image": "assets/images/artwork/Breaker%20the%20Magical%20Warrior.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "DARK",
+      "level": 4,
+      "race": "Phù thủy",
+      "atk": 1600,
+      "def": 1000,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Phù thủy",
+      "description": "Chiến binh ma thuật tích lũy sức mạnh qua những Bộ đếm Phép trên người.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Khi lá bài này được Triệu hồi Thường hoặc Đặc biệt: Đặt 2 Bộ đếm Phép lên nó. Bạn có thể xóa bộ đếm phép, nhắm mục tiêu 1 lá bài trên sân (Hiệu ứng nhanh): Phủ nhận và phá hủy nó. Đồng thời lá bài này tăng 300 ATK."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["yugi"]
+    },
+    {
+      "id": "m-needle-worm",
+      "externalId": null,
+      "category": "monster",
+      "name": "Sâu Ăn Lá",
+      "image": "assets/images/artwork/Needle%20Worm.png",
+      "monsterType": "Hiệu quả",
+      "attribute": "EARTH",
+      "level": 2,
+      "race": "Côn trùng",
+      "atk": 750,
+      "def": 600,
+      "spellType": null,
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Côn trùng",
+      "description": "Sinh vật đào bới sâu vào Bộ Bài đối thủ, kéo những lá bài trên cùng xuống Mộ.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Lật: Gửi 5 lá trên cùng Bộ Bài của đối thủ vào Mộ."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["yugi"]
+    },
+    {
+      "id": "s-card-of-sanctity",
+      "externalId": null,
+      "category": "spell",
+      "name": "Kho Báu Từ Thiên Đường",
+      "image": "assets/images/artwork/Card%20of%20Sanctity.png",
+      "monsterType": null,
+      "attribute": null,
+      "level": null,
+      "race": null,
+      "atk": null,
+      "def": null,
+      "spellType": "Thường",
+      "trapType": null,
+      "rarity": "",
+      "keyword": "Thường",
+      "description": "Lá bài thiêng ban cho cả hai người chơi cơ hội bổ sung bài trên tay.",
+      "maxCopies": 3,
+      "skills": [
+        {
+          "name": "Kỹ năng",
+          "description": "Mỗi người chơi rút bài cho đến khi có 6 lá trên tay."
+        }
+      ],
+      "fusion": [],
+      "characterIds": ["yugi", "kaiba", "jonouchi"]
+    }
+  ]
+}

@@ -1,0 +1,274 @@
+/* ============================================================
+   YUGIOH WEB  –  theme.css
+   Biến màu + reset + component dùng chung (nút, panel, thẻ bài)
+   ============================================================ */
+
+:root{
+  --gold:#f5cf7a;
+  --gold-2:#a97f2b;
+  --gold-3:#5c420f;
+  --cyan:#4fe3ff;
+  --violet:#8a5bff;
+
+  --bg-0:#04060f;
+  --bg-1:#0a1130;
+  --bg-2:#141a45;
+
+  --panel:rgba(10,18,45,.74);
+  --panel-2:rgba(20,32,72,.55);
+  --stroke:rgba(160,190,255,.18);
+  --stroke-2:rgba(245,207,122,.38);
+
+  --txt:#eaf0fb;
+  --muted:#93a4c6;
+  --ok:#41e08d;
+  --warn:#ffb545;
+  --bad:#ff5163;
+
+  --r:14px;
+  --r-sm:10px;
+  --shadow:0 14px 34px rgba(0,0,0,.6);
+  --glow-gold:0 0 18px rgba(245,207,122,.45);
+  --glow-cyan:0 0 18px rgba(79,227,255,.4);
+
+  /* Ảnh nền nằm trong backend/assets/images/backgrounds/. */
+  --bg-lobby:url("../assets/images/backgrounds/bg-lobby.jpg");
+  --bg-duel:url("../assets/images/backgrounds/bg-duel.jpg");
+
+  --f-title:"Trebuchet MS","Segoe UI",system-ui,sans-serif;
+  --f-body:"Segoe UI",system-ui,-apple-system,Roboto,"Noto Sans",sans-serif;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--f-body);
+  color:var(--txt);
+  background:var(--bg-0);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body.lobby{overflow-y:auto}
+body.duel{overflow:hidden;height:100dvh}
+
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit}
+ul{margin:0;padding:0;list-style:none}
+
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:rgba(255,255,255,.04)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold-2),var(--gold-3));border-radius:99px}
+
+/* ---------- nền dùng chung ---------- */
+/* Ảnh nền: nằm dưới cùng, phủ kín màn hình (dùng cho cả sảnh chính lẫn bàn đấu) */
+.bg-image{
+  position:fixed;inset:0;z-index:-4;
+  background-color:var(--bg-0);
+  background-position:center center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  box-shadow:inset 0 0 240px rgba(0,0,0,.65);   /* tối 4 viền cho chữ dễ đọc */
+  pointer-events:none;
+}
+.bg-image--lobby{background-image:var(--bg-lobby)}
+.bg-image--duel {background-image:var(--bg-duel)}
+
+/* Khi ảnh nền tải được -> ẩn nền dự phòng (SVG phong cảnh / gradient bàn đấu) */
+body.has-bg .scene,
+body.has-bg .bg-layer{display:none}
+
+.bg-layer{
+  position:fixed;inset:0;z-index:-3;
+  background:
+    radial-gradient(1200px 700px at 18% -10%, rgba(138,91,255,.35), transparent 60%),
+    radial-gradient(900px 600px at 88% 0%, rgba(79,227,255,.20), transparent 60%),
+    radial-gradient(1000px 800px at 50% 120%, rgba(245,207,122,.14), transparent 60%),
+    linear-gradient(180deg,var(--bg-0),var(--bg-1) 45%,var(--bg-2));
+}
+.bg-grid{
+  position:fixed;inset:0;z-index:-2;opacity:.16;
+  background-image:
+    linear-gradient(rgba(120,170,255,.25) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(120,170,255,.25) 1px,transparent 1px);
+  background-size:56px 56px;
+  -webkit-mask-image:radial-gradient(circle at 50% 45%,#000 18%,transparent 78%);
+  mask-image:radial-gradient(circle at 50% 45%,#000 18%,transparent 78%);
+}
+
+/* ---------- icon svg ---------- */
+.ico{width:22px;height:22px;flex:0 0 auto}
+
+/* ---------- nút ---------- */
+.btn{
+  --btn-bg:linear-gradient(180deg,rgba(30,46,100,.95),rgba(11,18,45,.95));
+  --btn-bd:var(--stroke);
+  position:relative;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:12px 20px;
+  border:1px solid var(--btn-bd);border-radius:var(--r);
+  background:var(--btn-bg);cursor:pointer;
+  font-family:var(--f-title);font-weight:700;letter-spacing:.6px;
+  box-shadow:var(--shadow);
+  transition:transform .15s, box-shadow .2s, filter .2s;
+}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.15)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn--gold{
+  --btn-bg:linear-gradient(180deg,#f9e0a0,#c8972f 55%,#8a6415);
+  --btn-bd:#ffe6ab;color:#2a1d00;font-weight:800;
+  box-shadow:0 0 24px rgba(245,207,122,.35),var(--shadow);
+}
+.btn--ghost{--btn-bg:rgba(10,18,45,.45)}
+.btn--sm{padding:7px 12px;border-radius:var(--r-sm);font-size:12px}
+.btn--wide{width:100%}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none;filter:none}
+.btn__badge{
+  position:absolute;top:-8px;right:-8px;
+  background:var(--bad);color:#fff;font-size:11px;font-weight:800;
+  padding:2px 7px;border-radius:20px;border:1px solid rgba(255,255,255,.55);
+}
+
+/* ---------- panel ---------- */
+.panel{
+  background:var(--panel);
+  border:1px solid var(--stroke);
+  border-radius:var(--r);
+  backdrop-filter:blur(9px);
+  -webkit-backdrop-filter:blur(9px);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.panel__head{
+  display:flex;align-items:center;gap:9px;
+  padding:12px 14px;
+  border-bottom:1px solid var(--stroke);
+  font-family:var(--f-title);font-size:12.5px;letter-spacing:1.4px;
+  text-transform:uppercase;color:var(--gold);
+  text-shadow:0 0 10px rgba(245,207,122,.35);
+}
+.panel__head .ico{width:18px;height:18px}
+.panel__body{padding:14px}
+
+/* ---------- thanh tiến độ ---------- */
+.bar{
+  height:8px;border-radius:99px;overflow:hidden;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.09);
+}
+.bar>i{
+  display:block;height:100%;border-radius:99px;
+  background:linear-gradient(90deg,var(--cyan),var(--violet));
+  box-shadow:0 0 12px rgba(79,227,255,.5);
+  transition:width .45s ease;
+}
+.bar--gold>i{background:linear-gradient(90deg,#ffe9b6,#e0a72a);box-shadow:0 0 12px rgba(245,207,122,.55)}
+.bar--hp>i{background:linear-gradient(90deg,#ff8a5c,#ff2d55)}
+
+/* ---------- chip ---------- */
+.chip{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 11px;border-radius:99px;
+  background:rgba(255,255,255,.07);
+  border:1px solid var(--stroke);
+  font-size:12px;color:var(--muted);
+}
+.chip--gold{color:var(--gold);border-color:var(--stroke-2);background:rgba(245,207,122,.10)}
+
+/* ============================================================
+   THẺ BÀI (dùng chung lobby + duel)
+   ============================================================ */
+.card{
+  --cw:96px;
+  width:var(--cw);aspect-ratio:59/86;
+  position:relative;border-radius:calc(var(--cw)*.075);
+  background:linear-gradient(180deg,#e7c274,#8e6a1f);
+  padding:calc(var(--cw)*.045);
+  box-shadow:0 8px 20px rgba(0,0,0,.6);
+  cursor:pointer;user-select:none;
+  transition:transform .18s, box-shadow .2s;
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 16px 32px rgba(0,0,0,.7),var(--glow-gold)}
+.card__frame{
+  height:100%;border-radius:calc(var(--cw)*.05);
+  background:linear-gradient(180deg,#f8e6bd,#dcb769);
+  display:flex;flex-direction:column;gap:calc(var(--cw)*.035);
+  padding:calc(var(--cw)*.05);
+}
+.card__name{
+  font-size:calc(var(--cw)*.105);font-weight:800;color:#2b1d00;
+  text-align:center;line-height:1.15;max-height:2.3em;overflow:hidden;
+}
+.card__art{
+  flex:1;border-radius:calc(var(--cw)*.05);
+  border:1px solid rgba(80,50,0,.55);
+  background:radial-gradient(circle at 50% 30%,#3d3172,#120e2e 72%);
+  display:grid;place-items:center;
+  font-size:calc(var(--cw)*.52);line-height:1;
+  overflow:hidden;position:relative;
+}
+.card__art-image{
+  width:100%;height:100%;
+  object-fit:cover;
+  user-select:none;-webkit-user-drag:none;
+}
+.card__art-fallback{
+  color:var(--gold);font-size:calc(var(--cw)*.52);
+  text-shadow:0 0 18px rgba(245,207,122,.8);
+}
+.card__stats{
+  display:flex;justify-content:space-between;gap:4px;
+  font-size:calc(var(--cw)*.088);font-weight:800;color:#2b1d00;
+  background:rgba(255,255,255,.5);border-radius:4px;padding:2px 5px;
+}
+.card--spell .card__frame{background:linear-gradient(180deg,#c6ecc9,#6f9e72)}
+.card--trap  .card__frame{background:linear-gradient(180deg,#ecc4dd,#a06b8e)}
+.card--sm{--cw:74px}
+.card--xs{--cw:56px}
+
+/* mặt úp */
+.card--back{background:linear-gradient(180deg,#2b3a86,#0d1440)}
+.card--back .card__frame{
+  padding:0;
+  border:1px solid rgba(245,207,122,.5);
+  background:
+    repeating-conic-gradient(from 0deg, rgba(245,207,122,.30) 0 9deg, transparent 9deg 18deg),
+    radial-gradient(circle at 50% 50%, #1c2c72, #060a22 72%);
+}
+.card--sel{outline:2px solid var(--gold);box-shadow:0 0 22px rgba(245,207,122,.75)}
+.card--ready{animation:cardFloat 2.4s ease-in-out infinite}
+
+/* ---------- avatar ---------- */
+.avatar{
+  position:relative;flex:0 0 auto;
+  width:52px;height:52px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#4a63c8,#121a44 75%);
+  border:2px solid var(--gold);
+  display:grid;place-items:center;font-size:24px;
+  box-shadow:var(--glow-gold);
+}
+.avatar--lg{width:64px;height:64px;font-size:30px}
+.avatar__lvl{
+  position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(180deg,#f9e0a0,#b8860b);color:#2a1d00;
+  font-size:10px;font-weight:900;padding:1px 8px;border-radius:99px;
+  border:1px solid #fff3cf;white-space:nowrap;
+}
+
+/* ---------- toast ---------- */
+.toast{
+  position:fixed;left:50%;bottom:34px;transform:translate(-50%,20px);
+  padding:11px 20px;border-radius:99px;z-index:99;
+  background:rgba(9,16,40,.95);border:1px solid var(--stroke-2);
+  color:var(--gold);font-size:13.5px;font-weight:600;
+  box-shadow:var(--shadow);opacity:0;pointer-events:none;
+  transition:opacity .25s, transform .25s;
+}
+.toast.is-show{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- hiệu ứng ---------- */
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+@keyframes pulseGlow{50%{opacity:.55}}
+@keyframes cardFloat{50%{transform:translateY(-7px)}}
+@keyframes floatUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.anim-in{animation:floatUp .5s ease both}
