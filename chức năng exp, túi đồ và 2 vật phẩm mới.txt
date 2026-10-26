@@ -1,0 +1,545 @@
+## I. MỤC TIÊU
+
+Nâng cấp project game Yu-Gi-Oh! hiện tại để các hệ thống vật phẩm, EXP, cấp độ, nhân vật và Hộp ma thuật hoạt động thực sự, được tích hợp với backend, API và database hiện có.
+
+Tôi đã bổ sung hai hình ảnh vật phẩm mới:
+
+1. **Thẻ bài nhân vật:** Dùng thay thế vàng khi mua gói bài trong tiệm bài, theo tỷ lệ 1 thẻ = 1 gói bài.
+2. **EXP:** Vật phẩm tiêu hao giúp người chơi nhận đúng 100 EXP mỗi lần sử dụng.
+
+Ngoài ra, cần triển khai:
+- Hệ thống EXP và cấp độ tối đa 10.
+- Lựa chọn nhân vật bắt buộc khi tài khoản mới vào game.
+- Mở khóa nhân vật ở cấp 5 và cấp 10.
+- Giới hạn mua bài theo nhân vật đã mở khóa.
+- Hộp ma thuật hoạt động như túi đồ thực sự.
+- Popup xem thông tin và sử dụng vật phẩm.
+- Đồng bộ dữ liệu với các hệ thống phần thưởng hiện có.
+
+**Không chỉ làm giao diện minh họa. Phải triển khai logic thực tế, lưu dữ liệu và kiểm thử.**
+
+Giữ nguyên framework, cấu trúc project, giao diện và các chức năng hiện có nếu không cần thiết phải thay đổi.
+
+## II. PHÂN TÍCH CODEBASE TRƯỚC KHI SỬA
+
+Trước tiên, hãy kiểm tra project để xác định:
+
+1. Framework frontend/backend đang sử dụng.
+2. Hệ thống tài khoản và đăng nhập.
+3. Database, model/entity, migration và các quan hệ dữ liệu.
+4. Cơ chế lưu vàng, gem, vật phẩm và lá bài.
+5. Logic mua gói bài, giá gói bài và cấp bài.
+6. Danh sách nhân vật, nhân vật đang sử dụng và trạng thái mở khóa.
+7. Hệ thống EXP/cấp độ hiện tại.
+8. Giao diện Hộp ma thuật và popup vật phẩm.
+9. Vị trí thực tế của hai hình ảnh thẻ bài nhân vật và EXP vừa được bổ sung.
+10. Hệ thống điểm danh, sự kiện hoặc các nguồn thưởng đang cấp vật phẩm.
+
+Tái sử dụng các hệ thống hiện có. Không tạo dữ liệu giả ở frontend, không tạo hệ thống trùng lặp và không tự bịa đường dẫn tài nguyên.
+
+Sau khi kiểm tra, lập kế hoạch ngắn gọn rồi thực hiện chỉnh sửa trực tiếp.
+
+## III. HỆ THỐNG THẺ BÀI NHÂN VẬT
+
+### 1. Công dụng
+
+Thẻ bài nhân vật là vật phẩm có số lượng, được lưu trong tài khoản người chơi và sử dụng để thanh toán khi mua gói bài trong tiệm bài.
+
+Phân biệt vật phẩm này với:
+- Các lá bài người chơi sở hữu.
+- Nhân vật đã mở khóa.
+- Vàng và gem.
+- EXP và các vật phẩm khác.
+
+### 2. Quy tắc thanh toán bắt buộc
+
+**Tỷ lệ quy đổi là 1 thẻ bài nhân vật = 1 gói bài, bất kể gói bài có giá bao nhiêu vàng.**
+
+Không được lấy giá vàng của gói bài làm số lượng thẻ cần thanh toán.
+
+Ví dụ, nếu một gói bài có giá 400 vàng:
+
+| Số gói muốn mua | Số thẻ đang có | Thẻ sử dụng | Số gói trả bằng vàng | Vàng bị trừ |
+|---:|---:|---:|---:|---:|
+| 1 | 1 | 1 | 0 | 0 |
+| 10 | 10 | 10 | 0 | 0 |
+| 10 | 3 | 3 | 7 | 2.800 |
+| 10 | 0 | 0 | 10 | 4.000 |
+| 5 | 8 | 5 | 0 | 0 |
+
+Công thức:
+
+- Số thẻ sử dụng = giá trị nhỏ hơn giữa số gói muốn mua và số thẻ đang có.
+- Số gói thanh toán bằng vàng = số gói muốn mua trừ số thẻ sử dụng.
+- Vàng phải trả = số gói thanh toán bằng vàng nhân với giá vàng hiện tại của một gói.
+
+Hệ thống luôn **ưu tiên sử dụng thẻ bài nhân vật trước**, sau đó mới dùng vàng cho những gói còn lại.
+
+Ví dụ: Người chơi có 3 thẻ và mua 10 gói bài giá 400 vàng/gói. Hệ thống sử dụng 3 thẻ và trừ 2.800 vàng cho 7 gói còn lại. Không được trừ 4.000 vàng hoặc yêu cầu 4.000 thẻ.
+
+Nếu tổng tài nguyên không đủ, từ chối toàn bộ giao dịch và thông báo rõ lý do. Không tự động mua ít gói hơn số người chơi yêu cầu.
+
+### 3. Xử lý giao dịch mua bài
+
+Backend phải tự thực hiện:
+
+1. Xác thực tài khoản.
+2. Lấy giá vàng thực tế của gói bài.
+3. Kiểm tra số lượng gói người chơi muốn mua.
+4. Kiểm tra điều kiện mở khóa nhân vật sở hữu gói bài.
+5. Tính số thẻ cần sử dụng theo tỷ lệ 1 thẻ = 1 gói.
+6. Tính số vàng cần trả cho những gói còn lại.
+7. Kiểm tra tài nguyên.
+8. Trừ thẻ và vàng.
+9. Cấp chính xác số lượng gói/bài theo logic tiệm bài hiện tại.
+10. Lưu lịch sử giao dịch nếu hệ thống hỗ trợ.
+11. Commit giao dịch.
+
+Toàn bộ thao tác phải được thực hiện nhất quán trong transaction phù hợp. Nếu xảy ra lỗi, rollback để không mất tài nguyên mà không nhận được bài.
+
+Không tin tưởng giá, số lượng thẻ, số vàng hoặc số gói do client tự gửi lên.
+
+### 4. Giao diện
+
+Sử dụng hình ảnh thẻ bài nhân vật mới được thêm vào project.
+
+Hiển thị số lượng thẻ và vàng hiện có. Cập nhật ngay sau khi giao dịch thành công.
+
+Nếu đủ thẻ, không trừ vàng. Nếu thiếu thẻ, sử dụng hết số thẻ có thể dùng trước khi tính vàng cho số gói còn lại.
+
+Giữ nguyên giá vàng của các gói bài và giao diện tiệm bài hiện tại. Chỉ bổ sung thông tin và logic cần thiết.
+
+## IV. HỆ THỐNG EXP VÀ CẤP ĐỘ
+
+### 1. Yêu cầu
+
+Hiện tại EXP trong project mới chỉ có giao diện. Hãy biến nó thành chức năng thực sự, bao gồm:
+- Tổng EXP tích lũy.
+- Cấp độ hiện tại.
+- Mốc EXP cần đạt để lên cấp.
+- Thanh tiến trình EXP.
+- Tự động tăng cấp.
+- Mở khóa nhân vật theo cấp.
+- Lưu dữ liệu trong database.
+- Đồng bộ với giao diện.
+
+Tài khoản có tối đa 10 cấp, từ cấp 1 đến cấp 10.
+
+### 2. Bảng EXP
+
+Sử dụng bảng mốc EXP sau:
+
+| Cấp độ | Tổng EXP tích lũy để đạt cấp |
+|---:|---:|
+| 1 | 0 |
+| 2 | 100 |
+| 3 | 300 |
+| 4 | 600 |
+| 5 | 1.000 |
+| 6 | 1.500 |
+| 7 | 2.100 |
+| 8 | 2.800 |
+| 9 | 3.600 |
+| 10 | 4.500 |
+
+EXP cần thêm cho mỗi cấp tiếp theo lần lượt là 100, 200, 300, 400, 500, 600, 700, 800 và 900.
+
+Tài khoản mới bắt đầu ở cấp 1 với 0 EXP, trừ khi project đã có dữ liệu hợp lệ cần được giữ nguyên.
+
+Dùng một nguồn cấu hình thống nhất cho các mốc EXP để frontend và backend không bị sai lệch.
+
+### 3. Quy tắc cộng EXP — ĐẶC BIỆT QUAN TRỌNG
+
+**Mỗi vật phẩm EXP luôn cộng chính xác 100 EXP. Số EXP nhận được không thay đổi dù người chơi có lên cấp hay không.**
+
+- Dùng 1 vật phẩm: +100 EXP.
+- Dùng 2 vật phẩm: +200 EXP.
+- Dùng 3 vật phẩm: +300 EXP.
+- Dùng N vật phẩm: +100 × N EXP.
+
+Việc lên cấp chỉ là kết quả của tổng EXP tích lũy đạt đến các mốc quy định. Lên cấp không làm thay đổi lượng EXP được cộng.
+
+Ví dụ:
+
+- Người chơi có 900 EXP. Dùng 1 vật phẩm: tổng thành 1.000 EXP, lên cấp 5.
+- Người chơi có 950 EXP. Dùng 1 vật phẩm: tổng thành 1.050 EXP, vẫn được cộng đủ 100 EXP.
+- Người chơi có 1.000 EXP. Dùng 2 vật phẩm: tổng thành 1.200 EXP, được cộng đủ 200 EXP.
+- Người chơi có 3.600 EXP. Dùng 2 vật phẩm: tổng thành 3.800 EXP, được cộng đủ 200 EXP.
+
+**Không được giảm lượng EXP nhận xuống chỉ để vừa khít mốc cấp. Không được chỉ cộng phần EXP còn thiếu để lên cấp.**
+
+Nếu một lần cộng EXP vượt qua một hoặc nhiều mốc, hãy cập nhật cấp độ tương ứng với tổng EXP mới và xử lý tất cả điều kiện mở khóa liên quan.
+
+### 4. Giới hạn cấp 10
+
+Cấp tối đa là cấp 10, với mốc 4.500 EXP.
+
+Khi đạt cấp 10:
+- Không tăng cấp lên cấp 11.
+- Không mở khóa cấp độ cao hơn.
+- Không cho sử dụng vật phẩm EXP vì vật phẩm không còn tác dụng tăng cấp.
+- Không trừ vật phẩm nếu thao tác bị từ chối.
+
+Trước khi cấp 10, mỗi vật phẩm được sử dụng hợp lệ phải cộng đủ 100 EXP, kể cả khi vượt qua mốc lên cấp. Không tự ý giảm EXP để khớp mốc.
+
+### 5. Giao diện EXP
+
+Dùng hình ảnh EXP mới được thêm vào project.
+
+Hiển thị:
+- Biểu tượng EXP.
+- Cấp độ hiện tại.
+- Tổng EXP tích lũy.
+- Mốc EXP tiếp theo.
+- Thanh tiến trình.
+- Trạng thái cấp tối đa.
+
+Ví dụ: `Cấp 4 — 900 / 1.000 EXP`.
+
+Mọi số liệu phải lấy từ dữ liệu thực tế. Không dùng animation giả để thay thế việc cộng EXP trong backend.
+
+Khi lên cấp, hiển thị hiệu ứng và thông báo phù hợp với phong cách game, đồng thời cập nhật nhân vật được mở khóa nếu có.
+
+## V. HỆ THỐNG NHÂN VẬT
+
+### 1. Chọn nhân vật khi tạo tài khoản
+
+Khi tài khoản mới vào game lần đầu và chưa có nhân vật khởi đầu:
+- Bắt buộc chọn một trong ba nhân vật có sẵn.
+- Hiển thị hình ảnh, tên và thông tin cơ bản.
+- Có nút xác nhận.
+- Không cho bỏ qua bước chọn nhân vật nếu chưa chọn.
+- Lưu lựa chọn vào database.
+- Khi đăng nhập lại, giữ nguyên lựa chọn.
+- Không bắt chọn lại mỗi lần đăng nhập.
+
+Chỉ tài khoản chưa có lựa chọn nhân vật hợp lệ mới phải đi qua bước này.
+
+### 2. Mở khóa nhân vật
+
+Quy tắc:
+- Cấp 1: chọn một trong ba nhân vật khởi đầu.
+- Cấp 5: mở khóa nhân vật tiếp theo.
+- Cấp 10: mở khóa nhân vật cuối cùng.
+
+Kiểm tra danh sách nhân vật và tài nguyên thực tế trong project để xác định nhân vật nào thuộc từng nhóm.
+
+Nếu project hiện chỉ có dữ liệu của ba nhân vật khởi đầu, hãy triển khai cơ chế mở rộng phù hợp và báo rõ dữ liệu hoặc hình ảnh nhân vật nào còn thiếu. Không tự bịa nhân vật hoặc tuyên bố đã tích hợp tài nguyên chưa tồn tại.
+
+Trạng thái mở khóa phải được xác thực ở backend và lưu trong database, không chỉ ẩn/hiện trên giao diện.
+
+Khi đạt cấp 5 hoặc cấp 10:
+- Mở khóa đúng nhân vật.
+- Lưu trạng thái mở khóa.
+- Hiển thị thông báo.
+- Cập nhật giao diện.
+- Không mở khóa trùng.
+
+### 3. Chọn và đổi nhân vật
+
+Người chơi được chọn các nhân vật đã mở khóa theo cơ chế hiện tại.
+
+Nhân vật bị khóa phải hiển thị trạng thái khóa và cấp độ yêu cầu. Không thể sử dụng nhân vật bị khóa bằng cách sửa request từ client.
+
+Đổi nhân vật không làm mất các nhân vật đã sở hữu. Tích hợp với chức năng đổi nhân vật hiện có thay vì tạo hệ thống mới.
+
+## VI. GIỚI HẠN MUA BÀI THEO NHÂN VẬT
+
+Người chơi chỉ được mua bài thuộc nhân vật đã mở khóa.
+
+Ví dụ:
+- Chưa đạt cấp 5: không mua được bài thuộc nhân vật mở ở cấp 5.
+- Đạt cấp 5 và đã mở khóa nhân vật tương ứng: được mua bài của nhân vật đó.
+- Chưa đạt cấp 10: không mua được bài thuộc nhân vật mở ở cấp 10.
+- Đạt cấp 10 và đã mở khóa nhân vật cuối cùng: được mua bài của nhân vật đó.
+
+Điều kiện dựa trên trạng thái mở khóa thực tế, không chỉ dựa trên nhân vật đang sử dụng.
+
+Giao diện phải hiển thị trạng thái khóa và điều kiện mở khóa. Backend phải kiểm tra điều kiện trước mọi giao dịch mua.
+
+Kết hợp logic này với quy tắc thanh toán ở Mục III. Không được mua bài của nhân vật bị khóa kể cả khi người chơi có đủ thẻ hoặc vàng.
+
+## VII. HỘP MA THUẬT — TÚI ĐỒ
+
+### 1. Cách mở
+
+Hộp ma thuật là túi đồ lưu các vật phẩm người chơi nhận được. Trước mắt hỗ trợ:
+- Thẻ bài nhân vật.
+- EXP.
+
+Mở Hộp ma thuật dưới dạng overlay/popup đè lên giao diện game hiện tại:
+- Không chuyển trang.
+- Không tải lại toàn bộ game.
+- Không làm mất trạng thái sảnh.
+- Có nút đóng.
+- Có thể sử dụng lớp nền tối bán trong suốt phía sau.
+- Tái sử dụng hệ thống popup hiện có nếu phù hợp.
+
+Hai ảnh tham khảo chỉ dùng để định hướng bố cục và tương tác. Hãy thiết kế đồng bộ với giao diện game hiện tại.
+
+### 2. Giao diện túi đồ
+
+Hiển thị:
+- Tiêu đề “Hộp ma thuật”.
+- Nút đóng.
+- Danh sách ô vật phẩm.
+- Hình ảnh vật phẩm.
+- Tên vật phẩm.
+- Số lượng đang sở hữu.
+
+Sử dụng hình ảnh vật phẩm đã có trong project. Không thay thế bằng emoji hoặc hình ảnh giả.
+
+Giao diện phải hỗ trợ thêm vật phẩm mới trong tương lai, không chồng lấn và không cắt nội dung.
+
+### 3. Khi chưa có vật phẩm
+
+Nếu túi đồ trống, hiển thị chính xác:
+
+**“Chưa có vật phẩm nào”**
+
+Không hiển thị các ô vật phẩm giả. Khi người chơi nhận vật phẩm, danh sách phải cập nhật mà không cần tải lại toàn bộ game.
+
+Chỉ hiển thị các vật phẩm mà người chơi thực sự sở hữu.
+
+### 4. Popup thông tin vật phẩm
+
+Khi nhấn vào vật phẩm, mở popup hiển thị:
+- Hình ảnh.
+- Tên.
+- Số lượng hiện có.
+- Mô tả công dụng.
+- Nguồn nhận.
+- Nút đóng.
+- Nút sử dụng nếu vật phẩm có chức năng sử dụng trực tiếp.
+
+Ví dụ thẻ bài nhân vật:
+
+**Tên:** Thẻ bài nhân vật.
+
+**Mô tả:** Dùng để thanh toán gói bài trong tiệm bài theo tỷ lệ 1 thẻ = 1 gói. Hệ thống ưu tiên sử dụng thẻ trước khi trừ vàng.
+
+**Nguồn nhận:** Hiển thị các nguồn thực tế đã được triển khai, chẳng hạn điểm danh hoặc sự kiện nếu có.
+
+Ví dụ EXP:
+
+**Tên:** EXP.
+
+**Mô tả:** Sử dụng một vật phẩm để nhận đúng 100 EXP. EXP giúp tăng cấp người chơi, cấp tối đa là cấp 10.
+
+**Nguồn nhận:** Hiển thị các nguồn thực tế đã được triển khai.
+
+Tên, mô tả và nguồn nhận nên được lấy từ cấu hình/dữ liệu vật phẩm thống nhất. Không tự khẳng định một nguồn nhận chưa tồn tại.
+
+### 5. Sử dụng EXP
+
+Khi nhấn nút sử dụng:
+1. Xác thực tài khoản và số lượng vật phẩm ở backend.
+2. Kiểm tra cấp độ hiện tại.
+3. Nếu đã cấp 10, từ chối và không trừ vật phẩm.
+4. Nếu hợp lệ, trừ đúng 1 vật phẩm.
+5. Cộng chính xác 100 EXP.
+6. Tính cấp độ mới dựa trên tổng EXP sau khi cộng.
+7. Mở khóa nhân vật nếu đủ điều kiện.
+8. Lưu các thay đổi trong transaction.
+9. Cập nhật số lượng vật phẩm, EXP, cấp độ và giao diện.
+10. Hiển thị kết quả.
+
+Không giảm EXP cộng xuống để vừa khít mốc cấp. Một vật phẩm luôn cộng đủ 100 EXP khi được sử dụng hợp lệ.
+
+Nếu giao dịch thất bại, không được mất vật phẩm.
+
+### 6. Sử dụng thẻ bài nhân vật
+
+Không cần nút sử dụng trực tiếp để đổi thẻ thành vàng.
+
+Thẻ được tự động sử dụng khi mua gói bài theo quy tắc:
+- Một thẻ thanh toán một gói.
+- Ưu tiên dùng thẻ trước.
+- Chỉ dùng vàng cho số gói còn lại.
+
+Popup giải thích công dụng và số lượng. Có thể thêm nút mở tiệm bài nếu cơ chế nội bộ hỗ trợ.
+
+### 7. Đồng bộ túi đồ
+
+Hộp ma thuật phải lấy số lượng từ dữ liệu thật của tài khoản.
+
+Khi người chơi nhận vật phẩm từ điểm danh, sự kiện hoặc nguồn khác:
+- Cập nhật kho đồ.
+- Cập nhật số lượng trên giao diện.
+- Không yêu cầu tải lại toàn bộ game.
+- Không cộng trùng khi một sự kiện được xử lý lại.
+
+Không lưu số lượng giả riêng ở frontend.
+
+## VIII. DATABASE VÀ TÀI KHOẢN
+
+Kiểm tra cấu trúc database hiện tại và bổ sung nếu thiếu các dữ liệu:
+- Số lượng thẻ bài nhân vật.
+- EXP tích lũy.
+- Cấp độ.
+- Nhân vật khởi đầu đã chọn.
+- Danh sách nhân vật đã mở khóa.
+- Nhân vật đang sử dụng.
+- Số lượng từng vật phẩm trong túi đồ.
+- Lịch sử sử dụng vật phẩm nếu phù hợp.
+- Lịch sử mua gói bài.
+- Nguồn nhận vật phẩm nếu hệ thống hỗ trợ.
+
+Tái sử dụng mô hình kho đồ hiện có nếu đã tồn tại. Không tạo bảng trùng lặp.
+
+Nếu cần thay đổi database, tạo migration đúng với công nghệ hiện tại. Không xóa dữ liệu người chơi.
+
+Đối với tài khoản cũ:
+- Không xóa vàng, gem hoặc vật phẩm.
+- Không đặt lại cấp độ đã có dữ liệu hợp lệ.
+- Không bắt chọn lại nhân vật nếu đã có lựa chọn hợp lệ.
+- Khởi tạo dữ liệu mới an toàn.
+- Nếu chưa có cấp độ, mặc định cấp 1 khi phù hợp.
+- Migration chạy lại không được tự động cấp thêm vật phẩm.
+
+## IX. BẢO MẬT VÀ GIAO DỊCH
+
+Backend phải tự xác thực danh tính người chơi, số dư, số lượng vật phẩm, giá gói bài, số gói mua, EXP, cấp độ và trạng thái mở khóa.
+
+Không cho client tự quyết định số EXP, số thẻ bị trừ, số vàng bị trừ hoặc trạng thái nhân vật.
+
+Xử lý request lặp và giao dịch đồng thời:
+- Không tiêu hao vượt số vật phẩm đang sở hữu.
+- Không mua vượt số dư.
+- Không cấp bài khi giao dịch thất bại.
+- Không mua bài của nhân vật bị khóa.
+- Không thể mở khóa nhân vật bằng cách sửa request.
+- Không cấp EXP hoặc vật phẩm trùng do request lặp.
+
+Sử dụng transaction và các biện pháp phù hợp với database hiện tại.
+
+## X. GIAO DIỆN VÀ TRẢI NGHIỆM
+
+Giữ phong cách giao diện game hiện tại, bao gồm font, khung, màu sắc, popup, biểu tượng tiền tệ và animation.
+
+Không thay đổi toàn bộ giao diện chỉ để thêm tính năng mới.
+
+Các trạng thái tương tác cần có phản hồi:
+- Hover.
+- Nhấn.
+- Loading.
+- Disabled.
+- Thành công.
+- Thất bại.
+
+Khi lên cấp, hiển thị thông báo cấp độ mới và nhân vật được mở khóa nếu có.
+
+Đảm bảo giao diện responsive, popup không vượt màn hình, nội dung không bị cắt và không còn lớp phủ vô hình chặn thao tác sau khi đóng popup.
+
+## XI. KIỂM THỬ BẮT BUỘC
+
+### 1. Thẻ bài nhân vật
+
+Với gói bài giá 400 vàng:
+- 1 thẻ mua được 1 gói mà không trừ vàng.
+- 10 thẻ mua được 10 gói mà không trừ vàng.
+- 3 thẻ mua 10 gói: trừ 3 thẻ và 2.800 vàng.
+- 0 thẻ mua 10 gói: trừ 4.000 vàng.
+- 8 thẻ mua 5 gói: chỉ trừ 5 thẻ.
+- Không đủ tài nguyên: từ chối toàn bộ giao dịch.
+- Giao dịch lỗi: không mất tài nguyên.
+- Không thể mua bài của nhân vật bị khóa.
+- Không thể lợi dụng request đồng thời.
+
+### 2. EXP
+
+- 1 vật phẩm luôn cộng đúng 100 EXP.
+- 2 vật phẩm cộng đúng 200 EXP.
+- 3 vật phẩm cộng đúng 300 EXP.
+- Lên cấp không làm thay đổi lượng EXP được cộng.
+- 900 EXP + 1 vật phẩm = 1.000 EXP, lên cấp 5.
+- 950 EXP + 1 vật phẩm = 1.050 EXP, vẫn cộng đủ 100 EXP.
+- 3.600 EXP + 2 vật phẩm = 3.800 EXP.
+- Cấp 10 đạt ở mốc 4.500 EXP.
+- Không lên cấp 11.
+- Cấp 10 không sử dụng được vật phẩm EXP và không bị trừ vật phẩm.
+- Lỗi giao dịch không làm mất vật phẩm.
+- Thanh tiến trình đúng với dữ liệu backend.
+
+### 3. Nhân vật
+
+- Tài khoản mới bắt buộc chọn một trong ba nhân vật.
+- Không thể bỏ qua bước chọn.
+- Lựa chọn vẫn còn sau khi đăng nhập lại.
+- Cấp 5 mở đúng nhân vật tiếp theo.
+- Cấp 10 mở đúng nhân vật cuối cùng.
+- Không mở khóa trùng.
+- Không thể sử dụng nhân vật bị khóa bằng cách sửa request.
+- Tài khoản cũ không mất dữ liệu nhân vật.
+
+### 4. Hộp ma thuật
+
+- Mở overlay không chuyển trang.
+- Túi đồ trống hiển thị “Chưa có vật phẩm nào”.
+- Vật phẩm hiển thị đúng hình ảnh và số lượng.
+- Nhấn vật phẩm mở đúng popup.
+- Tên, mô tả và nguồn nhận chính xác.
+- Sử dụng EXP cập nhật đúng số lượng và cấp độ.
+- Mua gói bài bằng thẻ cập nhật đúng số lượng.
+- Đóng popup không chặn thao tác.
+- Tải lại game vẫn đọc đúng dữ liệu từ database.
+
+### 5. Kiểm thử tích hợp
+
+- Dùng EXP lên cấp 5 thì mở khóa nhân vật và mua được bài của nhân vật đó.
+- Dùng EXP lên cấp 10 thì mở khóa nhân vật cuối cùng.
+- Thẻ nhận từ nguồn thưởng thực tế dùng được trong tiệm bài.
+- EXP nhận từ nguồn thưởng thực tế dùng được trong Hộp ma thuật.
+- Database và giao diện luôn đồng bộ.
+- Các chức năng không liên quan vẫn hoạt động.
+
+Không tuyên bố kiểm thử thành công nếu chưa chạy kiểm thử thực tế.
+
+## XII. QUY TRÌNH TRIỂN KHAI VÀ BÀN GIAO
+
+Thực hiện theo thứ tự:
+
+1. Phân tích codebase.
+2. Xác định các file và hệ thống liên quan.
+3. Báo cáo ngắn gọn kế hoạch chỉnh sửa.
+4. Triển khai dữ liệu và migration nếu cần.
+5. Triển khai backend cho vật phẩm, EXP, cấp độ và nhân vật.
+6. Tích hợp quy tắc 1 thẻ = 1 gói bài vào tiệm bài.
+7. Triển khai Hộp ma thuật và popup vật phẩm.
+8. Tích hợp với nguồn cấp vật phẩm hiện có.
+9. Cập nhật giao diện.
+10. Build, kiểm tra lỗi và chạy test.
+11. Sửa các lỗi phát sinh.
+12. Báo cáo kết quả thực tế.
+
+Báo cáo cuối cùng phải nêu:
+- Các file đã sửa và file mới.
+- Các thay đổi database và migration.
+- Quy tắc thanh toán bằng thẻ.
+- Bảng EXP đã triển khai.
+- Quy tắc mở khóa nhân vật.
+- Cách hoạt động của Hộp ma thuật.
+- Kết quả build và kiểm thử.
+- Các nội dung còn thiếu hoặc chưa thể kiểm thử.
+
+## XIII. QUY TẮC CUỐI CÙNG
+
+1. Không chỉ tạo giao diện minh họa.
+2. Không tạo dữ liệu vật phẩm giả ở frontend.
+3. Không làm mất dữ liệu người chơi.
+4. Không phá vỡ hệ thống mua bài hiện tại.
+5. **Một thẻ bài nhân vật = một gói bài, không phụ thuộc giá vàng.**
+6. **Ưu tiên dùng thẻ trước, sau đó dùng vàng cho số gói còn lại.**
+7. **Một vật phẩm EXP luôn cộng đúng 100 EXP; hai vật phẩm luôn cộng đúng 200 EXP, kể cả khi có lên cấp.**
+8. Cấp tối đa là 10, đạt cấp 10 tại mốc 4.500 EXP.
+9. Tài khoản mới phải chọn một trong ba nhân vật khởi đầu.
+10. Cấp 5 mở khóa nhân vật tiếp theo; cấp 10 mở khóa nhân vật cuối cùng.
+11. Chỉ mua được bài thuộc nhân vật đã mở khóa.
+12. Hộp ma thuật là overlay, không chuyển trang.
+13. Hộp ma thuật hiển thị số lượng, mô tả và nguồn nhận vật phẩm.
+14. Mọi thay đổi tài nguyên phải được backend xác thực và lưu trong database.
+15. Giao dịch phải chống nhận trùng và bảo đảm tính nhất quán.
+16. Giữ nguyên các chức năng không liên quan.
+17. Không tuyên bố hoàn thành nếu chưa triển khai và kiểm thử.
+
+**Hãy bắt đầu bằng việc đọc codebase thực tế, sau đó triển khai trực tiếp theo đúng kiến trúc project hiện tại. Ưu tiên tính chính xác của dữ liệu, bảo mật giao dịch, khả năng tích hợp và sự ổn định của game.**

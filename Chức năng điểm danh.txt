@@ -18,7 +18,9 @@ Game hiện tại đã có:
 - Hệ thống tài khoản người chơi.
 - Tiền tệ vàng.
 - Tiền tệ gem.
-- Tài nguyên hình ảnh vàng và gem.
+- Thẻ bài nhân vật (chỉ là ảnh)
+- exp (chhi3 là ảnh)
+- Tài nguyên hình ảnh.
 
 Hãy tận dụng toàn bộ những thành phần hiện có.
 
@@ -115,12 +117,13 @@ Yêu cầu:
 Ưu tiên tái sử dụng:
 - Hình ảnh vàng hiện có.
 - Hình ảnh gem hiện có.
+- Hình ảnh thẻ bài nhân vật hiện có
+- Hình ảnh exp hiện có
 - Khung giao diện hiện có.
 - Font chữ hiện có.
 - Các thành phần giao diện dùng chung.
 - Các hiệu ứng và animation hiện có.
 
-Không tự tạo hình vàng hoặc gem mới nếu project đã có hình ảnh chính thức.
 
 Không sử dụng emoji thay thế cho biểu tượng tiền tệ.
 
@@ -183,10 +186,12 @@ Không sử dụng lịch cố định 30 ngày.
 
 ## 2. Quy tắc phần thưởng
 
-Điểm danh tháng chỉ sử dụng hai loại tiền tệ:
+Điểm danh tháng chỉ sử dụng hai loại tiền tệ và 2 vật phẩm:
 
 - Vàng: 100 vàng.
 - Gem: 50 gem.
+- Thẻ bài nhân vật
+- Exp
 
 Phần thưởng luân phiên cố định theo ngày trong tháng.
 
@@ -194,34 +199,15 @@ Phần thưởng luân phiên cố định theo ngày trong tháng.
 |---|---|
 | Ngày 1 | 100 vàng |
 | Ngày 2 | 50 gem |
-| Ngày 3 | 100 vàng |
-| Ngày 4 | 50 gem |
-| Ngày 5 | 100 vàng |
-| Ngày 6 | 50 gem |
-| Ngày 7 | 100 vàng |
-| Ngày 8 | 50 gem |
-| Ngày 9 | 100 vàng |
-| Ngày 10 | 50 gem |
+| Ngày 3 | 5 thẻ bài nhân vật |
+| Ngày 4 | 10 exp |
 | Các ngày tiếp theo | Tiếp tục luân phiên |
-
-Công thức xác định phần thưởng:
-
-- Ngày lẻ: 100 vàng.
-- Ngày chẵn: 50 gem.
-
-Quy tắc này cố định theo ngày trong tháng.
-
-Không được thay đổi phần thưởng dựa trên chuỗi ngày liên tục.
-
-Không cộng dồn phần thưởng.
-
-Không tăng giá trị phần thưởng theo cấp độ hoặc VIP.
 
 Không thay đổi chu kỳ khi người chơi bỏ lỡ ngày điểm danh.
 
 Ví dụ:
 
-Người chơi bỏ lỡ ngày 2 nhưng điểm danh ngày 3 thì vẫn nhận 100 vàng của ngày 3.
+Người chơi bỏ lỡ ngày 2 nhưng điểm danh ngày 3 thì vẫn nhận 5 thẻ bài nhân vật của ngày 3.
 
 Nếu người chơi điểm danh bù ngày 2 thì nhận đúng 50 gem của ngày 2.
 
@@ -276,7 +262,7 @@ Mỗi ngày phải có trạng thái rõ ràng:
 Sau khi người chơi nhận thành công phần thưởng của một ngày, toàn bộ ô phần thưởng phải chuyển sang trạng thái trắng đen.
 
 Áp dụng hiệu ứng lên:
-- Hình ảnh vàng hoặc gem.
+- Hình ảnh vàng, gem, thẻ bài nhân vật, exp.
 - Khung phần thưởng.
 - Các chi tiết trang trí bên trong ô.
 - Các thành phần hình ảnh liên quan.
@@ -331,12 +317,7 @@ Có chính xác 5 mốc:
 | 2 | 10 phút | 400 vàng |
 | 3 | 20 phút | 400 vàng |
 | 4 | 30 phút | 400 vàng |
-| 5 | 60 phút | 1.000 vàng + 500 gem |
-
-Tổng phần thưởng tối đa của một ngày nếu nhận đủ cả 5 mốc:
-
-- 2.600 vàng.
-- 500 gem.
+| 5 | 60 phút | 1.000 vàng + 500 gem + 10 thẻ bài nhân vật + 10 exp |
 
 Thời gian là thời gian tích lũy của phiên online trong ngày, không phải khoảng thời gian cộng thêm sau mỗi mốc.
 
@@ -355,15 +336,15 @@ Hiển thị năm ô phần thưởng.
 
 Mỗi ô gồm:
 - Hình ảnh phần thưởng.
-- Số lượng vàng hoặc gem.
+- Số lượng vàng hoặc gem, thẻ bài nhân vật, exp.
 - Mốc thời gian yêu cầu.
 - Thanh tiến trình.
 - Trạng thái phần thưởng.
 - Nút nhận thưởng.
 
-Đối với mốc 5, hiển thị đồng thời hình ảnh vàng và gem cùng số lượng tương ứng.
+Đối với mốc 5, hiển thị đồng thời hình ảnh vàng và gem, thẻ bài nhân vật, exp cùng số lượng tương ứng.
 
-Không gộp vàng và gem thành một biểu tượng duy nhất nếu làm người chơi khó nhận biết.
+Không gộp vàng và gem, thẻ bài, nhân vật thành một biểu tượng duy nhất nếu làm người chơi khó nhận biết.
 
 ## 3. Trạng thái các mốc
 
@@ -597,7 +578,7 @@ Chi phí điểm danh bù: 100 gem.
 
 Gem hiện có: 800.
 
-Gem còn lại sau giao dịch: 700.
+Gem còn lại sau giao dịch: 750.
 
 Các con số trên chỉ là ví dụ minh họa. Giao diện phải hiển thị dữ liệu thực tế của người chơi và chi phí chính xác được máy chủ xác định.
 
@@ -678,6 +659,8 @@ Popup bao gồm:
 - Hiển thị riêng số lượng từng loại.
 - Không làm mất hoặc che khuất một trong hai loại phần thưởng.
 
+Đối với thẻ bài nhân vật, exp tương tự, đổi kiểu cho hợp lý
+
 ## 3. Nội dung
 
 Ví dụ nhận điểm danh tháng:
@@ -697,6 +680,9 @@ Nội dung: Bạn đã hoàn thành mốc 60 phút online.
 Phần thưởng:
 - 1.000 vàng.
 - 500 gem.
+- 10 thẻ bài nhân vật
+- 10 exp
+tất cả hàng ngang
 
 Ví dụ điểm danh bù:
 
@@ -829,60 +815,6 @@ Ví dụ về quy tắc dữ liệu:
 
 Cấu trúc thực tế phải tuân theo schema và quy ước của project hiện tại.
 
-## 3. Transaction
-
-Các thao tác thay đổi số dư và ghi nhận phần thưởng phải có tính nhất quán.
-
-Đối với điểm danh tháng:
-- Xác định phần thưởng ở backend.
-- Cập nhật số dư.
-- Ghi lịch sử điểm danh.
-- Ghi lịch sử giao dịch nếu có.
-- Commit thành công.
-
-Đối với điểm danh online:
-- Xác thực mốc đã đạt.
-- Cập nhật số dư.
-- Ghi nhận mốc đã nhận.
-- Commit thành công.
-
-Đối với điểm danh bù:
-- Xác định chi phí.
-- Kiểm tra số dư.
-- Trừ gem.
-- Cộng phần thưởng của ngày được bù.
-- Ghi lịch sử.
-- Commit thành công.
-
-Nếu có lỗi giữa các bước, rollback toàn bộ giao dịch.
-
-Không được có trạng thái giao dịch nửa thành công.
-
-## 4. Chống gian lận
-
-Backend phải tự xác thực:
-- Tài khoản.
-- Ngày điểm danh.
-- Tháng điểm danh.
-- Phần thưởng.
-- Chi phí điểm danh bù.
-- Số dư tiền tệ.
-- Thời gian online.
-- Trạng thái nhận thưởng.
-
-Không tin tưởng dữ liệu do client gửi lên.
-
-Không cho phép người chơi tự chọn số vàng hoặc gem muốn nhận.
-
-Không cho phép tự đặt chi phí điểm danh bù.
-
-Không cho phép sửa ngày hoặc mốc online trong request để nhận thưởng.
-
-Phải xử lý request trùng và các giao dịch đồng thời.
-
-Nếu nhiều thiết bị đăng nhập cùng một tài khoản, chỉ cho phép một giao dịch nhận thưởng thành công cho cùng một mốc.
-
----
 
 # X. CẬP NHẬT GIAO DIỆN VÀ SỐ DƯ
 
@@ -950,8 +882,6 @@ Khi lỗi xảy ra:
 
 # XII. YÊU CẦU KIẾN TRÚC VÀ CHẤT LƯỢNG CODE
 
-Không chỉ tạo một file HTML minh họa với dữ liệu cứng.
-
 Phải tích hợp vào project hiện tại.
 
 Trước khi chỉnh sửa mỗi file:
@@ -998,8 +928,8 @@ Không sao chép logic tính phần thưởng ở nhiều nơi nếu có thể d
 Kiểm tra:
 - Ngày 1 nhận 100 vàng.
 - Ngày 2 nhận 50 gem.
-- Ngày 3 nhận 100 vàng.
-- Ngày 4 nhận 50 gem.
+- Ngày 3 nhận 5 thẻ bài nhân vật.
+- Ngày 4 nhận 10 exp.
 - Chu kỳ tiếp tục đúng đến cuối tháng.
 - Bỏ lỡ ngày trước không làm thay đổi phần thưởng của ngày sau.
 - Điểm danh bù nhận đúng phần thưởng của ngày bị bỏ lỡ.
@@ -1017,7 +947,7 @@ Kiểm tra:
 - Đạt 10 phút: mở khóa 400 vàng.
 - Đạt 20 phút: mở khóa 400 vàng.
 - Đạt 30 phút: mở khóa 400 vàng.
-- Đạt 60 phút: mở khóa 1.000 vàng và 500 gem.
+- Đạt 60 phút: mở khóa 1.000 vàng và 500 gem và 10 thẻ bài nhân vật và 10 exp.
 - Không nhận được phần thưởng trước khi đủ thời gian.
 - Mỗi mốc chỉ nhận một lần trong ngày.
 - Ô đã nhận chuyển sang trắng đen.
@@ -1047,6 +977,7 @@ Kiểm tra:
 Kiểm tra:
 - Vàng được cộng đúng vào tài khoản thực.
 - Gem được cộng đúng vào tài khoản thực.
+- 2 vật phẩm kia cũng v
 - Gem bị trừ đúng khi điểm danh bù.
 - Số dư trên giao diện khớp với database.
 - Không nhận thưởng hai lần.
@@ -1078,50 +1009,6 @@ Không tuyên bố đã kiểm thử thành công nếu thực tế chưa chạy
 
 ---
 
-# XIV. KẾT QUẢ BÀN GIAO
 
-Sau khi hoàn thành, hãy báo cáo:
-
-1. Những file đã sửa.
-2. Những file mới được tạo.
-3. Cách mở popup từ giao diện sảnh.
-4. Cách hoạt động của điểm danh tháng.
-5. Cách hoạt động của điểm danh online.
-6. Cách tính thời gian online.
-7. Cách tính chi phí điểm danh bù.
-8. Các bảng hoặc trường database được bổ sung.
-9. Migration cần chạy, nếu có.
-10. Cách cấu hình phần thưởng.
-11. Kết quả kiểm thử thực tế.
-12. Những lỗi chưa xử lý được, nếu có.
-
-Nếu cần chạy migration hoặc cấu hình môi trường, hãy nêu rõ lệnh và các bước cần thực hiện.
-
-Không được tuyên bố tính năng đã hoàn chỉnh khi mới chỉ xây dựng giao diện.
-
----
-
-# XV. CÁC QUY TẮC CUỐI CÙNG KHÔNG ĐƯỢC VI PHẠM
-
-1. Chỉ có hai chức năng: điểm danh tháng và điểm danh online.
-2. Cả hai chức năng đều nằm trong popup, không chuyển trang.
-3. Điểm danh tháng chỉ có vàng và gem, luân phiên theo ngày.
-4. Ngày lẻ nhận 100 vàng.
-5. Ngày chẵn nhận 50 gem.
-6. Điểm danh online có đúng 5 mốc: 5, 10, 20, 30 và 60 phút.
-7. Bốn mốc đầu thưởng 400 vàng mỗi mốc.
-8. Mốc 60 phút thưởng 1.000 vàng và 500 gem.
-9. Điểm danh bù bằng gem, bắt đầu 100 gem và tăng 50 gem mỗi lần, tối đa 1.000 gem.
-10. Điểm danh tháng và online chuyển chu kỳ lúc 00:00 theo giờ Việt Nam.
-11. Lịch sử cũ phải được giữ lại.
-12. Ô đã nhận thưởng phải chuyển sang trắng đen và có dấu tick xanh lá.
-13. Trạng thái đã nhận phải được lưu trong database.
-14. Popup chúc mừng chỉ xuất hiện sau khi giao dịch thành công.
-15. Tất cả phần thưởng và chi phí phải được backend xác thực.
-16. Vàng và gem phải được cộng hoặc trừ trên tài khoản thật.
-17. Phải chống nhận thưởng trùng và giao dịch đồng thời.
-18. Phải tận dụng hình ảnh vàng, gem và tài nguyên hiện có.
-19. Tất cả nút phải có animation và phản hồi tương tác phù hợp.
-20. Không làm hỏng các chức năng hiện có của project.
 
 **Hãy bắt đầu bằng việc phân tích codebase thực tế, sau đó triển khai hoàn chỉnh chức năng trên project hiện tại. Ưu tiên tính chính xác của dữ liệu, bảo mật giao dịch, trải nghiệm giao diện và khả năng bảo trì lâu dài.**
