@@ -276,6 +276,11 @@
   background:rgba(0,0,0,.55);border-radius:2px;
 }
 .duel .card__stats{color:#fff0c2;background:rgba(0,0,0,.75)}
+.duel .card--shared-face{padding:0;background:transparent}
+.duel .card--shared-face .duel-card-face{
+  position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;
+  box-sizing:border-box;
+}
 .duel .card--back{padding:0;background:transparent}
 .card__back-canvas{
   position:absolute;inset:0;z-index:2;
@@ -545,6 +550,7 @@
   aspect-ratio:59/86;
   padding:2px;
 }
+.duel .board .zone .card--shared-face{padding:0}
 .duel .board .zone .card__name{font-size:clamp(5px,.55vw,7px)}
 .duel .board .zone .card__stats{font-size:clamp(5px,.5vw,6px)}
 

@@ -1,5 +1,6 @@
 .card-detail__card {
   box-sizing: border-box;
+  container-type: inline-size;
   isolation: isolate;
   padding: 10px;
   border: 0;
@@ -156,20 +157,6 @@
   box-shadow: none;
 }
 
-.card-detail__card .card-detail__card-name {
-  position: absolute;
-  left: calc(50% - var(--card-name-center-offset, 0px));
-  box-sizing: border-box;
-  grid-column: 1;
-  width: calc(100% - 44px);
-  min-width: 0;
-  padding: 0;
-  overflow: hidden;
-  text-align: center;
-  text-overflow: clip;
-  transform: translateX(-50%);
-}
-
 .card-detail__card .card-detail__attribute {
   position: absolute;
   top: 50%;
@@ -187,19 +174,213 @@
   box-shadow: none;
 }
 
+.card-detail__card .card-detail__card-stars {
+  background: linear-gradient(90deg, #d6b83a, #a88918 50%, #d6b83a);
+  box-shadow: inset 0 1px rgba(255, 240, 153, 0.5), inset 0 -1px rgba(63, 46, 8, 0.65);
+}
+
+.card-detail__card--effect .card-detail__card-stars {
+  background: linear-gradient(90deg, #e5a541, #bb7028 50%, #e5a541);
+}
+
+.card-detail__card--fusion .card-detail__card-stars {
+  background: linear-gradient(90deg, #bd8bda, #704391 50%, #bd8bda);
+}
+
+.card-detail__card--spell .card-detail__card-stars {
+  background: linear-gradient(90deg, #46e875, #19a848 50%, #46e875);
+}
+
+.card-detail__card--trap .card-detail__card-stars {
+  background: linear-gradient(90deg, #c54bc5, #8b288c 50%, #c54bc5);
+}
+
+.card-detail__card .card-detail__type-badge {
+  position: absolute;
+  z-index: 3;
+  top: -5px;
+  right: -5px;
+  display: grid;
+  width: clamp(18px, 14cqi, 25px);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1.5px solid #d9dce8;
+  border-radius: 50%;
+  color: #fff;
+  background: radial-gradient(circle at 35% 28%, #c9d3e7, #58627b 68%, #252a3b);
+  box-shadow: 0 0 0 1px #1b1229, inset 0 0 3px rgba(255, 255, 255, 0.55), 0 0 5px rgba(235, 242, 255, 0.4);
+}
+
+.card-detail__card--spell .card-detail__type-badge {
+  border-color: #92e89b;
+  color: #eaffed;
+  background: radial-gradient(circle at 35% 28%, #4b9c57, #175126 65%, #06180b);
+  box-shadow: 0 0 0 1px #041107, inset 0 0 4px rgba(219, 255, 219, 0.68), 0 0 7px rgba(85, 255, 104, 0.48);
+}
+
+.card-detail__card--trap .card-detail__type-badge {
+  border-color: #e6a0f0;
+  color: #fff0ff;
+  background: radial-gradient(circle at 35% 28%, #b75bc9, #682275 65%, #24082d);
+  box-shadow: 0 0 0 1px #16051d, inset 0 0 4px rgba(255, 219, 255, 0.68), 0 0 7px rgba(232, 83, 255, 0.48);
+}
+
+.card-detail__type-badge-label {
+  font-family: "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: clamp(6px, var(--card-name-fit-size, 10cqi), 16px);
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
+}
+
+.card-detail__card .card-detail__card-header {
+  gap: 0;
+  padding: 0;
+  grid-template-rows: 12cqi 9cqi;
+  min-height: 21cqi;
+}
+
+.card-detail__card .card-detail__type-badge {
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  margin: 0;
+}
+
+.card-detail__card .card-detail__card-stars {
+  min-height: 9cqi;
+  margin: 0;
+  padding: 1px 5px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.card-detail__card--spell .card-detail__card-stars {
+  border-top: 1px solid rgba(221, 255, 205, 0.5);
+  background: linear-gradient(90deg, #85bd73, #477d45 15%, #23472b 50%, #477d45 85%, #85bd73);
+  box-shadow: inset 0 1px 0 rgba(221, 255, 205, 0.5), inset 0 -2px 3px rgba(5, 19, 8, 0.7);
+}
+
+.card-detail__card--trap .card-detail__card-stars {
+  border-top: 1px solid rgba(255, 225, 246, 0.5);
+  background: linear-gradient(90deg, #ce8fbc, #8e527f 15%, #512d51 50%, #8e527f 85%, #ce8fbc);
+  box-shadow: inset 0 1px 0 rgba(255, 225, 246, 0.5), inset 0 -2px 3px rgba(23, 7, 23, 0.7);
+}
+
+.card-detail__card .card-detail__attribute {
+  width: 11cqi;
+  height: 11cqi;
+  font-size: clamp(6px, var(--card-name-fit-size, 10cqi), 16px);
+  line-height: 1;
+}
+
+.card-detail__card .card-detail__star {
+  width: clamp(12px, 7cqi, 22px);
+  height: clamp(12px, 7cqi, 22px);
+}
+
 .card-detail__card .card-detail__card-icon {
   margin-left: auto;
 }
 
 .shop-card__face.card-detail__card {
-  padding: 5px;
-  border: 0;
-  border-radius: 5px;
-  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  aspect-ratio: 59 / 86;
+  align-self: center;
+  justify-self: center;
 }
 
+@container (max-width: 200px) {
+  .card-detail__card .card-detail__type-badge {
+    top: 0.5cqi;
+    right: 1cqi;
+    width: 13cqi;
+    height: 13cqi;
+  }
+
+  .card-detail__card .card-detail__type-badge-label {
+    font-size: clamp(6px, var(--card-name-fit-size, 10cqi), 16px);
+    line-height: 1;
+  }
+
+  .card-detail__card .card-detail__card-type {
+    box-sizing: border-box;
+  }
+
+  .card-detail__card.card-detail__card--spell .card-detail__card-type,
+  .card-detail__card.card-detail__card--trap .card-detail__card-type {
+    font-size: clamp(10px, 10cqi, 16px) !important;
+  }
+
+  .card-detail__card .card-detail__attribute {
+    font-size: clamp(6px, var(--card-name-fit-size, 10cqi), 16px);
+    line-height: 1;
+  }
+
+  .card-detail__card .card-detail__star {
+    font-size: clamp(5px, 4.8cqi, 12px);
+    line-height: 1;
+  }
+
+  .card-detail__card .card-detail__stats > div {
+    gap: 0.95cqi;
+    padding: 0.7cqi;
+  }
+
+  .card-detail__card .card-detail__stats span {
+    font-size: clamp(8px, 7cqi, 15px);
+  }
+
+  .card-detail__card .card-detail__stats b {
+    font-size: clamp(12px, 11.7cqi, 26px);
+  }
+}
+
+
 .card-detail__card .card-detail__card-name {
+  position: absolute;
+  top: 0;
+  left: 3cqi;
+  right: 3cqi;
+  display: block;
+  box-sizing: border-box;
+  width: auto;
+  min-width: 0;
+  height: 12cqi;
+  padding: 0 1cqi;
+  overflow: hidden;
   color: #fff;
+  font-size: clamp(8px, var(--card-name-fit-size, 11cqi), 16px);
+  line-height: 12cqi;
+  text-align: center;
+  text-overflow: ellipsis;
+  transform: none;
+  white-space: nowrap;
+}
+
+.card-detail__card.card-detail__card--has-attribute .card-detail__card-name {
+  left: 3cqi;
+  right: 15cqi;
+  width: auto;
+  transform: none;
+}
+
+.card-detail__card.card-detail__card--spell .card-detail__card-name,
+.card-detail__card.card-detail__card--trap .card-detail__card-name {
+  left: 3cqi;
+  right: 18cqi;
+  width: auto;
+  transform: none;
+}
+
+.card-detail__card.card-detail__card--no-attribute:not(.card-detail__card--spell):not(.card-detail__card--trap) .card-detail__card-name {
+  left: 3cqi;
+  right: 3cqi;
+  width: auto;
+  transform: none;
 }
 
 .card-detail__card .card-detail__stats {
@@ -228,18 +409,14 @@
   color: #fff8dc;
 }
 
-.card-detail__card--spell .card-detail__card-type,
-.shop-card__face.card-detail__card--spell .card-detail__card-type,
-.shop-reveal__bulk-card-face.card-detail__card--spell .card-detail__card-type {
+.card-detail__card--spell .card-detail__card-type {
   border-color: #46e875;
   outline-color: #061b0a;
   background: linear-gradient(90deg, #087b32, #46e875 24%, #19a848 74%, #08712b);
   color: #efffe9;
 }
 
-.card-detail__card--trap .card-detail__card-type,
-.shop-card__face.card-detail__card--trap .card-detail__card-type,
-.shop-reveal__bulk-card-face.card-detail__card--trap .card-detail__card-type {
+.card-detail__card--trap .card-detail__card-type {
   border-color: #c54bc5;
   outline-color: #180818;
   background: linear-gradient(90deg, #5a185f, #c54bc5 24%, #8b288c 74%, #180818);
@@ -247,11 +424,7 @@
 }
 
 .card-detail__card--spell .card-detail__card-type,
-.card-detail__card--trap .card-detail__card-type,
-.shop-card__face.card-detail__card--spell .card-detail__card-type,
-.shop-card__face.card-detail__card--trap .card-detail__card-type,
-.shop-reveal__bulk-card-face.card-detail__card--spell .card-detail__card-type,
-.shop-reveal__bulk-card-face.card-detail__card--trap .card-detail__card-type {
+.card-detail__card--trap .card-detail__card-type {
   --type-panel-shadow: #04130a;
   --type-panel-edge: #0b572d;
   --type-panel-rim: #20cf65;
@@ -288,9 +461,7 @@
   transform: translateZ(2px);
 }
 
-.card-detail__card--trap .card-detail__card-type,
-.shop-card__face.card-detail__card--trap .card-detail__card-type,
-.shop-reveal__bulk-card-face.card-detail__card--trap .card-detail__card-type {
+.card-detail__card--trap .card-detail__card-type {
   --type-panel-shadow: #180818;
   --type-panel-edge: #5a185f;
   --type-panel-rim: #c54bc5;
@@ -316,56 +487,10 @@
   z-index: 2;
   left: 50%;
   width: max-content;
-  max-width: calc(100% - 96px);
+  max-width: calc(100% - 28px);
   overflow: hidden;
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
   transform: translateX(-50%);
-}
-
-.shop-card__face.card-detail__card {
-  container-type: inline-size;
-}
-
-.shop-card__face .card-detail__card-stars {
-  gap: clamp(1px, 0.75cqi, 4px);
-  padding: 0.33cqi 1.67cqi 0.33cqi 8cqi;
-}
-
-.shop-card__face.card-detail__card--spell,
-.shop-card__face.card-detail__card--trap {
-  grid-template-rows: auto 7% minmax(0, 1fr) 19%;
-}
-
-.shop-card__face.card-detail__card-type {
-  display: grid;
-  width: 100%;
-  min-width: 0;
-  min-height: 24px;
-  box-sizing: border-box;
-  place-items: center;
-  padding: 3px 5px;
-  overflow: hidden;
-  font-size: clamp(8px, 4cqi, 12px);
-  line-height: 1.1;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.shop-card__face.card-detail__card:not(.card-detail__card--spell):not(.card-detail__card--trap) .card-detail__card-type {
-  display: grid;
-}
-
-.shop-card__face.card-detail__card--spell .card-detail__card-type,
-.shop-card__face.card-detail__card--trap .card-detail__card-type {
-  min-height: 0;
-  padding: 0.2em 1.2em;
-  border-width: clamp(1px, 1cqi, 3px);
-  font-size: clamp(10px, 9cqi, 30px);
-  line-height: 1;
-}
-
-.shop-card__face .card-detail__card-type-label {
-  max-width: calc(100% - 72px);
 }

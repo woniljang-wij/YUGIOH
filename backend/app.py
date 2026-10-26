@@ -15,6 +15,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 BACKEND_DIR = Path(__file__).resolve().parent
 PROJECT_DIR = BACKEND_DIR.parent
 FRONTEND_DIR = PROJECT_DIR / "frontend"
+REACT_BUILD_DIR = FRONTEND_DIR / "react-build"
 load_dotenv(BACKEND_DIR / ".env")
 
 DATABASE_NAME = "YUGIOHDB"
@@ -63,7 +64,17 @@ app.config.update(
 )
 app.logger.setLevel(logging.INFO)
 
-HTML_PAGE_PATHS = {"/", "/login", "/start", "/login.html", "/start.html", "/index.html", "/duel.html"}
+HTML_PAGE_PATHS = {
+    "/",
+    "/login",
+    "/login.html",
+    "/react.html",
+    "/start",
+    "/start.html",
+    "/react-start.html",
+    "/index.html",
+    "/duel.html",
+}
 
 
 @app.after_request
@@ -316,10 +327,26 @@ def _shop_state(cursor, user_id):
 
 @app.get("/")
 def home():
-    return send_from_directory(FRONTEND_DIR, "login.html")
+    return _serve_page("react.html")
+
+
+def _serve_page(react_page):
+    if not (REACT_BUILD_DIR / react_page).is_file():
+        app.logger.error(
+            "React production page %s is missing. Build it with npm --prefix frontend run build.",
+            react_page,
+        )
+        return Response(
+            "React production build is missing. Run npm --prefix frontend run build.",
+            status=503,
+            mimetype="text/plain",
+        )
+    return send_from_directory(REACT_BUILD_DIR, react_page)
 
 
 @app.get("/login")
+@app.get("/login.html")
+@app.get("/react.html")
 def login_page():
     return home()
 
@@ -328,10 +355,11 @@ def login_page():
 def start_page():
     if not _current_user():
         return redirect(url_for("home"))
-    return send_from_directory(FRONTEND_DIR, "start.html")
+    return _serve_page("react-start.html")
 
 
 @app.get("/start.html")
+@app.get("/react-start.html")
 def start_html():
     return start_page()
 
@@ -340,14 +368,14 @@ def start_html():
 def game():
     if not _current_user():
         return redirect(url_for("home"))
-    return send_from_directory(FRONTEND_DIR, "index.html")
+    return _serve_page("index.html")
 
 
 @app.get("/duel.html")
 def duel():
     if not _current_user():
         return redirect(url_for("home"))
-    return send_from_directory(FRONTEND_DIR, "duel.html")
+    return _serve_page("duel.html")
 
 
 @app.get("/api/cards")
@@ -366,6 +394,10 @@ def api_cards():
 def frontend_asset(asset):
     if asset.startswith("assets/"):
         return send_from_directory(BACKEND_DIR, asset)
+    if asset.startswith("js/"):
+        return Response("Legacy frontend scripts have been replaced by the React application.", status=404)
+    if asset in {"legacy-index.html", "legacy-duel.html"}:
+        return redirect(url_for("game" if asset == "legacy-index.html" else "duel"))
     return send_from_directory(FRONTEND_DIR, asset)
 
 

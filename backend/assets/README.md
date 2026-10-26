@@ -33,7 +33,7 @@ assets/
 > 📁 **Ảnh nền:** bỏ file vào `backend/assets/images/backgrounds/` (`bg-lobby.jpg` cho sảnh chính,
 > `bg-duel.jpg` cho bàn đấu). Chưa có ảnh thì web tự dùng nền dự phòng – xem `backend/assets/images/backgrounds/README.md`.
 
-Trình xem 3D trong cửa sổ nhận bài của tiệm dùng Three.js được lưu cục bộ tại `backend/assets/vendor/three/`; không tải thư viện từ CDN. Mặt trước giữ nguyên giao diện lá bài hiện có; mặt sau dùng bản vẽ canvas `frontend/js/card-back.js`.
+Trình xem 3D trong cửa sổ nhận bài của tiệm dùng Three.js được lưu cục bộ tại `backend/assets/vendor/three/`; không tải thư viện từ CDN. Mặt trước giữ nguyên giao diện lá bài hiện có; phần khung và mặt sau được vẽ bằng các React renderer trong `frontend/src/renderers/`.
 
 Ảnh tiền tệ dùng chung ở `assets/images/currency/`: `gold.png` cho vàng và `gem.png` cho gem. Các trang sử dụng trực tiếp hai ảnh này thay vì dựng biểu tượng tiền bằng canvas.
 
@@ -44,7 +44,7 @@ Lưu ảnh minh họa các lá bài trong thư mục này và ghi đường dẫ
 ## Ảnh nhân vật – `assets/images/hero/`
 
 Đây là ảnh nhân vật đứng bên trái **sảnh chính**. Code đã trỏ sẵn vào đúng đường dẫn này.
-Bạn có thể thêm ảnh nhân vật vào `backend/assets/images/hero/` và đăng ký mã nhân vật cùng đường dẫn trong `js/lobby.js`.
+Bạn có thể thêm ảnh nhân vật vào `backend/assets/images/hero/` và đăng ký mã nhân vật cùng đường dẫn trong `frontend/src/pages/LobbyPage.jsx`.
 
 **Yêu cầu gợi ý:**
 - **Định dạng:** `.png` **nền trong suốt** (đẹp nhất) — nếu dùng `.jpg` thì nhân vật sẽ có nền vuông.
@@ -52,10 +52,9 @@ Bạn có thể thêm ảnh nhân vật vào `backend/assets/images/hero/` và �
 - **Chiều cao khuyến nghị:** 900–1200 px.
 - Nhân vật nên **đứng giữa, chân sát mép dưới** của ảnh (code canh ảnh đứng ở mép dưới màn hình).
 
-**Nếu muốn đổi tên file khác**, sửa 1 chỗ duy nhất trong `index.html`:
-```html
-<img class="duelist__img" id="duelistImg" src="assets/images/hero/kaiba-seto.png" alt="Kaiba Seto">
-<!--                                            ^^^^^^^^^^^^^^^^^ đổi ở đây -->
+**Nếu muốn đổi tên file khác**, cập nhật đường dẫn nhân vật trong `frontend/src/pages/LobbyPage.jsx`:
+```jsx
+{ name: 'Kaiba Seto', image: 'assets/images/hero/kaiba-seto.png' }
 ```
 
 ## Khi chưa có ảnh

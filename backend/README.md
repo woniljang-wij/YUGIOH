@@ -2,6 +2,10 @@
 
 The Flask app serves the frontend and its same-origin authentication API. It connects to SQL Server Express at `.\SQLEXPRESS` using Windows Authentication by default, then creates or verifies the `YUGIOHDB` database and `dbo.Users` table during startup. The schema setup adds `PlayerName` to existing user tables and initializes it from `Username`; newly registered players also start with their account name as their player name.
 
+## Quick start (Windows)
+
+After completing the one-time setup below, run `..\run_project.bat` from the project root (or double-click `run_project.bat`). The script checks or starts SQL Server Express, builds the React frontend, starts Flask in a separate window, and opens the website (normally at `http://127.0.0.1:5000`; it selects the next available port if needed). SQL Server may require administrator permissions to start if its service is stopped.
+
 ## Configure
 
 1. Install Python 3.10 or newer and Microsoft ODBC Driver 18 for SQL Server.

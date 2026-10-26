@@ -1,7 +1,4 @@
-(function () {
-  'use strict';
-
-  const FRAME_WIDTH = 300;
+const FRAME_WIDTH = 300;
   const FRAME_HEIGHT = 438;
   const palettes = {
     monster: {
@@ -290,8 +287,10 @@
     let x = 12;
     let y = 11;
     let width = FRAME_WIDTH - 24;
+    let railX = x;
+    let railWidth = width;
     let headerHeight = palette === palettes.spell || palette === palettes.trap ? 38 : 27;
-    let starsHeight = FRAME_HEIGHT * 0.07 + 3;
+    let starsHeight = stars ? FRAME_HEIGHT * 0.07 + 3 : 0;
 
     if (bounds.width && bounds.height && header && stars) {
       const headerBounds = header.getBoundingClientRect();
@@ -300,8 +299,12 @@
         x = (headerBounds.left - bounds.left) * scaleX;
         y = (headerBounds.top - bounds.top) * scaleY;
         width = headerBounds.width * scaleX;
-        headerHeight = headerBounds.height * scaleY;
-        starsHeight = (starsBounds.bottom - headerBounds.bottom) * scaleY;
+        const starsTop = (starsBounds.top - bounds.top) * scaleY;
+        railX = (starsBounds.left - bounds.left) * scaleX;
+        railWidth = starsBounds.width * scaleX;
+        headerHeight = starsTop - y;
+        y = (headerBounds.top - bounds.top) * scaleY;
+        starsHeight = starsBounds.height * scaleY;
       }
     }
 
@@ -325,7 +328,7 @@
     context.fillStyle = 'rgba(0, 0, 0, 0.7)';
     context.fillRect(x, titleBottom + 0.8 * scaleY, width, 0.8 * scaleY);
 
-    const starsTop = titleBottom + 1.6 * scaleY;
+    const starsTop = titleBottom;
     const starsBottom = starsTop + starsHeight;
     const surface = context.createLinearGradient(0, starsTop, 0, starsBottom);
     surface.addColorStop(0, palette.railTop);
@@ -334,13 +337,13 @@
     surface.addColorStop(0.86, palette.dark);
     surface.addColorStop(1, palette.railBottom);
     context.fillStyle = surface;
-    context.fillRect(x, starsTop, width, starsHeight);
+    context.fillRect(railX, starsTop, railWidth, starsHeight);
 
     const sheen = context.createLinearGradient(0, starsTop, 0, starsTop + Math.min(7, starsHeight * 0.2));
     sheen.addColorStop(0, 'rgba(255, 255, 255, 0.28)');
     sheen.addColorStop(1, 'rgba(255, 255, 255, 0)');
     context.fillStyle = sheen;
-    context.fillRect(x + 1, starsTop + 1, Math.max(0, width - 2), Math.min(7, starsHeight * 0.2));
+    context.fillRect(railX, starsTop, railWidth, Math.min(7, starsHeight * 0.2));
 
     const lowerEdge = starsBottom;
     const shadow = context.createLinearGradient(0, lowerEdge - 2, 0, lowerEdge + 2);
@@ -348,7 +351,7 @@
     shadow.addColorStop(0.55, 'rgba(0, 0, 0, 0.48)');
     shadow.addColorStop(1, 'rgba(255, 255, 255, 0.24)');
     context.fillStyle = shadow;
-    context.fillRect(x + 1, lowerEdge - 2, Math.max(0, width - 2), 4);
+    context.fillRect(railX, lowerEdge - 2, railWidth, 4);
     context.strokeStyle = 'rgba(0, 0, 0, 0.8)';
     context.lineWidth = 0.8;
     context.beginPath();
@@ -552,10 +555,6 @@
     context.strokeStyle = '#050505';
     context.stroke();
     context.restore();
-    roundedRect(context, 4.5, 4.5, FRAME_WIDTH - 9, FRAME_HEIGHT - 9, 8);
-    context.lineWidth = 4;
-    context.strokeStyle = metalGradient(context, palette, 0, 0, FRAME_WIDTH, 0);
-    context.stroke();
     roundedRect(context, 7, 7, FRAME_WIDTH - 14, FRAME_HEIGHT - 14, 6);
     context.lineWidth = 1.2;
     context.strokeStyle = 'rgba(255, 255, 255, 0.4)';
@@ -616,65 +615,39 @@
     renderedCanvasSizes.set(canvas, renderKey);
   }
 
-  const resizeObserver = typeof ResizeObserver === 'function'
-    ? new ResizeObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.target.isConnected) {
-          resizeObserver.unobserve(entry.target);
-          return;
-        }
-        if (entry.contentRect.width > 0 && entry.contentRect.height > 0) {
-          if (entry.target.dataset.cardTypeOrnament === 'true') {
-            renderTypeOrnament(entry.target);
-          } else {
-            render(entry.target, palettes[entry.target.dataset.cardFramePalette]);
-          }
-        }
-      });
-    })
-    : null;
-  const renderedCanvasSizes = new WeakMap();
+const renderedCanvasSizes = new WeakMap();
 
-  window.drawCardFrame = function (canvas, category, monsterType) {
-    const paletteName = category === 'fusion'
-      ? 'fusion'
-      : category === 'spell' || category === 'trap'
-        ? category
-        : category === 'monster' && monsterType !== 'Thường'
-          ? 'effect'
-          : 'monster';
-    const palette = palettes[paletteName];
-    if (!palette) throw new Error('Unsupported card frame category: ' + category);
+export function drawCardFrame(canvas, category, monsterType) {
+  const paletteName = category === 'fusion'
+    ? 'fusion'
+    : category === 'spell' || category === 'trap'
+      ? category
+      : category === 'monster' && monsterType !== 'Thường'
+        ? 'effect'
+        : 'monster';
+  const palette = palettes[paletteName];
+  if (!palette) throw new Error('Unsupported card frame category: ' + category);
+  canvas.dataset.cardFramePalette = paletteName;
+  render(canvas, palette);
+}
 
-    canvas.dataset.cardFramePalette = paletteName;
-    const bounds = canvas.getBoundingClientRect();
-    if (bounds.width > 0 && bounds.height > 0) {
-      render(canvas, palette);
-    }
-    if (resizeObserver) {
-      resizeObserver.observe(canvas);
-    } else if (!bounds.width || !bounds.height) {
-      window.requestAnimationFrame(function () {
-        if (!canvas.isConnected) return;
-        render(canvas, palettes[canvas.dataset.cardFramePalette]);
-      });
-    }
-  };
+export function drawCardTypeOrnament(canvas, category) {
+  if (category !== 'spell' && category !== 'trap') {
+    throw new Error('Card type ornaments only support spell and trap cards.');
+  }
+  canvas.dataset.cardTypeOrnament = 'true';
+  canvas.dataset.cardTypePalette = category;
+  renderTypeOrnament(canvas);
+}
 
-  window.drawCardTypeOrnament = function (canvas, category) {
-    if (category !== 'spell' && category !== 'trap') {
-      throw new Error('Card type ornaments only support spell and trap cards.');
+export function redrawCardFaceCanvases(root) {
+  root.querySelectorAll('.card-detail__frame-canvas').forEach((canvas) => {
+    const palette = palettes[canvas.dataset.cardFramePalette];
+    if (palette) render(canvas, palette);
+  });
+  root.querySelectorAll('.card-detail__type-ornament').forEach((canvas) => {
+    if (canvas.dataset.cardTypePalette === 'spell' || canvas.dataset.cardTypePalette === 'trap') {
+      renderTypeOrnament(canvas);
     }
-    canvas.dataset.cardTypeOrnament = 'true';
-    canvas.dataset.cardTypePalette = category;
-    renderTypeOrnament(canvas);
-    if (resizeObserver) {
-      resizeObserver.observe(canvas);
-    } else {
-      window.requestAnimationFrame(function () {
-        if (!canvas.isConnected) return;
-        renderTypeOrnament(canvas);
-      });
-    }
-  };
-})();
+  });
+}

@@ -1,14 +1,42 @@
-import { Euler, Group, PerspectiveCamera, Quaternion, Scene, Vector3 } from 'three';
-import { CSS3DObject, CSS3DRenderer } from 'three/addons/renderers/CSS3DRenderer.js';
+let Euler;
+let Group;
+let PerspectiveCamera;
+let Quaternion;
+let Scene;
+let Vector3;
+let CSS3DObject;
+let CSS3DRenderer;
+let threeLoadPromise;
 
-(function () {
-  'use strict';
+async function ensureThreeLoaded() {
+  if (!threeLoadPromise) {
+    threeLoadPromise = (async () => {
+      const importMapNode = document.querySelector('script[type="importmap"]');
+      if (!importMapNode) throw new Error('The Three.js import map is unavailable.');
+      const imports = JSON.parse(importMapNode.textContent).imports || {};
+      const threeUrl = imports.three;
+      const addonsUrl = imports['three/addons/'];
+      if (!threeUrl || !addonsUrl) throw new Error('The Three.js import map is incomplete.');
+      const three = await import(/* @vite-ignore */ threeUrl);
+      const css3d = await import(/* @vite-ignore */ `${addonsUrl}renderers/CSS3DRenderer.js`);
+      ({ Euler, Group, PerspectiveCamera, Quaternion, Scene, Vector3 } = three);
+      ({ CSS3DObject, CSS3DRenderer } = css3d);
+      LIGHT_DIRECTION = new Vector3(-0.42, 0.58, 0.7).normalize();
+      VIEW_DIRECTION = new Vector3(0, 0, 1);
+    })();
+  }
+  await threeLoadPromise;
+}
+
+export function preloadCard3DViewer() {
+  return ensureThreeLoaded();
+}
 
   const CARD_BACK_WIDTH = 265;
   const CARD_BACK_HEIGHT = 357;
   const CARD_DEPTH = 8;
-  const LIGHT_DIRECTION = new Vector3(-0.42, 0.58, 0.7).normalize();
-  const VIEW_DIRECTION = new Vector3(0, 0, 1);
+  let LIGHT_DIRECTION;
+  let VIEW_DIRECTION;
   const CARD_ROTATION_ORDER = 'XYZ';
 
   function makeFace(element, width, height) {
@@ -64,7 +92,7 @@ import { CSS3DObject, CSS3DRenderer } from 'three/addons/renderers/CSS3DRenderer
     });
   }
 
-  function makeBackCanvas(width, height, stage) {
+  function makeBackCanvas(width, height, stage, drawCardBack) {
     const source = document.createElement('canvas');
     source.className = 'card__back-canvas';
     source.style.width = CARD_BACK_WIDTH + 'px';
@@ -73,7 +101,7 @@ import { CSS3DObject, CSS3DRenderer } from 'three/addons/renderers/CSS3DRenderer
     source.style.left = '-10000px';
     stage.appendChild(source);
     try {
-      window.drawCardBack(source);
+      drawCardBack(source);
     } finally {
       source.remove();
     }
@@ -91,14 +119,15 @@ import { CSS3DObject, CSS3DRenderer } from 'three/addons/renderers/CSS3DRenderer
     return canvas;
   }
 
-  function create(options) {
+  export async function createCard3DViewer(options) {
+    await ensureThreeLoaded();
     const stage = options.stage;
     const width = options.width;
     const height = options.height;
     if (!stage || !options.cardFace || !width || !height) {
       throw new Error('The 3D card viewer needs a visible card face and stage.');
     }
-    if (typeof window.drawCardBack !== 'function') {
+    if (typeof options.drawCardBack !== 'function') {
       throw new Error('The card-back renderer is not available.');
     }
 
@@ -116,6 +145,7 @@ import { CSS3DObject, CSS3DRenderer } from 'three/addons/renderers/CSS3DRenderer
     let resizeObserver = null;
     let destroyed = false;
     let reflectionDirty = true;
+    let refreshedCardFace = false;
 
     const frontFace = options.cardFace.cloneNode(true);
     copyCanvasContents(options.cardFace, frontFace);
@@ -139,7 +169,7 @@ import { CSS3DObject, CSS3DRenderer } from 'three/addons/renderers/CSS3DRenderer
     backFace.style.backfaceVisibility = 'hidden';
     backFace.style.webkitBackfaceVisibility = 'hidden';
     backFace.dataset.card3dSurface = 'true';
-    backFace.appendChild(makeBackCanvas(width, height, stage));
+    backFace.appendChild(makeBackCanvas(width, height, stage, options.drawCardBack));
     const backReflection = makeLightReflection(backFace);
     const back = new CSS3DObject(backFace);
     back.position.z = -CARD_DEPTH / 2;
@@ -188,6 +218,10 @@ import { CSS3DObject, CSS3DRenderer } from 'three/addons/renderers/CSS3DRenderer
         reflectionDirty = false;
       }
       renderer.render(scene, camera);
+      if (!refreshedCardFace && typeof options.refreshCardFace === 'function') {
+        options.refreshCardFace(frontFace);
+        refreshedCardFace = true;
+      }
       frame = window.requestAnimationFrame(render);
     }
 
@@ -372,6 +406,3 @@ import { CSS3DObject, CSS3DRenderer } from 'three/addons/renderers/CSS3DRenderer
       }
     };
   }
-
-  window.Card3DViewer = { create: create };
-})();

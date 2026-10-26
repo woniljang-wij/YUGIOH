@@ -1,9 +1,3 @@
-/* Lightweight card motion inspired by the Cocos2d ActionEase curves in
- * CCActionEase.js. Uses the browser animation API instead of loading Cocos.
- */
-(function (global) {
-  'use strict';
-
   const activeAnimations = new WeakMap();
   const STEPS = 24;
 
@@ -59,8 +53,8 @@
     if (!element || !preset) return null;
 
     const settings = options || {};
-    const reduceMotion = global.matchMedia &&
-      global.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reduceMotion = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion || typeof element.animate !== 'function') return null;
 
     const previous = activeAnimations.get(element);
@@ -95,5 +89,5 @@
     return animation;
   }
 
-  global.CocosMotion = Object.freeze({ play, easing });
-})(window);
+
+export { play as playDuelCardMotion };

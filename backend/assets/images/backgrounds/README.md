@@ -39,7 +39,7 @@ assets/images/backgrounds/
 
 ## Khi chưa có ảnh (cơ chế dự phòng)
 
-Script `js/bg.js` sẽ thử tải ảnh:
+Các lớp giao diện React theo dõi trạng thái tải ảnh nền:
 - **Chưa có ảnh** → trang giữ nguyên **nền dự phòng** như cũ (nền SVG phong cảnh ở sảnh chính,
   nền gradient xanh ở bàn đấu). Không hiện biểu tượng ảnh lỗi.
 - **Đã có ảnh** → tự thêm class `has-bg` vào `<body>`, ẩn nền dự phòng và hiện ảnh nền của bạn.

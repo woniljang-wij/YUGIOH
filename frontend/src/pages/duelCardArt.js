@@ -1,7 +1,3 @@
-/* Generates original SVG card art until a card has a local artwork image. */
-(function (global) {
-  'use strict';
-
   const palettes = {
     monster: ['#67ddff', '#6652dc', '#f6d784'],
     spell: ['#71f0b3', '#2587bd', '#dcfff0'],
@@ -89,19 +85,8 @@
     return source;
   }
 
-  function imageHTML(card) {
-    const fallback = artworkSvg(card);
-    const source = card.image || fallback;
-    return `<img class="card__art-image" data-card-art src="${escapeAttribute(source)}" data-art-fallback="${escapeAttribute(fallback)}" alt="" draggable="false" decoding="async">`;
-  }
 
-  document.addEventListener('error', (event) => {
-    const image = event.target;
-    if (!(image instanceof HTMLImageElement) || !image.hasAttribute('data-card-art')) return;
-    if (image.dataset.fallbackApplied) return;
-    image.dataset.fallbackApplied = 'true';
-    image.src = image.dataset.artFallback;
-  }, true);
-
-  global.cardArtHTML = imageHTML;
-})(window);
+export function getDuelCardArtwork(card) {
+  const fallback = artworkSvg(card);
+  return { src: card.image || fallback, fallback };
+}

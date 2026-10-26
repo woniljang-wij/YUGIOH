@@ -1,0 +1,1127 @@
+# XÂY DỰNG HỆ THỐNG ĐIỂM DANH GAME HOÀN CHỈNH
+
+## I. MỤC TIÊU TỔNG QUÁT
+
+Tôi muốn xây dựng một hệ thống điểm danh hoàn chỉnh cho game hiện tại, tham khảo bố cục và cách hoạt động từ 3 hình ảnh mẫu đã cung cấp.
+
+Không sao chép nguyên trạng giao diện mẫu. Hãy thiết kế lại theo phong cách game chuyên nghiệp, đẹp mắt, có chiều sâu, hiệu ứng ánh sáng, đổ bóng và animation mượt mà.
+
+Hệ thống chỉ bao gồm hai chức năng:
+
+1. Điểm danh tháng.
+2. Điểm danh online.
+
+Không triển khai các chức năng khác như điểm danh liên tục, thẻ tháng, đặc quyền vĩnh viễn hoặc tân thủ.
+
+Game hiện tại đã có:
+- Database.
+- Hệ thống tài khoản người chơi.
+- Tiền tệ vàng.
+- Tiền tệ gem.
+- Tài nguyên hình ảnh vàng và gem.
+
+Hãy tận dụng toàn bộ những thành phần hiện có.
+
+**Đây phải là chức năng hoạt động thực tế, không phải giao diện demo.** Phần thưởng phải được cộng hoặc trừ trực tiếp trên tài khoản thật trong database.
+
+Không tự tạo hệ thống tài khoản, ví tiền hoặc database thay thế nếu project đã có hệ thống tương ứng.
+
+### Nguyên tắc triển khai
+
+Trước khi chỉnh sửa:
+1. Đọc cấu trúc project hiện tại.
+2. Xác định framework, ngôn ngữ và kiến trúc.
+3. Tìm hệ thống đăng nhập và xác thực người chơi.
+4. Tìm model hoặc bảng lưu tài khoản.
+5. Xác định chính xác trường dữ liệu lưu vàng và gem.
+6. Tìm hệ thống giao dịch tiền tệ hiện có.
+7. Tìm giao diện sảnh game và cách mở các popup.
+8. Tìm toàn bộ tài nguyên hình ảnh vàng, gem và giao diện có thể tái sử dụng.
+9. Kiểm tra database, các quan hệ và cơ chế migration.
+10. Xác định những file cần sửa và những file cần tạo mới.
+
+Sau khi phân tích, hãy triển khai trực tiếp trên codebase hiện có.
+
+Không tự ý thay đổi những chức năng khác đang hoạt động tốt.
+
+---
+
+# II. THIẾT KẾ POPUP ĐIỂM DANH
+
+## 1. Cách mở giao diện
+
+Hệ thống điểm danh phải xuất hiện dưới dạng popup ngay trên giao diện sảnh game.
+
+Yêu cầu:
+- Không chuyển sang trang khác.
+- Không tải lại toàn bộ trang.
+- Không khởi động lại game.
+- Không làm mất trạng thái của giao diện sảnh.
+- Có nút X để đóng popup.
+- Có lớp nền tối bán trong suốt phía sau.
+- Popup nằm ở vị trí trung tâm màn hình.
+- Hiển thị đúng trên các độ phân giải mà game hỗ trợ.
+- Không bị cắt nội dung hoặc tràn khỏi màn hình.
+
+Nếu project đã có hệ thống quản lý popup, modal hoặc cửa sổ game, hãy tích hợp vào hệ thống đó.
+
+Không tạo một hệ thống popup độc lập gây xung đột với những giao diện hiện tại.
+
+## 2. Bố cục
+
+Popup có hai tab chính:
+
+- Điểm danh tháng.
+- Điểm danh online.
+
+Hai tab phải nằm trong cùng một popup.
+
+Khi chuyển tab:
+- Không đóng popup.
+- Không chuyển trang.
+- Chỉ thay đổi nội dung bên trong.
+- Có animation chuyển tab.
+- Hiển thị rõ tab đang được chọn.
+
+Thiết kế các thành phần:
+- Thanh tiêu đề.
+- Nút đóng.
+- Khu vực nội dung.
+- Các ô phần thưởng.
+- Trạng thái điểm danh.
+- Nút nhận thưởng.
+- Thanh tiến trình online.
+- Khu vực hiển thị số vàng và gem hiện có nếu phù hợp với giao diện game.
+
+Không nhồi nhét quá nhiều thông tin khiến giao diện chật chội.
+
+## 3. Phong cách đồ họa
+
+Hãy thiết kế theo phong cách game fantasy hiện đại, phù hợp với phong cách hình ảnh đang sử dụng trong game.
+
+Yêu cầu:
+- Khung popup có chiều sâu.
+- Viền trang trí tinh tế.
+- Hiệu ứng kim loại hoặc vật liệu phù hợp với giao diện hiện tại.
+- Đổ bóng nhiều lớp nhưng không quá nặng.
+- Ánh sáng vàng cho phần thưởng vàng.
+- Ánh sáng xanh tím hoặc xanh ngọc cho phần thưởng gem.
+- Hiệu ứng phát sáng vừa phải.
+- Các ô phần thưởng có chiều sâu và phân cấp thị giác rõ ràng.
+- Font chữ dễ đọc, phù hợp với game.
+- Chữ không bị tràn hoặc cắt.
+- Biểu tượng và số lượng phần thưởng phải dễ nhận biết.
+
+Ưu tiên tái sử dụng:
+- Hình ảnh vàng hiện có.
+- Hình ảnh gem hiện có.
+- Khung giao diện hiện có.
+- Font chữ hiện có.
+- Các thành phần giao diện dùng chung.
+- Các hiệu ứng và animation hiện có.
+
+Không tự tạo hình vàng hoặc gem mới nếu project đã có hình ảnh chính thức.
+
+Không sử dụng emoji thay thế cho biểu tượng tiền tệ.
+
+Không tự ý thay đổi phong cách tổng thể của game.
+
+## 4. Animation mở popup
+
+Khi mở popup:
+1. Nền game tối dần.
+2. Popup xuất hiện bằng hiệu ứng fade-in kết hợp scale.
+3. Các thành phần bên trong xuất hiện theo thứ tự.
+4. Những ô phần thưởng xuất hiện với độ trễ ngắn.
+5. Các chi tiết trang trí có thể phát sáng nhẹ.
+
+Tổng thời gian mở popup nên ngắn, khoảng 200–400 ms tùy khả năng của công nghệ hiện tại.
+
+## 5. Animation đóng popup
+
+Khi đóng:
+- Popup thu nhỏ và mờ dần.
+- Lớp nền tối biến mất.
+- Trả lại quyền tương tác cho giao diện sảnh.
+- Không để lại lớp phủ vô hình chặn thao tác.
+
+Có thể hỗ trợ phím Escape hoặc nhấn vào vùng nền tối nếu không xung đột với cơ chế popup hiện có.
+
+## 6. Tối ưu hiệu suất
+
+Không sử dụng quá nhiều hiệu ứng phát sáng, hạt sáng hoặc animation liên tục.
+
+Không tạo animation vô hạn không cần thiết.
+
+Không liên tục tạo và xóa các phần tử giao diện.
+
+Không để animation làm giật lag game.
+
+Ưu tiên những giải pháp phù hợp với framework và công nghệ đồ họa hiện tại.
+
+---
+
+# III. CHỨC NĂNG ĐIỂM DANH THÁNG
+
+## 1. Tổng quan
+
+Điểm danh tháng hiển thị lịch điểm danh của tháng hiện tại.
+
+Giao diện bao gồm:
+- Tháng và năm.
+- Ngày hiện tại.
+- Tổng số ngày đã điểm danh.
+- Lịch phần thưởng từ ngày 1 đến ngày cuối tháng.
+- Phần thưởng của từng ngày.
+- Trạng thái của từng ngày.
+- Nút điểm danh hôm nay.
+- Nút điểm danh bù khi có ngày bị bỏ lỡ.
+
+Phải tự động xác định tháng có 28, 29, 30 hoặc 31 ngày.
+
+Không sử dụng lịch cố định 30 ngày.
+
+## 2. Quy tắc phần thưởng
+
+Điểm danh tháng chỉ sử dụng hai loại tiền tệ:
+
+- Vàng: 100 vàng.
+- Gem: 50 gem.
+
+Phần thưởng luân phiên cố định theo ngày trong tháng.
+
+| Ngày | Phần thưởng |
+|---|---|
+| Ngày 1 | 100 vàng |
+| Ngày 2 | 50 gem |
+| Ngày 3 | 100 vàng |
+| Ngày 4 | 50 gem |
+| Ngày 5 | 100 vàng |
+| Ngày 6 | 50 gem |
+| Ngày 7 | 100 vàng |
+| Ngày 8 | 50 gem |
+| Ngày 9 | 100 vàng |
+| Ngày 10 | 50 gem |
+| Các ngày tiếp theo | Tiếp tục luân phiên |
+
+Công thức xác định phần thưởng:
+
+- Ngày lẻ: 100 vàng.
+- Ngày chẵn: 50 gem.
+
+Quy tắc này cố định theo ngày trong tháng.
+
+Không được thay đổi phần thưởng dựa trên chuỗi ngày liên tục.
+
+Không cộng dồn phần thưởng.
+
+Không tăng giá trị phần thưởng theo cấp độ hoặc VIP.
+
+Không thay đổi chu kỳ khi người chơi bỏ lỡ ngày điểm danh.
+
+Ví dụ:
+
+Người chơi bỏ lỡ ngày 2 nhưng điểm danh ngày 3 thì vẫn nhận 100 vàng của ngày 3.
+
+Nếu người chơi điểm danh bù ngày 2 thì nhận đúng 50 gem của ngày 2.
+
+Khi sang tháng mới, lịch điểm danh bắt đầu lại từ ngày 1 và tiếp tục quy tắc luân phiên trên.
+
+Logic xác định phần thưởng phải được xử lý phía máy chủ. Không tin tưởng loại hoặc số lượng phần thưởng do client gửi lên.
+
+## 3. Trạng thái của từng ngày
+
+Mỗi ngày phải có trạng thái rõ ràng:
+
+### Trạng thái 1: Chưa đến ngày
+
+- Hiển thị màu sắc bình thường.
+- Hiển thị phần thưởng dự kiến.
+- Không cho phép nhận thưởng.
+- Không cho phép điểm danh bù.
+
+### Trạng thái 2: Hôm nay, chưa điểm danh
+
+- Hiển thị màu sắc bình thường.
+- Có hiệu ứng nổi bật nhẹ.
+- Hiển thị nút điểm danh.
+- Cho phép nhận phần thưởng nếu đủ điều kiện.
+
+### Trạng thái 3: Đã điểm danh
+
+- Ô phần thưởng chuyển sang trắng đen.
+- Hình ảnh vàng hoặc gem chuyển sang trắng đen.
+- Có dấu tick xanh lá ở góc trên bên trái.
+- Nút nhận thưởng bị vô hiệu hóa.
+- Không cho phép nhận lại phần thưởng.
+
+### Trạng thái 4: Ngày đã bỏ lỡ
+
+- Hiển thị phần thưởng của ngày đó.
+- Hiển thị dấu hiệu cho biết ngày đã bỏ lỡ.
+- Có thể hiển thị nút điểm danh bù nếu đủ điều kiện.
+- Không được tự động cấp thưởng.
+
+### Trạng thái 5: Ngày đã điểm danh bù
+
+- Chuyển sang trắng đen.
+- Có dấu tick xanh lá.
+- Có thể phân biệt với điểm danh thường bằng nhãn nhỏ "Điểm danh bù".
+- Không được cho phép nhận lại.
+
+## 4. Hiệu ứng trắng đen và dấu tick
+
+Đây là yêu cầu bắt buộc.
+
+Sau khi người chơi nhận thành công phần thưởng của một ngày, toàn bộ ô phần thưởng phải chuyển sang trạng thái trắng đen.
+
+Áp dụng hiệu ứng lên:
+- Hình ảnh vàng hoặc gem.
+- Khung phần thưởng.
+- Các chi tiết trang trí bên trong ô.
+- Các thành phần hình ảnh liên quan.
+
+Có thể sử dụng grayscale hoặc phương pháp tương đương phù hợp với công nghệ hiện tại.
+
+Không làm mất khả năng đọc số lượng phần thưởng và thông tin ngày.
+
+### Dấu tick
+
+Hiển thị dấu tick ✓ màu xanh lá ở góc trên bên trái.
+
+Dấu tick phải:
+- Có kích thước đủ lớn để dễ nhìn.
+- Không che khuất phần thưởng.
+- Có viền hoặc bóng nhẹ để nổi bật.
+- Xuất hiện bằng animation scale kết hợp fade-in.
+- Không bị nhấp nháy hoặc lặp lại khi giao diện cập nhật.
+
+Có thể sử dụng biểu tượng tick có sẵn trong project hoặc SVG phù hợp.
+
+Không sử dụng emoji làm dấu tick nếu hệ thống biểu tượng hiện tại có thể đáp ứng.
+
+### Lưu trạng thái
+
+Hiệu ứng trắng đen và dấu tick phải phản ánh dữ liệu thực tế.
+
+Sau khi:
+- Đóng popup.
+- Mở lại popup.
+- Tải lại game.
+- Đăng xuất rồi đăng nhập lại.
+- Khởi động lại máy chủ.
+
+Những ngày đã nhận thưởng vẫn phải hiển thị đúng trạng thái đã nhận.
+
+Không chỉ thay đổi màu sắc bằng JavaScript rồi bỏ mất trạng thái khi tải lại.
+
+---
+
+# IV. CHỨC NĂNG ĐIỂM DANH ONLINE
+
+## 1. Tổng quan
+
+Điểm danh online dựa trên thời gian người chơi online hợp lệ trong ngày.
+
+Có chính xác 5 mốc:
+
+| Mốc | Thời gian online tích lũy | Phần thưởng |
+|---|---|---|
+| 1 | 5 phút | 400 vàng |
+| 2 | 10 phút | 400 vàng |
+| 3 | 20 phút | 400 vàng |
+| 4 | 30 phút | 400 vàng |
+| 5 | 60 phút | 1.000 vàng + 500 gem |
+
+Tổng phần thưởng tối đa của một ngày nếu nhận đủ cả 5 mốc:
+
+- 2.600 vàng.
+- 500 gem.
+
+Thời gian là thời gian tích lũy của phiên online trong ngày, không phải khoảng thời gian cộng thêm sau mỗi mốc.
+
+Ví dụ:
+- Đạt 5 phút: mở khóa mốc 1.
+- Đạt 10 phút: mở khóa mốc 2.
+- Đạt 20 phút: mở khóa mốc 3.
+- Đạt 30 phút: mở khóa mốc 4.
+- Đạt 60 phút: mở khóa mốc 5.
+
+Không yêu cầu người chơi phải chờ thêm 5 + 10 + 20 + 30 + 60 phút riêng biệt.
+
+## 2. Giao diện điểm danh online
+
+Hiển thị năm ô phần thưởng.
+
+Mỗi ô gồm:
+- Hình ảnh phần thưởng.
+- Số lượng vàng hoặc gem.
+- Mốc thời gian yêu cầu.
+- Thanh tiến trình.
+- Trạng thái phần thưởng.
+- Nút nhận thưởng.
+
+Đối với mốc 5, hiển thị đồng thời hình ảnh vàng và gem cùng số lượng tương ứng.
+
+Không gộp vàng và gem thành một biểu tượng duy nhất nếu làm người chơi khó nhận biết.
+
+## 3. Trạng thái các mốc
+
+Mỗi mốc có một trong các trạng thái:
+
+### Chưa đạt
+
+- Hiển thị phần thưởng bình thường nhưng có thể giảm độ sáng.
+- Nút nhận thưởng bị vô hiệu hóa.
+- Hiển thị thời gian còn lại.
+- Thanh tiến trình phản ánh thời gian đã tích lũy.
+
+### Đã đủ điều kiện
+
+- Hiển thị phần thưởng đầy đủ màu sắc.
+- Ô phần thưởng phát sáng nhẹ.
+- Có thể thêm hiệu ứng viền hoặc ánh sáng chuyển động.
+- Nút nhận thưởng hoạt động.
+- Có thể hiển thị nhãn "Có thể nhận".
+
+### Đang xử lý
+
+- Nút nhận thưởng chuyển sang loading.
+- Không cho phép nhấn nhiều lần.
+- Không gửi nhiều giao dịch đồng thời cho cùng một mốc.
+
+### Đã nhận
+
+- Ô phần thưởng chuyển sang trắng đen.
+- Biểu tượng vàng và gem chuyển sang trắng đen.
+- Hiển thị dấu tick xanh lá ở góc trên bên trái.
+- Nút chuyển thành "Đã nhận".
+- Vô hiệu hóa chức năng nhận lại.
+
+Trạng thái đã nhận phải được khôi phục từ database.
+
+## 4. Thanh tiến trình
+
+Hiển thị:
+- Thời gian online hợp lệ đã tích lũy.
+- Thời gian yêu cầu của mốc tiếp theo.
+- Thời gian còn lại.
+- Phần trăm tiến trình.
+
+Ví dụ:
+
+Đã online: 07:32.
+
+Mốc tiếp theo: 10:00.
+
+Còn lại: 02:28.
+
+Thanh tiến trình cập nhật mượt mà.
+
+Không cần tải lại trang hoặc gửi request liên tục mỗi giây.
+
+Frontend có thể cập nhật phần hiển thị bằng bộ đếm cục bộ, nhưng thời gian tích lũy thực tế và điều kiện nhận thưởng phải được backend xác thực.
+
+## 5. Theo dõi thời gian online
+
+Trước tiên, kiểm tra project đã có hệ thống:
+- Session.
+- Heartbeat.
+- WebSocket.
+- Theo dõi trạng thái online.
+- Quản lý phiên chơi.
+- Hoặc cơ chế tương đương.
+
+Nếu đã có, hãy tích hợp vào cơ chế hiện tại.
+
+Nếu chưa có, hãy xây dựng giải pháp phù hợp với kiến trúc project.
+
+Yêu cầu:
+- Sử dụng thời gian máy chủ.
+- Không tin tưởng đồng hồ của trình duyệt.
+- Không cho phép sửa JavaScript để tăng thời gian online.
+- Không cho phép gửi request giả để nhận thưởng.
+- Không tính thời gian offline thành thời gian online.
+- Có cách xử lý mất kết nối.
+- Có cách xử lý session hết hạn.
+- Có cách khôi phục trạng thái khi người chơi kết nối lại.
+- Không phụ thuộc hoàn toàn vào bộ đếm chạy trên client.
+
+Nếu cần heartbeat, hãy dùng khoảng thời gian hợp lý và tránh gửi request quá dày.
+
+Phải có quy tắc xác định thế nào là một phiên online hợp lệ dựa trên kiến trúc thực tế của game.
+
+Nếu game sử dụng nhiều thiết bị hoặc nhiều phiên cho cùng một tài khoản, phải ngăn việc nhân đôi thời gian và nhận thưởng trùng.
+
+---
+
+# V. RESET TỰ ĐỘNG LÚC 00:00
+
+## 1. Múi giờ
+
+Sử dụng múi giờ:
+
+Asia/Ho_Chi_Minh (UTC+7).
+
+Tất cả logic xác định ngày điểm danh phải thống nhất theo múi giờ này.
+
+Không phụ thuộc vào múi giờ máy tính của người chơi.
+
+## 2. Reset điểm danh tháng
+
+Mỗi ngày chỉ được điểm danh thường một lần.
+
+Khi sang ngày mới:
+- Mở quyền điểm danh cho ngày mới.
+- Cập nhật ngày hiện tại trên giao diện.
+- Giữ nguyên lịch sử các ngày trước.
+- Không xóa dữ liệu điểm danh.
+
+Khi sang tháng mới:
+- Hiển thị lịch tháng mới.
+- Bắt đầu lại từ ngày 1.
+- Áp dụng quy tắc ngày lẻ nhận 100 vàng, ngày chẵn nhận 50 gem.
+- Đặt lại bộ đếm số lần điểm danh bù của tháng theo quy tắc đã thiết kế.
+- Giữ nguyên lịch sử tháng cũ.
+
+Không cho phép nhận thưởng của ngày mới trước 00:00 theo giờ máy chủ.
+
+## 3. Reset điểm danh online
+
+Vào 00:00 mỗi ngày:
+- Kết thúc chu kỳ điểm danh online của ngày cũ.
+- Đặt lại tiến trình online hằng ngày.
+- Đặt lại trạng thái mở khóa của năm mốc theo chu kỳ mới.
+- Cho phép nhận lại các mốc trong ngày mới sau khi đủ điều kiện.
+- Giữ nguyên lịch sử các mốc đã nhận của ngày cũ.
+
+Không cần người chơi đăng xuất hoặc đăng nhập lại.
+
+Giao diện phải tự cập nhật ngày và trạng thái khi chuyển sang ngày mới.
+
+## 4. Xử lý thời điểm chuyển ngày
+
+Phải xử lý các trường hợp:
+- Người chơi online trước 00:00 và tiếp tục online sau 00:00.
+- Người chơi nhấn nhận đúng lúc chuyển ngày.
+- Request được gửi trước 00:00 nhưng đến máy chủ sau 00:00.
+- Máy chủ khởi động lại.
+- Người chơi đăng nhập từ nhiều thiết bị.
+- Nhiều request nhận thưởng được gửi đồng thời.
+
+Quyết định chu kỳ điểm danh dựa trên thời gian máy chủ tại thời điểm giao dịch được xác nhận.
+
+Đối với điểm danh online, không cộng thời gian thuộc ngày cũ vào tiến trình của ngày mới.
+
+Khi phiên chơi kéo dài qua 00:00, phải chia thời gian theo ranh giới ngày thay vì tính toàn bộ phiên vào một ngày.
+
+Không cần tạo tác vụ xóa dữ liệu vào 00:00. Ưu tiên xác định trạng thái bằng ngày nghiệp vụ và lưu lịch sử lâu dài.
+
+---
+
+# VI. ĐIỂM DANH BÙ BẰNG GEM
+
+## 1. Quy tắc
+
+Người chơi có thể dùng gem để nhận bù phần thưởng của ngày đã bỏ lỡ.
+
+Chi phí tăng 50 gem sau mỗi lần điểm danh bù.
+
+Bảng chi phí:
+
+| Lần điểm danh bù trong tháng | Chi phí |
+|---|---:|
+| Lần 1 | 100 gem |
+| Lần 2 | 150 gem |
+| Lần 3 | 200 gem |
+| Lần 4 | 250 gem |
+| Lần 5 | 300 gem |
+| Lần 6 | 350 gem |
+| Lần 7 | 400 gem |
+| Lần 8 | 450 gem |
+| Lần 9 | 500 gem |
+| Lần 10 | 550 gem |
+| Lần 11 | 600 gem |
+| Lần 12 | 650 gem |
+| Lần 13 | 700 gem |
+| Lần 14 | 750 gem |
+| Lần 15 | 800 gem |
+| Lần 16 | 850 gem |
+| Lần 17 | 900 gem |
+| Lần 18 | 950 gem |
+| Lần 19 trở đi | 1.000 gem |
+
+Công thức:
+
+Chi phí = min(100 + 50 × số_lần_điểm_danh_bù_trước_đó, 1000).
+
+Số lần điểm danh bù được tính theo tháng hiện tại và phải lưu ở backend hoặc có thể tính chính xác từ lịch sử điểm danh bù trong database.
+
+Không tính số lần bấm nút. Chỉ tính những giao dịch điểm danh bù đã thành công.
+
+## 2. Điều kiện điểm danh bù
+
+Chỉ cho phép điểm danh bù những ngày:
+- Đã qua.
+- Thuộc tháng hiện tại.
+- Chưa được nhận phần thưởng.
+- Được phép điểm danh bù theo quy tắc game.
+
+Không cho phép:
+- Điểm danh bù ngày tương lai.
+- Điểm danh bù ngày hiện tại bằng chức năng dành cho ngày bỏ lỡ.
+- Nhận bù một ngày đã nhận thưởng.
+- Điểm danh bù ngày thuộc tháng cũ nếu chính sách hiện tại chỉ cho phép bù trong tháng.
+- Dùng gem để nhận lại phần thưởng đã cấp.
+
+## 3. Popup xác nhận điểm danh bù
+
+Khi người chơi chọn một ngày đã bỏ lỡ, hiển thị popup xác nhận riêng.
+
+Nội dung bao gồm:
+- Ngày cần điểm danh bù.
+- Phần thưởng của ngày đó.
+- Chi phí gem.
+- Số gem hiện có.
+- Số gem còn lại sau khi thanh toán.
+- Nút xác nhận.
+- Nút hủy.
+
+Ví dụ:
+
+"Điểm danh bù ngày 12?"
+
+Phần thưởng: 50 gem.
+
+Chi phí điểm danh bù: 100 gem.
+
+Gem hiện có: 800.
+
+Gem còn lại sau giao dịch: 700.
+
+Các con số trên chỉ là ví dụ minh họa. Giao diện phải hiển thị dữ liệu thực tế của người chơi và chi phí chính xác được máy chủ xác định.
+
+Nếu không đủ gem:
+- Không thực hiện giao dịch.
+- Hiển thị thông báo không đủ gem.
+- Không cộng phần thưởng.
+- Không ghi nhận điểm danh bù thành công.
+
+## 4. Xử lý giao dịch điểm danh bù
+
+Khi người chơi xác nhận:
+
+1. Xác thực tài khoản đang đăng nhập.
+2. Kiểm tra ngày cần điểm danh bù.
+3. Kiểm tra ngày đã được nhận chưa.
+4. Kiểm tra tháng điểm danh.
+5. Xác định số lần điểm danh bù đã thành công.
+6. Tính chi phí gem ở backend.
+7. Kiểm tra số gem hiện tại.
+8. Trừ gem.
+9. Cộng phần thưởng đúng của ngày được bù.
+10. Ghi lịch sử điểm danh.
+11. Ghi lịch sử giao dịch tiền tệ nếu hệ thống hiện tại hỗ trợ.
+12. Commit transaction.
+13. Trả về kết quả thực tế.
+14. Cập nhật giao diện và hiển thị popup thành công.
+
+Các thao tác liên quan phải được thực hiện trong transaction phù hợp.
+
+Nếu một bước thất bại, phải rollback toàn bộ giao dịch.
+
+Không để xảy ra các trường hợp:
+- Trừ gem nhưng không nhận phần thưởng.
+- Nhận phần thưởng nhưng không trừ gem.
+- Ghi nhận điểm danh nhưng không cập nhật số dư.
+- Cộng phần thưởng nhiều lần do request lặp.
+
+Không nhận số lượng gem cần trừ từ client làm dữ liệu có thẩm quyền. Backend phải tự tính chi phí.
+
+Không cho phép sửa request để giảm giá điểm danh bù.
+
+---
+
+# VII. POPUP CHÚC MỪNG KHI NHẬN THƯỞNG
+
+## 1. Mục đích
+
+Sau khi nhận thưởng thành công, hiển thị một popup chúc mừng riêng phía trên giao diện game hiện tại.
+
+Tham khảo hình ảnh phần thưởng xuất hiện giữa màn hình trong ảnh mẫu, nhưng hãy nâng cấp thiết kế để đẹp, rõ ràng và chuyên nghiệp hơn.
+
+Không chuyển trang khi nhận thưởng.
+
+## 2. Thiết kế
+
+Popup bao gồm:
+- Nền tối bán trong suốt.
+- Khung thông báo có chiều sâu.
+- Viền trang trí phù hợp với game.
+- Tiêu đề chúc mừng.
+- Biểu tượng phần thưởng lớn ở chính giữa.
+- Số lượng phần thưởng.
+- Mô tả lý do nhận thưởng.
+- Nút xác nhận hoặc trở về.
+
+Đối với vàng:
+- Sử dụng hình ảnh vàng hiện có.
+- Ánh sáng vàng.
+- Hiệu ứng tỏa sáng nhẹ.
+
+Đối với gem:
+- Sử dụng hình ảnh gem hiện có.
+- Ánh sáng xanh tím hoặc xanh ngọc phù hợp với tài nguyên hiện tại.
+
+Đối với phần thưởng có cả vàng và gem:
+- Hiển thị cả hai biểu tượng.
+- Hiển thị riêng số lượng từng loại.
+- Không làm mất hoặc che khuất một trong hai loại phần thưởng.
+
+## 3. Nội dung
+
+Ví dụ nhận điểm danh tháng:
+
+Tiêu đề: CHÚC MỪNG!
+
+Nội dung: Bạn đã điểm danh thành công.
+
+Phần thưởng: 100 vàng.
+
+Ví dụ nhận điểm danh online mốc cuối:
+
+Tiêu đề: CHÚC MỪNG!
+
+Nội dung: Bạn đã hoàn thành mốc 60 phút online.
+
+Phần thưởng:
+- 1.000 vàng.
+- 500 gem.
+
+Ví dụ điểm danh bù:
+
+Tiêu đề: ĐIỂM DANH BÙ THÀNH CÔNG!
+
+Nội dung: Bạn đã nhận phần thưởng của ngày bị bỏ lỡ.
+
+Các con số phải được lấy từ kết quả giao dịch thực tế của máy chủ.
+
+Không sử dụng dữ liệu cứng cho phần thưởng thực tế.
+
+## 4. Animation chúc mừng
+
+Khi popup xuất hiện:
+1. Nền game tối dần.
+2. Ánh sáng bung ra từ trung tâm.
+3. Khung thông báo xuất hiện bằng fade-in và scale.
+4. Biểu tượng phần thưởng xuất hiện với hiệu ứng nổi.
+5. Số lượng phần thưởng xuất hiện bằng animation nhẹ.
+6. Có thể thêm hạt sáng hoặc tia sáng phù hợp.
+7. Các thành phần được sắp xếp theo thứ tự để tạo cảm giác nhận thưởng.
+
+Khi đóng popup:
+- Các hiệu ứng kết thúc mượt mà.
+- Trả lại quyền tương tác cho giao diện trước đó.
+- Không để lại lớp phủ chặn thao tác.
+
+Không phát hiệu ứng nhận thưởng trước khi backend xác nhận giao dịch thành công.
+
+Nếu giao dịch thất bại, phải hiển thị thông báo lỗi thay vì popup chúc mừng.
+
+---
+
+# VIII. ANIMATION CHO TẤT CẢ NÚT
+
+Tất cả nút và thành phần tương tác phải có phản hồi trực quan.
+
+Bao gồm:
+- Nút mở popup điểm danh.
+- Nút đóng popup.
+- Tab điểm danh tháng.
+- Tab điểm danh online.
+- Nút điểm danh hôm nay.
+- Nút nhận thưởng của từng mốc online.
+- Nút chọn ngày điểm danh bù.
+- Nút xác nhận điểm danh bù.
+- Nút hủy.
+- Nút xác nhận popup chúc mừng.
+
+Mỗi nút phải hỗ trợ các trạng thái phù hợp:
+- Bình thường.
+- Hover.
+- Nhấn.
+- Loading.
+- Disabled.
+- Thành công.
+- Thất bại.
+
+### Hiệu ứng
+
+- Hover: nút sáng nhẹ hoặc nổi lên.
+- Nhấn: nút thu nhỏ nhẹ rồi trở lại.
+- Loading: hiển thị chỉ báo đang xử lý.
+- Thành công: hiển thị phản hồi trực quan.
+- Disabled: giảm độ sáng và không nhận thao tác.
+- Chuyển tab: chuyển động mượt, không giật.
+
+Không để nút nhận thưởng bị nhấn nhiều lần trong lúc đang xử lý.
+
+Không sử dụng animation dài gây cản trở người chơi.
+
+Không làm animation ảnh hưởng đến tính chính xác của giao dịch.
+
+---
+
+# IX. DATABASE VÀ TIỀN TỆ THỰC TẾ
+
+## 1. Tái sử dụng hệ thống hiện có
+
+Project đã có database và tài khoản người chơi.
+
+Phải xác định:
+- Bảng hoặc entity tài khoản.
+- Khóa định danh người chơi.
+- Trường lưu vàng.
+- Trường lưu gem.
+- Cách xác định người chơi đang đăng nhập.
+- Hệ thống giao dịch tiền tệ.
+- Lịch sử giao dịch nếu có.
+- Cơ chế kết nối database.
+- Cơ chế quản lý phiên online.
+
+Không tạo tài khoản giả lập.
+
+Không tạo số dư vàng hoặc gem riêng để thay thế số dư thật.
+
+Không chỉ cập nhật giao diện mà bỏ qua database.
+
+Nếu đã có hệ thống giao dịch hoặc dịch vụ quản lý tiền tệ, hãy tái sử dụng.
+
+## 2. Lưu lịch sử điểm danh
+
+Nếu project chưa có dữ liệu điểm danh, hãy bổ sung các bảng hoặc entity phù hợp với kiến trúc hiện tại.
+
+Dữ liệu cần đáp ứng:
+- Người chơi.
+- Ngày nghiệp vụ.
+- Tháng nghiệp vụ.
+- Loại điểm danh.
+- Loại phần thưởng.
+- Số lượng phần thưởng.
+- Trạng thái nhận.
+- Thời gian nhận.
+- Điểm danh thường hoặc điểm danh bù.
+- Chi phí gem của điểm danh bù.
+- Mốc online.
+- Thời gian online hợp lệ.
+- Lịch sử giao dịch liên quan.
+
+Có thể thiết kế bảng riêng hoặc tái sử dụng cấu trúc hiện có nếu phù hợp.
+
+Không tạo quá nhiều bảng không cần thiết.
+
+Phải có khóa và ràng buộc phù hợp để ngăn nhận thưởng trùng.
+
+Ví dụ về quy tắc dữ liệu:
+- Một tài khoản chỉ nhận phần thưởng điểm danh tháng của một ngày nghiệp vụ tối đa một lần.
+- Một tài khoản chỉ nhận một mốc online tối đa một lần trong mỗi ngày nghiệp vụ.
+- Giao dịch điểm danh bù phải liên kết được với ngày được bù.
+
+Cấu trúc thực tế phải tuân theo schema và quy ước của project hiện tại.
+
+## 3. Transaction
+
+Các thao tác thay đổi số dư và ghi nhận phần thưởng phải có tính nhất quán.
+
+Đối với điểm danh tháng:
+- Xác định phần thưởng ở backend.
+- Cập nhật số dư.
+- Ghi lịch sử điểm danh.
+- Ghi lịch sử giao dịch nếu có.
+- Commit thành công.
+
+Đối với điểm danh online:
+- Xác thực mốc đã đạt.
+- Cập nhật số dư.
+- Ghi nhận mốc đã nhận.
+- Commit thành công.
+
+Đối với điểm danh bù:
+- Xác định chi phí.
+- Kiểm tra số dư.
+- Trừ gem.
+- Cộng phần thưởng của ngày được bù.
+- Ghi lịch sử.
+- Commit thành công.
+
+Nếu có lỗi giữa các bước, rollback toàn bộ giao dịch.
+
+Không được có trạng thái giao dịch nửa thành công.
+
+## 4. Chống gian lận
+
+Backend phải tự xác thực:
+- Tài khoản.
+- Ngày điểm danh.
+- Tháng điểm danh.
+- Phần thưởng.
+- Chi phí điểm danh bù.
+- Số dư tiền tệ.
+- Thời gian online.
+- Trạng thái nhận thưởng.
+
+Không tin tưởng dữ liệu do client gửi lên.
+
+Không cho phép người chơi tự chọn số vàng hoặc gem muốn nhận.
+
+Không cho phép tự đặt chi phí điểm danh bù.
+
+Không cho phép sửa ngày hoặc mốc online trong request để nhận thưởng.
+
+Phải xử lý request trùng và các giao dịch đồng thời.
+
+Nếu nhiều thiết bị đăng nhập cùng một tài khoản, chỉ cho phép một giao dịch nhận thưởng thành công cho cùng một mốc.
+
+---
+
+# X. CẬP NHẬT GIAO DIỆN VÀ SỐ DƯ
+
+Sau khi giao dịch thành công:
+- Cập nhật số vàng thực tế.
+- Cập nhật số gem thực tế.
+- Cập nhật trạng thái ô phần thưởng.
+- Chuyển ô đã nhận sang trắng đen.
+- Hiển thị dấu tick xanh lá.
+- Cập nhật thanh tiến trình online.
+- Cập nhật tổng số ngày đã điểm danh.
+- Cập nhật trạng thái điểm danh bù.
+- Hiển thị popup chúc mừng.
+
+Không bắt người chơi tải lại toàn bộ trang.
+
+Nếu game đã có hệ thống cập nhật số dư toàn cục, hãy tích hợp với hệ thống đó.
+
+Chỉ cập nhật các thành phần giao diện liên quan.
+
+Dữ liệu giao diện phải phản ánh kết quả đã được máy chủ xác nhận.
+
+Khi mở popup, tải dữ liệu điểm danh và số dư mới nhất từ nguồn dữ liệu có thẩm quyền.
+
+Nếu không kết nối được máy chủ, không tự hiển thị trạng thái đã nhận thưởng.
+
+---
+
+# XI. XỬ LÝ LỖI
+
+Phải xử lý các tình huống:
+- Không đủ gem.
+- Mất kết nối.
+- Database lỗi.
+- Phiên đăng nhập hết hạn.
+- Người chơi đã nhận thưởng.
+- Chưa đủ thời gian online.
+- Ngày điểm danh không hợp lệ.
+- Ngày điểm danh bù không hợp lệ.
+- Request bị gửi nhiều lần.
+- Người chơi đăng nhập nhiều thiết bị.
+- Máy chủ khởi động lại.
+- Giao dịch thất bại.
+- Lỗi cập nhật giao diện.
+- Thời điểm chuyển ngày.
+- Thời điểm chuyển tháng.
+
+Thông báo lỗi phải rõ ràng, dễ hiểu và phù hợp với phong cách game.
+
+Ví dụ:
+- "Bạn đã điểm danh hôm nay rồi!"
+- "Bạn chưa đủ thời gian online để nhận thưởng này."
+- "Bạn không đủ gem để điểm danh bù."
+- "Phần thưởng này đã được nhận."
+- "Kết nối không ổn định. Vui lòng thử lại."
+
+Khi lỗi xảy ra:
+- Không cấp phần thưởng giả.
+- Không hiển thị popup thành công.
+- Không để số dư sai lệch.
+- Không ghi nhận trạng thái đã nhận nếu giao dịch chưa thành công.
+- Không làm hỏng popup hoặc giao diện sảnh.
+
+---
+
+# XII. YÊU CẦU KIẾN TRÚC VÀ CHẤT LƯỢNG CODE
+
+Không chỉ tạo một file HTML minh họa với dữ liệu cứng.
+
+Phải tích hợp vào project hiện tại.
+
+Trước khi chỉnh sửa mỗi file:
+- Đọc nội dung hiện tại.
+- Hiểu chức năng của file.
+- Xác định các thành phần có thể tái sử dụng.
+- Kiểm tra những nơi đang tham chiếu đến file.
+
+Yêu cầu:
+- Giữ nguyên các chức năng không liên quan.
+- Tái sử dụng tài nguyên hiện có.
+- Không tự ý viết lại hệ thống đăng nhập.
+- Không tạo hệ thống tiền tệ thay thế.
+- Không xóa dữ liệu.
+- Không ghi đè file quan trọng khi chưa kiểm tra.
+- Không tạo nút chỉ có giao diện nhưng không hoạt động.
+- Không bỏ qua migration nếu cần thay đổi database.
+- Không để lại lỗi biên dịch.
+- Không để lại lỗi runtime.
+- Không làm hỏng giao diện sảnh.
+
+Nếu có thể, hãy chia logic thành các thành phần phù hợp:
+- Giao diện popup.
+- Giao diện điểm danh tháng.
+- Giao diện điểm danh online.
+- Popup xác nhận điểm danh bù.
+- Popup chúc mừng.
+- Logic nghiệp vụ điểm danh.
+- Logic theo dõi thời gian online.
+- Dịch vụ xử lý tiền tệ.
+- Lớp truy cập database.
+- Cấu hình phần thưởng.
+
+Đây chỉ là định hướng. Hãy tuân thủ kiến trúc thực tế của project thay vì ép buộc sử dụng một cấu trúc không phù hợp.
+
+Không sao chép logic tính phần thưởng ở nhiều nơi nếu có thể dùng chung một nguồn xác định phần thưởng.
+
+---
+
+# XIII. KIỂM THỬ BẮT BUỘC
+
+## 1. Kiểm thử điểm danh tháng
+
+Kiểm tra:
+- Ngày 1 nhận 100 vàng.
+- Ngày 2 nhận 50 gem.
+- Ngày 3 nhận 100 vàng.
+- Ngày 4 nhận 50 gem.
+- Chu kỳ tiếp tục đúng đến cuối tháng.
+- Bỏ lỡ ngày trước không làm thay đổi phần thưởng của ngày sau.
+- Điểm danh bù nhận đúng phần thưởng của ngày bị bỏ lỡ.
+- Ngày đã nhận chuyển sang trắng đen.
+- Dấu tick xanh lá xuất hiện.
+- Không thể nhận lại phần thưởng.
+- Trạng thái vẫn giữ nguyên sau khi mở lại popup.
+- Tháng có 28, 29, 30 và 31 ngày đều hoạt động đúng.
+- Khi sang tháng mới, lịch được cập nhật chính xác.
+
+## 2. Kiểm thử điểm danh online
+
+Kiểm tra:
+- Đạt 5 phút: mở khóa 400 vàng.
+- Đạt 10 phút: mở khóa 400 vàng.
+- Đạt 20 phút: mở khóa 400 vàng.
+- Đạt 30 phút: mở khóa 400 vàng.
+- Đạt 60 phút: mở khóa 1.000 vàng và 500 gem.
+- Không nhận được phần thưởng trước khi đủ thời gian.
+- Mỗi mốc chỉ nhận một lần trong ngày.
+- Ô đã nhận chuyển sang trắng đen.
+- Dấu tick xanh lá xuất hiện.
+- Trạng thái vẫn giữ nguyên sau khi mở lại popup.
+- Không thể giả mạo thời gian online.
+- Xử lý đúng khi mất kết nối.
+- Xử lý đúng khi phiên chơi kéo dài qua 00:00.
+
+## 3. Kiểm thử điểm danh bù
+
+Kiểm tra:
+- Lần đầu tốn 100 gem.
+- Lần thứ hai tốn 150 gem.
+- Lần thứ ba tốn 200 gem.
+- Mỗi lần tăng thêm 50 gem.
+- Chi phí tối đa là 1.000 gem.
+- Chỉ tăng số lần khi giao dịch thành công.
+- Không đủ gem thì không được nhận.
+- Ngày đã nhận không thể điểm danh bù.
+- Không thể điểm danh bù ngày tương lai.
+- Không thể điểm danh bù ngày ngoài phạm vi được phép.
+- Không thể gửi request lặp để nhận nhiều lần.
+
+## 4. Kiểm thử database và tiền tệ
+
+Kiểm tra:
+- Vàng được cộng đúng vào tài khoản thực.
+- Gem được cộng đúng vào tài khoản thực.
+- Gem bị trừ đúng khi điểm danh bù.
+- Số dư trên giao diện khớp với database.
+- Không nhận thưởng hai lần.
+- Không có giao dịch nửa thành công.
+- Không có số dư âm do request đồng thời.
+- Không thể sửa request để thay đổi số lượng phần thưởng.
+- Lịch sử giao dịch được ghi đúng.
+- Database giữ nguyên lịch sử các ngày cũ.
+
+## 5. Kiểm thử giao diện
+
+Kiểm tra:
+- Popup mở không chuyển trang.
+- Popup đóng không để lại lớp phủ.
+- Chuyển tab không tải lại trang.
+- Các nút đều hoạt động.
+- Animation mượt mà.
+- Ô đã nhận trắng đen đúng.
+- Dấu tick xanh không che khuất phần thưởng.
+- Popup chúc mừng hiển thị đúng số lượng.
+- Popup xác nhận điểm danh bù hiển thị đúng chi phí.
+- Không bị vỡ giao diện ở các độ phân giải được hỗ trợ.
+- Không có lỗi console.
+- Không ảnh hưởng đến chức năng khác của sảnh game.
+
+Nếu project có hệ thống test, hãy bổ sung unit test hoặc integration test cho các logic quan trọng.
+
+Không tuyên bố đã kiểm thử thành công nếu thực tế chưa chạy kiểm thử.
+
+---
+
+# XIV. KẾT QUẢ BÀN GIAO
+
+Sau khi hoàn thành, hãy báo cáo:
+
+1. Những file đã sửa.
+2. Những file mới được tạo.
+3. Cách mở popup từ giao diện sảnh.
+4. Cách hoạt động của điểm danh tháng.
+5. Cách hoạt động của điểm danh online.
+6. Cách tính thời gian online.
+7. Cách tính chi phí điểm danh bù.
+8. Các bảng hoặc trường database được bổ sung.
+9. Migration cần chạy, nếu có.
+10. Cách cấu hình phần thưởng.
+11. Kết quả kiểm thử thực tế.
+12. Những lỗi chưa xử lý được, nếu có.
+
+Nếu cần chạy migration hoặc cấu hình môi trường, hãy nêu rõ lệnh và các bước cần thực hiện.
+
+Không được tuyên bố tính năng đã hoàn chỉnh khi mới chỉ xây dựng giao diện.
+
+---
+
+# XV. CÁC QUY TẮC CUỐI CÙNG KHÔNG ĐƯỢC VI PHẠM
+
+1. Chỉ có hai chức năng: điểm danh tháng và điểm danh online.
+2. Cả hai chức năng đều nằm trong popup, không chuyển trang.
+3. Điểm danh tháng chỉ có vàng và gem, luân phiên theo ngày.
+4. Ngày lẻ nhận 100 vàng.
+5. Ngày chẵn nhận 50 gem.
+6. Điểm danh online có đúng 5 mốc: 5, 10, 20, 30 và 60 phút.
+7. Bốn mốc đầu thưởng 400 vàng mỗi mốc.
+8. Mốc 60 phút thưởng 1.000 vàng và 500 gem.
+9. Điểm danh bù bằng gem, bắt đầu 100 gem và tăng 50 gem mỗi lần, tối đa 1.000 gem.
+10. Điểm danh tháng và online chuyển chu kỳ lúc 00:00 theo giờ Việt Nam.
+11. Lịch sử cũ phải được giữ lại.
+12. Ô đã nhận thưởng phải chuyển sang trắng đen và có dấu tick xanh lá.
+13. Trạng thái đã nhận phải được lưu trong database.
+14. Popup chúc mừng chỉ xuất hiện sau khi giao dịch thành công.
+15. Tất cả phần thưởng và chi phí phải được backend xác thực.
+16. Vàng và gem phải được cộng hoặc trừ trên tài khoản thật.
+17. Phải chống nhận thưởng trùng và giao dịch đồng thời.
+18. Phải tận dụng hình ảnh vàng, gem và tài nguyên hiện có.
+19. Tất cả nút phải có animation và phản hồi tương tác phù hợp.
+20. Không làm hỏng các chức năng hiện có của project.
+
+**Hãy bắt đầu bằng việc phân tích codebase thực tế, sau đó triển khai hoàn chỉnh chức năng trên project hiện tại. Ưu tiên tính chính xác của dữ liệu, bảo mật giao dịch, trải nghiệm giao diện và khả năng bảo trì lâu dài.**

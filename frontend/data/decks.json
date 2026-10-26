@@ -1,0 +1,215 @@
+{
+  "decks": [
+    {
+      "id": "yugi-battle-city",
+      "name": "Bộ bài Yugi - Battle City",
+      "owner": "Yugi Muto",
+      "era": "Battle City",
+      "format": "anime-reference",
+      "mainDeckSize": 40,
+      "note": "Danh sách tham khảo 40 lá tổng hợp từ các lá bài gắn với Yugi trong thời kỳ Battle City; thành phần có thể thay đổi theo từng trận và không đại diện cho một trận đấu cụ thể.",
+      "cards": [
+        {
+          "cardId": "m-dark-magician",
+          "name": "Phù Thủy Bóng Đêm",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-dark-magician-girl",
+          "name": "Nữ Phù Thủy Bóng Đêm",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-summoned-skull",
+          "name": "Quỷ Đầu Lâu Triệu Hồi",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-buster-blader",
+          "name": "Kiếm Sĩ Diệt Rồng",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-celtic-guardian",
+          "name": "Hộ Vệ Celtic",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-gazelle-king-of-mythical-beasts",
+          "name": "Gazelle, Vua Thú Huyền Bí",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-big-shield-gardna",
+          "name": "Đại Thuẫn Vệ Gardna",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-berfomet",
+          "name": "Berfomet",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-kuriboh",
+          "name": "Kuriboh",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-giant-soldier-of-stone",
+          "name": "Chiến Binh Đá Khổng Lồ",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-alpha-the-magnet-warrior",
+          "name": "Chiến Binh Nam Châm Alpha",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-beta-the-magnet-warrior",
+          "name": "Chiến Binh Nam Châm Beta",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-gamma-the-magnet-warrior",
+          "name": "Chiến Binh Nam Châm Gamma",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-valkyrion-the-magna-warrior",
+          "name": "Chiến Binh Magna Valkyrion",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-kings-knight",
+          "name": "Kỵ Sĩ Vua",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-queens-knight",
+          "name": "Kỵ Sĩ Nữ Hoàng",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-jacks-knight",
+          "name": "Kỵ Sĩ Bồi",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-mystic-horseman",
+          "name": "Kỵ Sĩ Nhân Mã Huyền Bí",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-feral-imp",
+          "name": "Tiểu Quỷ Hoang Dã",
+          "quantity": 1
+        },
+        {
+          "cardId": "m-silver-fang",
+          "name": "Nanh Bạc",
+          "quantity": 1
+        },
+        {
+          "cardId": "s-monster-reborn",
+          "name": "Hồi Sinh Quái Thú",
+          "quantity": 1
+        },
+        {
+          "cardId": "s-pot-of-greed",
+          "name": "Hũ Tham Lam",
+          "quantity": 1
+        },
+        {
+          "cardId": "s-swords-of-revealing-light",
+          "name": "Kiếm Ánh Sáng Khai Mở",
+          "quantity": 1
+        },
+        {
+          "cardId": "s-change-of-heart",
+          "name": "Đổi Trái Tim",
+          "quantity": 1
+        },
+        {
+          "cardId": "s-brain-control",
+          "name": "Điều Khiển Tâm Trí",
+          "quantity": 1
+        },
+        {
+          "cardId": "s-polymerization",
+          "name": "Dung Hợp",
+          "quantity": 1
+        },
+        {
+          "cardId": "s-multiply",
+          "name": "Nhân Bản",
+          "quantity": 1
+        },
+        {
+          "cardId": "s-dark-magic-curtain",
+          "name": "Màn Ma Thuật Hắc Ám",
+          "quantity": 1
+        },
+        {
+          "cardId": "s-thousand-knives",
+          "name": "Ngàn Dao",
+          "quantity": 1
+        },
+        {
+          "cardId": "s-magical-dimension",
+          "name": "Không Gian Ma Thuật",
+          "quantity": 1
+        },
+        {
+          "cardId": "s-mystical-space-typhoon",
+          "name": "Bão Không Gian Huyền Bí",
+          "quantity": 1
+        },
+        {
+          "cardId": "t-mirror-force",
+          "name": "Lực Gương Phản Chiếu",
+          "quantity": 1
+        },
+        {
+          "cardId": "t-magic-cylinder",
+          "name": "Ống Trụ Ma Thuật",
+          "quantity": 1
+        },
+        {
+          "cardId": "t-spellbinding-circle",
+          "name": "Vòng Trói Phép",
+          "quantity": 1
+        },
+        {
+          "cardId": "t-magic-jammer",
+          "name": "Phủ Định Ma Thuật",
+          "quantity": 1
+        },
+        {
+          "cardId": "t-trap-hole",
+          "name": "Hố Bẫy",
+          "quantity": 1
+        },
+        {
+          "cardId": "t-waboku",
+          "name": "Waboku",
+          "quantity": 1
+        },
+        {
+          "cardId": "t-seven-tools-of-the-bandit",
+          "name": "Bảy Công Cụ Của Kẻ Cướp",
+          "quantity": 1
+        },
+        {
+          "cardId": "t-call-of-the-haunted",
+          "name": "Tiếng Gọi Từ Cõi Chết",
+          "quantity": 1
+        },
+        {
+          "cardId": "t-magicians-circle",
+          "name": "Vòng Tròn Pháp Sư",
+          "quantity": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,54 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#07142c">
-  <title>Bắt đầu · Yu-Gi-Oh!</title>
-  <link rel="stylesheet" href="css/theme.css">
-  <link rel="stylesheet" href="css/start.css">
-</head>
-<body class="start-page">
-  <main class="start-screen">
-    <div class="start-screen__backdrop" aria-hidden="true"></div>
-    <div class="start-screen__glow" aria-hidden="true"></div>
-    <img class="start-screen__duelist" src="assets/images/hero/kaiba-seto.png" alt="" aria-hidden="true">
-
-    <header class="start-screen__brand">
-      <span>DUELIST PORTAL</span>
-      <h1>Yu-Gi-Oh!</h1>
-    </header>
-
-    <div class="start-screen__server">
-      <span class="start-screen__status" aria-hidden="true"></span>
-      <span>001 Server Production</span>
-      <span class="start-screen__server-state">Đã kết nối</span>
-    </div>
-
-    <section class="start-screen__welcome" id="startWelcome" aria-labelledby="startGreeting">
-      <p class="start-screen__eyebrow">SẴN SÀNG ĐẤU BÀI</p>
-      <h2 id="startGreeting">Chào mừng, <span id="startUsername">Duelist</span></h2>
-      <p>Chuẩn bị bước vào đấu trường.</p>
-      <button class="start-screen__button" id="startGame" type="button">
-        <span>Bắt Đầu</span>
-        <span class="start-screen__button-arrow" aria-hidden="true">➜</span>
-      </button>
-    </section>
-
-    <section class="start-loading" id="startLoading" aria-labelledby="loadingTitle" hidden>
-      <p id="loadingTitle">Đang vào game</p>
-      <span class="start-loading__status" id="loadingStatus" aria-live="polite">Đang chờ máy chủ...</span>
-      <div class="start-loading__track" role="progressbar" aria-label="Đang vào game" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-        <span class="start-loading__fill" id="loadingFill"></span>
-      </div>
-      <span class="start-loading__percent" id="loadingPercent">0%</span>
-    </section>
-
-    <p class="start-screen__version">Yu-Gi-Oh! · Duelist Portal</p>
-    <audio id="startMusic" src="assets/music/bgm/Start.mp3" preload="auto"></audio>
-    <p class="start-screen__error" id="startError" role="status" aria-live="polite"></p>
-  </main>
-  <script src="js/sfx.js"></script>
-  <script src="js/start.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#07142c">
+    <title>Bắt đầu · Yu-Gi-Oh!</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./src/start.jsx"></script>
+  </body>
 </html>

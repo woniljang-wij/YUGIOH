@@ -1,82 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#091126">
-  <title>Đăng nhập · Yu-Gi-Oh!</title>
-  <link rel="stylesheet" href="css/theme.css">
-  <link rel="stylesheet" href="css/auth.css">
-</head>
-<body class="auth-page">
-  <main class="auth-layout">
-    <section class="auth-intro" aria-label="Yu-Gi-Oh!">
-      <span class="auth-intro__eyebrow">DUELIST PORTAL</span>
-      <h1>Yu-Gi-Oh!</h1>
-      <p>Đăng nhập để bước vào thế giới đấu bài.</p>
-      <div class="auth-intro__sigil" aria-hidden="true">遊☆戯☆王</div>
-    </section>
-
-    <section class="auth-panel" aria-labelledby="authTitle">
-      <div class="auth-panel__heading">
-        <span class="auth-panel__mark" aria-hidden="true">✦</span>
-        <h2 id="authTitle">Chào mừng trở lại</h2>
-        <p id="authDescription">Đăng nhập bằng tên tài khoản và mật khẩu của bạn.</p>
-      </div>
-
-      <div class="auth-switch" role="tablist" aria-label="Chọn đăng nhập hoặc đăng ký">
-        <button class="auth-switch__button is-active" id="loginTab" type="button" role="tab" aria-controls="loginForm" aria-selected="true" data-auth-view="login">Đăng nhập</button>
-        <button class="auth-switch__button" id="registerTab" type="button" role="tab" aria-controls="registerForm" aria-selected="false" data-auth-view="register">Đăng ký</button>
-      </div>
-
-      <form class="auth-form" id="registerForm" autocomplete="on" hidden>
-        <label class="auth-field">
-          <span>Tên tài khoản</span>
-          <input name="username" type="text" minlength="3" maxlength="24" pattern="[A-Za-z0-9_.\-]{3,24}" autocomplete="username" required>
-          <small>Tên này sẽ được dùng trong game.</small>
-        </label>
-        <label class="auth-field">
-          <span>Email</span>
-          <input name="email" type="email" maxlength="254" autocomplete="email" required>
-        </label>
-        <label class="auth-field">
-          <span>Mật khẩu</span>
-          <span class="auth-field__password">
-            <input name="password" type="password" minlength="8" maxlength="128" autocomplete="new-password" required>
-            <button class="auth-eye" type="button" data-password-toggle aria-label="Hiện mật khẩu" aria-pressed="false">◉</button>
-          </span>
-          <small>Tối thiểu 8 ký tự.</small>
-        </label>
-        <label class="auth-field">
-          <span>Xác nhận mật khẩu</span>
-          <span class="auth-field__password">
-            <input name="confirmation" type="password" minlength="8" maxlength="128" autocomplete="new-password" required>
-            <button class="auth-eye" type="button" data-password-toggle aria-label="Hiện mật khẩu xác nhận" aria-pressed="false">◉</button>
-          </span>
-        </label>
-        <button class="auth-submit" type="submit">Đăng ký tài khoản</button>
-      </form>
-
-      <form class="auth-form" id="loginForm" autocomplete="on">
-        <label class="auth-field">
-          <span>Tên tài khoản</span>
-          <input name="username" type="text" minlength="3" maxlength="24" autocomplete="username" required>
-        </label>
-        <label class="auth-field">
-          <span>Mật khẩu</span>
-          <span class="auth-field__password">
-            <input name="password" type="password" maxlength="128" autocomplete="current-password" required>
-            <button class="auth-eye" type="button" data-password-toggle aria-label="Hiện mật khẩu" aria-pressed="false">◉</button>
-          </span>
-        </label>
-        <button class="auth-submit" type="submit">Đăng nhập</button>
-      </form>
-
-      <p class="auth-message" id="authMessage" role="status" aria-live="polite"></p>
-      <p class="auth-panel__foot">Cùng nhau chiến thôi.</p>
-    </section>
-  </main>
-  <script src="js/sfx.js"></script>
-  <script src="js/auth.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#091126">
+    <title>Đăng nhập · Yu-Gi-Oh!</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./src/main.jsx"></script>
+  </body>
 </html>
