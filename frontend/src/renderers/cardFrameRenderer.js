@@ -40,17 +40,17 @@ const FRAME_WIDTH = 300;
       railBottom: '#0d0811'
     },
     spell: {
-      shadow: '#061b0a',
-      dark: '#087b32',
-      bronze: '#19a848',
-      gold: '#46e875',
-      bright: '#c2ff9b',
-      accent: '#20c957',
-      accentLight: '#91ff9a',
-      railTop: '#47ed5c',
-      railMiddle: '#1ab844',
-      railBottom: '#08712b',
-      header: '#0a5228'
+      shadow: '#0c2712',
+      dark: '#16833d',
+      bronze: '#25b855',
+      gold: '#56e878',
+      bright: '#d4ffc4',
+      accent: '#33d76a',
+      accentLight: '#a8ffae',
+      railTop: '#7cff83',
+      railMiddle: '#35cd5b',
+      railBottom: '#138239',
+      header: '#12672f'
     },
     trap: {
       shadow: '#180818',
@@ -496,10 +496,10 @@ const FRAME_WIDTH = 300;
   }
 
   function drawGoldTypeOrnaments(context, width, height) {
-    const insetX = 3;
-    const insetY = 2;
-    const cornerWidth = Math.min(43, width * 0.23, height * 1.16);
-    const cornerHeight = Math.min(37, height - insetY * 2, cornerWidth * 0.86);
+    const insetX = Math.min(3, width * 0.01);
+    const insetY = Math.min(2, height * 0.026);
+    const cornerWidth = Math.min(43, width * 0.23, height * 0.58);
+    const cornerHeight = Math.min(37, height * 0.5, cornerWidth * 0.86);
     [
       [insetX, insetY, 1, 1],
       [width - insetX, insetY, -1, 1],
@@ -518,7 +518,7 @@ const FRAME_WIDTH = 300;
   function renderTypeOrnament(canvas) {
     const bounds = canvas.getBoundingClientRect();
     if (!bounds.width || !bounds.height) return;
-    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    const pixelRatio = Math.min(Math.max(window.devicePixelRatio || 1, bounds.width < 220 ? 2 : 1), 3);
     const width = Math.max(1, Math.round(bounds.width * pixelRatio));
     const height = Math.max(1, Math.round(bounds.height * pixelRatio));
     const renderKey = 'ornament:' + canvas.dataset.cardTypePalette + ':' + width + 'x' + height;

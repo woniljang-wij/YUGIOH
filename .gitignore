@@ -1,2 +1,4 @@
 
 /backend/assets/videos/Background.mp4
+/.venv-runtime/
+/frontend/nbproject/private/

@@ -1,0 +1,136 @@
+.card-dismantle {
+  position: fixed;
+  z-index: 120;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  color: #f1f2fa;
+}
+
+.card-dismantle__scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(3, 7, 18, 0.84);
+  backdrop-filter: blur(6px);
+}
+
+.card-dismantle__dialog {
+  position: relative;
+  width: min(460px, 100%);
+  padding: 28px;
+  border: 2px solid #8995bf;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #303755, #171d32);
+  box-shadow: 0 18px 65px rgba(0, 0, 0, 0.82), inset 0 0 0 2px rgba(255, 255, 255, 0.08);
+}
+
+.card-dismantle__dialog h2 {
+  margin: 0 36px 20px 0;
+  color: #ffd35d;
+  font-size: 22px;
+}
+
+.card-dismantle__card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  border: 1px solid rgba(164, 183, 226, 0.34);
+  border-radius: 8px;
+  background: rgba(8, 14, 29, 0.45);
+}
+
+.card-dismantle__card > img {
+  width: 76px;
+  height: 104px;
+  flex: 0 0 76px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.card-dismantle__card > div,
+.card-dismantle__exchange > span {
+  display: grid;
+  gap: 6px;
+}
+
+.card-dismantle__card strong,
+.card-dismantle__exchange b {
+  color: #fff0c4;
+}
+
+.card-dismantle__card span {
+  color: #cbd6eb;
+  font-size: 13px;
+}
+
+.card-dismantle__exchange {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 8px;
+  color: #d7e3f7;
+  background: rgba(4, 9, 20, 0.42);
+  text-align: center;
+}
+
+.card-dismantle__exchange > span:last-child {
+  justify-items: center;
+}
+
+.card-dismantle__exchange img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.card-dismantle__error {
+  margin: 14px 0 0;
+  color: #ffd0d0;
+}
+
+.card-dismantle__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.card-dismantle__actions button {
+  min-height: 42px;
+  padding: 8px 16px;
+  border: 1px solid rgba(215, 225, 245, 0.6);
+  border-radius: 6px;
+  color: #fff;
+  background: linear-gradient(#515b78, #30394f);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.card-dismantle__actions button:last-child {
+  border-color: #e2c36d;
+  color: #fff4d1;
+  background: linear-gradient(#b38333, #68471a);
+}
+
+.card-dismantle__actions button:disabled,
+.card-dismantle__scrim:disabled {
+  cursor: wait;
+}
+
+.attendance-modal.card-dismantle__reward-host {
+  z-index: 180;
+  padding: 0;
+  background: transparent;
+}
+
+@media (max-width: 480px) {
+  .card-dismantle__dialog {
+    padding: 20px;
+  }
+}

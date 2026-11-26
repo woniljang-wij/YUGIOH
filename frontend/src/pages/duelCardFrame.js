@@ -40,17 +40,17 @@
       railBottom: '#0d0811'
     },
     spell: {
-      shadow: '#061b0a',
-      dark: '#087b32',
-      bronze: '#19a848',
-      gold: '#46e875',
-      bright: '#c2ff9b',
-      accent: '#20c957',
-      accentLight: '#91ff9a',
-      railTop: '#47ed5c',
-      railMiddle: '#1ab844',
-      railBottom: '#08712b',
-      header: '#0a5228'
+      shadow: '#0c2712',
+      dark: '#16833d',
+      bronze: '#25b855',
+      gold: '#56e878',
+      bright: '#d4ffc4',
+      accent: '#33d76a',
+      accentLight: '#a8ffae',
+      railTop: '#7cff83',
+      railMiddle: '#35cd5b',
+      railBottom: '#138239',
+      header: '#12672f'
     },
     trap: {
       shadow: '#180818',

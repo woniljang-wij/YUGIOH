@@ -33,7 +33,7 @@
 
   /* Ảnh nền nằm trong backend/assets/images/backgrounds/. */
   --bg-lobby:url("/assets/images/backgrounds/bg-lobby.jpg");
-  --bg-duel:url("/assets/images/backgrounds/bg-duel.jpg");
+  --bg-duel:url("/assets/images/backgrounds/backgroundduel.png");
 
   --f-title:"Trebuchet MS","Segoe UI",system-ui,sans-serif;
   --f-body:"Segoe UI",system-ui,-apple-system,Roboto,"Noto Sans",sans-serif;

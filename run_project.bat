@@ -2,10 +2,10 @@
 setlocal
 pushd "%~dp0"
 set "ROOT=%CD%"
-set "PYTHON=%ROOT%\.venv\Scripts\python.exe"
+set "PYTHON=%ROOT%\.venv-runtime\Scripts\python.exe"
 
 if not exist "%PYTHON%" (
-    echo [ERROR] Python virtual environment not found at .venv.
+    echo [ERROR] Python virtual environment not found at .venv-runtime.
     echo Create it and install backend requirements first. See backend\README.md.
     popd
     exit /b 1
@@ -18,10 +18,10 @@ if not exist "%ROOT%\frontend\node_modules" (
     exit /b 1
 )
 
-echo Checking SQL Server Express...
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$ErrorActionPreference = 'Stop'; $service = Get-Service -Name 'MSSQL$SQLEXPRESS'; if ($service.Status -ne 'Running') { Start-Service -Name $service.Name; $service.WaitForStatus('Running', [TimeSpan]::FromSeconds(30)) }; if ((Get-Service -Name 'MSSQL$SQLEXPRESS').Status -ne 'Running') { exit 1 }"
+echo Checking the configured local SQL Server...
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$ErrorActionPreference = 'Stop'; $settings = @{}; $envFile = Join-Path (Get-Location) 'backend\.env'; if (Test-Path $envFile) { Get-Content $envFile | ForEach-Object { if ($_ -match '^\s*([^#=]+?)\s*=\s*(.*)$') { $settings[$Matches[1].Trim()] = $Matches[2].Trim() } } }; $server = $settings['SQL_SERVER']; if (-not $server) { $server = '.\SQLEXPRESS' }; if ($server -match '^(?:\.|localhost|\(local\)|127\.0\.0\.1)(?:\\(?<instance>[^\\]+))?$') { $serviceName = if ($Matches.instance) { 'MSSQL$' + $Matches.instance } else { 'MSSQLSERVER' }; $service = Get-Service -Name $serviceName -ErrorAction Stop; if ($service.Status -ne 'Running') { Start-Service -Name $service.Name; $service.WaitForStatus('Running', [TimeSpan]::FromSeconds(30)) }; if ((Get-Service -Name $serviceName).Status -ne 'Running') { exit 1 } }"
 if errorlevel 1 (
-    echo [ERROR] SQL Server Express could not be started. Check the service and permissions.
+    echo [ERROR] The configured local SQL Server could not be started. Check the service and permissions.
     popd
     exit /b 1
 )
@@ -67,7 +67,7 @@ echo Waiting for the website to respond...
 for /L %%i in (1,1,30) do (
     curl.exe --silent --output NUL --write-out "%%{http_code}" http://127.0.0.1:%PORT%/ 2>NUL | findstr /R "^2[0-9][0-9]$" >NUL
     if not errorlevel 1 goto open_site
-    timeout /t 2 /nobreak >NUL
+    powershell.exe -NoProfile -NonInteractive -Command "Start-Sleep -Seconds 2"
 )
 
 echo [ERROR] The website did not respond within 60 seconds.

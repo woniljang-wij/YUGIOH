@@ -151,7 +151,7 @@ function StartPage() {
       <img className="start-screen__duelist" src="/assets/images/hero/kaiba-seto.png" alt="" aria-hidden="true" />
 
       <header className="start-screen__brand">
-        <span>DUELIST PORTAL</span>
+        <span>Duel Monsters</span>
         <h1>Yu-Gi-Oh!</h1>
       </header>
 
@@ -168,7 +168,7 @@ function StartPage() {
         aria-hidden={isLoading}
         hidden={isLoading}
       >
-        <p className="start-screen__eyebrow">SẴN SÀNG ĐẤU BÀI</p>
+        <p className="start-screen__eyebrow">SẴN SÀNG</p>
         <h2 id="startGreeting">Chào mừng, <span id="startUsername">{username}</span></h2>
         <p>Chuẩn bị bước vào đấu trường.</p>
         <button

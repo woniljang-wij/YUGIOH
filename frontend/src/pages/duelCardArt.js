@@ -90,3 +90,15 @@ export function getDuelCardArtwork(card) {
   const fallback = artworkSvg(card);
   return { src: card.image || fallback, fallback };
 }
+
+export function getRetriedDuelCardArtworkSource(source, retryCount) {
+  if (typeof source !== 'string' || !Number.isInteger(retryCount) || retryCount < 1) {
+    return source;
+  }
+
+  const hashIndex = source.indexOf('#');
+  const sourcePath = hashIndex === -1 ? source : source.slice(0, hashIndex);
+  const hash = hashIndex === -1 ? '' : source.slice(hashIndex);
+  const separator = sourcePath.includes('?') ? '&' : '?';
+  return `${sourcePath}${separator}_duelImageRetry=${retryCount}${hash}`;
+}

@@ -11,6 +11,18 @@ const cardAttributes = {
   DIVINE: { label: '神', className: 'divine' }
 };
 
+const rarityAliases = {
+  RARE: 'R',
+  'SUPER RARE': 'SR',
+  'ULTRA RARE': 'UR',
+  'GOLD RARE': 'GR'
+};
+
+function normalizeRarity(rarity) {
+  const value = String(rarity || '').trim().toUpperCase();
+  return rarityAliases[value] || value;
+}
+
 function normalizeSubtype(subtype) {
   return String(subtype || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/gi, 'd').toLowerCase().replace(/[^a-z]/g, '');
 }
@@ -24,6 +36,11 @@ function getSubtypeIcon(card, category) {
   if (subtype.includes('ritual') || subtype.includes('nghile')) return 'ritual';
   if (subtype.includes('counter') || subtype.includes('phankich')) return 'counter';
   return null;
+}
+
+function resolveCardImageSource(image) {
+  if (typeof image !== 'string' || !image) return image;
+  return image.startsWith('assets/') ? `/${image}` : image;
 }
 
 function CardSubtypeIcon({ type }) {
@@ -62,7 +79,7 @@ function CardFrameCanvas({ category, monsterType, ornament = false }) {
   return <canvas ref={canvasRef} className={ornament ? 'card-detail__type-ornament' : 'card-detail__frame-canvas'} aria-hidden="true"></canvas>;
 }
 
-export function CardFace({ card, className = '', elementRef, fallbackImage }) {
+export function CardFace({ card, className = '', elementRef, fallbackImage, showNewBadge = false }) {
   const category = String(card.category || card.type || '').toLowerCase();
   const isMonster = category === 'monster' || category === 'fusion';
   const hasSubtypeRail = category === 'spell' || category === 'trap';
@@ -70,10 +87,27 @@ export function CardFace({ card, className = '', elementRef, fallbackImage }) {
   const attribute = cardAttributes[String(card.attribute || card.attr || '').toUpperCase()];
   const monsterType = card.monsterType || '';
   const level = card.level ?? card.lv ?? 0;
+  const linkRating = card.linkRating ?? card.link_rating ?? card.linkValue ?? card.link_value ?? card.link;
+  const isLinkMonster = isMonster && (
+    linkRating != null || String(level).toUpperCase().includes('LINK')
+  );
+  const atkValue = Number(card.atk);
+  const baseAtkValue = Number(card.baseAtk);
+  const defValue = Number(card.def);
+  const baseDefValue = Number(card.baseDef);
+  const atkIncreased = Number.isFinite(atkValue)
+    && Number.isFinite(baseAtkValue)
+    && atkValue > baseAtkValue;
+  const defIncreased = Number.isFinite(defValue)
+    && Number.isFinite(baseDefValue)
+    && defValue > baseDefValue;
+  const levelCount = Number.parseInt(String(level), 10) || 0;
   const cardNameRef = useRef(null);
   const [fallbackApplied, setFallbackApplied] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
-  const imageSource = card.image && !fallbackApplied ? card.image : fallbackImage;
+  const imageSource = card.image && !fallbackApplied
+    ? resolveCardImageSource(card.image)
+    : fallbackImage;
 
   useEffect(() => {
     setFallbackApplied(false);
@@ -85,7 +119,13 @@ export function CardFace({ card, className = '', elementRef, fallbackImage }) {
     const header = name?.parentElement;
     if (!name || !header) return undefined;
     const context = document.createElement('canvas').getContext('2d');
-    const minimumFontSize = 8;
+    const minimumFontSize = () => {
+      const cardElement = name.closest('.card-detail__card');
+      if (!name.closest('.deck-builder') || !cardElement || cardElement.clientWidth > 100) {
+        return 8;
+      }
+      return Math.max(4, cardElement.clientWidth * 0.05);
+    };
     const fitName = () => {
       name.style.removeProperty('--card-name-fit-size');
       if (!name.clientWidth) return;
@@ -98,7 +138,10 @@ export function CardFace({ card, className = '', elementRef, fallbackImage }) {
         textWidth = context.measureText(name.textContent || '').width;
       }
       if (textWidth > availableWidth && availableWidth > 0 && Number.isFinite(baseFontSize)) {
-        const fittedSize = Math.max(minimumFontSize, baseFontSize * Math.max(0, availableWidth - 4) / textWidth);
+        const fittedSize = Math.max(
+          minimumFontSize(),
+          baseFontSize * Math.max(0, availableWidth - 4) / textWidth
+        );
         name.style.setProperty('--card-name-fit-size', `${fittedSize}px`);
       }
     };
@@ -120,6 +163,13 @@ export function CardFace({ card, className = '', elementRef, fallbackImage }) {
       : category === 'fusion'
         ? `[${card.race || ''} / Dung hợp / ${monsterType}]`
         : `[${card.race || ''} / ${monsterType}]`;
+  const rarity = normalizeRarity(card.rarity);
+  const rarityClass = {
+    R: 'card-detail__rarity--r',
+    SR: 'card-detail__rarity--sr',
+    UR: 'card-detail__rarity--ur',
+    GR: 'card-detail__rarity--gr'
+  }[rarity] || '';
 
   return <div ref={elementRef} className={`card-detail__card${cardVariant ? ` card-detail__card--${cardVariant}` : ''}${attribute ? ' card-detail__card--has-attribute' : ' card-detail__card--no-attribute'}${className ? ` ${className}` : ''}`}>
     <CardFrameCanvas category={category} monsterType={monsterType} />
@@ -129,28 +179,40 @@ export function CardFace({ card, className = '', elementRef, fallbackImage }) {
       {hasSubtypeRail && <span className={`card-detail__type-badge card-detail__type-badge--${category}`} aria-label={category === 'spell' ? 'Bài Phép' : 'Bài Bẫy'} title={category === 'spell' ? 'Bài Phép' : 'Bài Bẫy'}>
         <span className="card-detail__type-badge-label" lang="ja">{category === 'spell' ? '魔' : '罠'}</span>
       </span>}
-      {(isMonster || hasSubtypeRail) && <span className="card-detail__card-stars" aria-label={isMonster ? 'Cấp lá bài' : undefined}>
+      {(isMonster || hasSubtypeRail || rarity) && <span className="card-detail__card-stars" aria-label={isLinkMonster ? 'LINK Rating' : isMonster ? 'Cấp lá bài' : undefined}>
         {isMonster
-          ? Array.from({ length: Math.min(12, Number(level) || 0) }, (_, index) => <span className="card-detail__star" key={index}>★</span>)
+          ? isLinkMonster
+            ? <span className="card-detail__link-level">{String(linkRating ?? level).replace(/^LINK[-\s]*/i, '') || 'LINK'}</span>
+            : Array.from({ length: Math.min(12, levelCount) }, (_, index) => <span className="card-detail__star" key={index}>★</span>)
           : subtypeIcon && <CardSubtypeIcon type={subtypeIcon} />}
       </span>}
     </header>
     <div className="card-detail__card-art">
-      {card.rarity && <span className="card-detail__rarity">{card.rarity === 'ULTRA RARE' ? 'UR' : card.rarity}</span>}
+      {rarity && <span className={`card-detail__rarity${rarityClass ? ` ${rarityClass}` : ''}`}>{rarity}</span>}
       {imageSource && !imageFailed
-        ? <img src={imageSource} alt={card.name} onError={() => {
+        ? <img src={imageSource} alt={card.name} draggable={false} onError={() => {
           if (card.image && fallbackImage && !fallbackApplied) setFallbackApplied(true);
           else setImageFailed(true);
         }} />
         : <div className="card-detail__art-missing" aria-hidden="true">{isMonster ? '✦' : category === 'spell' ? '魔' : '罠'}<small>Ảnh bổ sung sau</small></div>}
+      {card.monster_effects_negated && (
+        <span
+          className="card-detail__effect-negated"
+          aria-label="Hiệu ứng quái thú bị vô hiệu hóa"
+          title="Hiệu ứng quái thú bị vô hiệu hóa"
+        >
+          VÔ HIỆU
+        </span>
+      )}
+      {showNewBadge && <span className="card-detail__new-label" aria-label="Thẻ mới">NEW</span>}
     </div>
     <div className="card-detail__card-type">
       {hasSubtypeRail && <CardFrameCanvas category={category} monsterType={monsterType} ornament />}
       {hasSubtypeRail ? <span className="card-detail__card-type-label">{cardType}</span> : cardType}
     </div>
     {isMonster && <div className="card-detail__stats">
-      <div><span>ATK</span><b>{card.atk ?? 0}</b></div>
-      <div><span>DEF</span><b>{card.def ?? 0}</b></div>
+      <div className={atkIncreased ? 'card-detail__stat--increased' : ''}><span>ATK</span><b>{card.atk ?? '?'}</b></div>
+      <div className={defIncreased ? 'card-detail__stat--increased' : ''}><span>{isLinkMonster ? 'LINK' : 'DEF'}</span><b>{isLinkMonster ? linkRating ?? level : card.def ?? '?'}</b></div>
     </div>}
   </div>;
 }

@@ -1,0 +1,91 @@
+
+
+III. TIẾN ĐỘ TUẦN 5
+
+- Thành viên 1 - Backend, hiệu ứng bài và AI:
+  - Triển khai xây dựng các hiệu ứng bài để hoạt động thực tế trong trận đấu, đối chiếu với
+    mô tả trong dữ liệu bài.
+  - Tiếp tục hoàn thiện luồng AI theo từng bước: rút bài, xử lý Standby, thực
+    hiện hành động Main Phase, đặt bài và tấn công.
+  - Hoàn thiện chọn mục tiêu tấn công của AI: đánh trực tiếp khi sân đối thủ
+    không còn quái; có thể tấn công quái thế công khi ATK bằng hoặc cao hơn ATK
+    mục tiêu; chỉ tấn công quái thế thủ khi ATK cao hơn DEF. Bổ sung kiểm thử
+    cho các trường hợp này.
+  - Sửa dữ liệu chỉ số để bài trên tay hiển thị ATK/DEF gốc; chỉ quái thú trên sân
+    mới hiển thị chỉ số sau hiệu ứng.
+  - Rà soát và chuẩn hóa điều kiện kích hoạt, phạm vi tác động và thứ tự rời sân
+    cho các nhóm bài Bẫy phản công, Bẫy khóa tấn công, Bẫy vô hiệu hóa và Bẫy trả
+    bài về tay khi đối thủ tuyên bố tấn công hoặc kích hoạt hiệu ứng.
+  - Tinh chỉnh cơ chế xử lý Chain: chỉ hiển thị hộp thoại phản hồi khi người chơi
+    thực sự có nhiều hơn một lựa chọn hợp lệ cùng loại; ngăn việc tự động kích
+    hoạt dây chuyền nhiều bài phản hồi cho cùng một sự kiện.
+  - Hỗ trợ úp và kích hoạt bài Phép tức thời ngay trong lượt đối thủ khi đáp ứng
+    điều kiện; chuẩn hóa quyền sở hữu và khôi phục trạng thái khóa khi quái thú
+    bị chuyển quyền điều khiển giữa hai bên.
+  - Bổ sung và hoàn thiện nhóm hiệu ứng tung xúc xắc, hiệu ứng
+    quái thú chọn mục tiêu khóa tấn công, cùng hiệu ứng hồi sinh kèm cờ cho phép
+    đổi tư thế từ Công sang Thủ trong cùng lượt.
+  - Sửa quy tắc hiến tế theo đúng điều kiện thuộc tính của quái thú mục tiêu,
+    hoàn thiện cơ chế phòng thủ kết hợp rút bài và tự động xử lý thắng trận khi
+    người chơi tập hợp đủ bộ bài điều kiện đặc biệt trên tay.
+
+- Thành viên 2 - Giao diện:
+  - Tinh chỉnh giao diện bàn đấu: khu vực bài, tay bài, thông tin LP và hiển thị
+    giai đoạn trận đấu.
+  - Căn chỉnh các vùng quái thú/phép-bẫy hai bên sân, vị trí và khoảng cách ô;
+    xử lý vùng sân bị lệch, chồng lấn hoặc không cân giữa.
+  - Đồng bộ cách hiển thị lá bài ở tay và trên sân với khung bài chi tiết: artwork,
+    sao, thuộc tính, ATK/DEF và biểu tượng trang bị.
+  - Điều chỉnh để tên bài, cấp sao, nhãn và chỉ số ATK/DEF co theo kích thước
+    khung bài; sửa hiện tượng sao cấp cao bị che hoặc tràn khi thu nhỏ card.
+  - Căn chỉnh lá bài úp để nằm gọn trong ô Monster Zone và Spell/Trap Zone.
+    phong cách fantasy công nghệ; áp dụng ảnh nền mới cho cả hai màn.
+  - Điều chỉnh nút chuyển giai đoạn thành nút tròn đặt sát góc màn hình; thu nhỏ,
+    bỏ chữ và chỉ giữ biểu tượng, nhưng vẫn giữ nhãn hỗ trợ truy cập.
+  - Chuyển thao tác dùng cả năm Phép Trang bị sang kéo-thả từ tay đến quái thú
+    ngửa hợp lệ; làm sáng mục tiêu và giữ giới hạn mục tiêu riêng của từng lá.
+  - Khắc phục lỗi không mở được popup xem thông tin bài khi nhấn vào bài úp ở
+    vùng Phép/Bẫy; sửa lỗi thiếu thông tin, ký hiệu loại phụ và nhãn độ hiếm trên
+    dải bài cũng như trong hộp thoại chi tiết.
+  - Bổ sung ô Phép Môi trường trên bàn đấu với hiệu ứng làm sáng đúng ô khi kéo
+    bài, tự ẩn chữ gợi ý khi đã đặt bài; đồng bộ bảng màu khung bài Phép Môi
+    trường và tối ưu bố cục khoảng cách vùng sân hai phía.
+  - Nâng cấp thao tác sử dụng bài: kéo-thả Phép/Bẫy kèm nút chọn nhanh Kích
+    hoạt/Úp (hoặc kích hoạt trực tiếp với bài không úp), hỗ trợ nhấp đúp để kích
+    hoạt Phép tức thời đã úp và hộp thoại chọn mục tiêu cho hiệu ứng quái thú.
+  - Sắp xếp lại vị trí Bộ bài, Mộ và khu loại bỏ; thu gọn thông báo lượt, tách
+    nút Nhật ký và bổ sung menu Cài đặt (Âm nhạc, Âm thanh, Đầu hàng có xác
+    nhận); thiết kế lại hộp thoại Thắng/Thua và tái tạo 3 khung nền bàn đấu thay
+    cho thư mục thử nghiệm cũ.
+
+- Thành viên 3 - Animation:
+  - Chuyển thao tác chọn mục tiêu trên sân sang kéo-thả theo mũi tên hiện có.
+  - Bổ sung highlight mục tiêu hợp lệ và animation khi kéo bài đến mục tiêu.
+  - Căn chỉnh thời điểm animation gửi bài từ Bộ bài xuống Mộ trong Standby Phase
+    của Ma Thuật Hiến Tế Công Bằng.
+  - Bổ sung animation đưa bài từ tay vào Mộ khi bỏ hai bài bằng Món Quà Của Thiên
+    Thần.
+  - Tinh chỉnh animation rút bài, triệu hồi và các chuyển động trong bàn đấu.
+  - Sửa chuyển động/hiển thị liên quan đến lá bài đổi tư thế và tương tác xem bài
+    trên sân để giữ trải nghiệm nhất quán.
+  - Điều chỉnh hiệu ứng chuyển màn để sảnh không lóe/mờ xuyên qua khi mở hoặc
+    quay lại màn đấu trường.
+  - Đồng bộ trình tự hiển thị và animation sử dụng giữa AI
+    và người chơi; không để lộ danh tính bài trên tay AI.
+  - Với Phép Trang bị, cho bài vào vùng Phép/Bẫy trước rồi mới chạy số đếm ATK/DEF;
+    mục tiêu hợp lệ được làm sáng trong thao tác kéo-thả của người chơi.
+  - Chuẩn hóa trình tự phát animation toàn trận: bài Bẫy lật ngửa và phát sáng
+    trước khi giải quyết; các lá bị phá hủy chạy hiệu ứng vỡ mảnh trước rồi bài
+    Phép/Bẫy nguồn mới vỡ sau; đồng bộ hiển thị đặt bài lên sân cho phía AI.
+  - Thiết kế và tinh chỉnh các hiệu ứng Canvas & Three.js: mũi tên kéo-thả tấn
+    công mượt, mảnh vỡ vàng 3D khi bài nổ, khung viền ô quái thú 3D, xiềng xích
+    khóa mục tiêu và hiệu ứng phát sáng vàng khi triệu hồi quái thú phòng thủ úp.
+  - Xây dựng animation tung xúc xắc 3D (đợi dừng mặt mới chạy thay đổi chỉ số và
+    tấn công), hoạt ảnh tăng/giảm chỉ số ATK/DEF, hiệu ứng nổ nứt mặt bàn đấu
+    khi kết thúc trận và chuỗi video kết hợp lớp phủ sáng cho điều kiện thắng đặc biệt.
+  - Xây dựng hiệu ứng vòng tròn ma thuật phủ toàn bàn đấu bằng Canvas/Three.js cho
+    bài Phép Môi trường (đồng bộ từng nét vẽ, tia sáng và giữ xoay nhẹ làm nền);
+    bổ sung đầy đủ âm thanh hiệu ứng, nhạc nền riêng và xử lý lệch va chạm, thứ
+    tự hồi sinh và cập nhật số lượng bộ bài theo từng lá rút.
+
+

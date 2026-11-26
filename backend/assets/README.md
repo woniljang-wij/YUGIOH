@@ -14,6 +14,11 @@ assets/
 │   ├── currency/     ← ẢNH TIỀN TỆ (vàng và gem)
 │   │   ├── gold.png
 │   │   └── gem.png
+│   ├── items/        ← ẢNH VẬT PHẨM (thẻ nhân vật và EXP)
+│   │   ├── character-card.png
+│   │   └── exp.png
+│   ├── progression/  ← ẢNH TIẾN TRÌNH (điểm năng động)
+│   │   └── activity-points.png
 │   ├── artwork/      ← ⭐ ẢNH CÁC LÁ BÀI
 │   │   ├── Dark Magician.png
 │   │   └── ...
@@ -35,7 +40,7 @@ assets/
 
 Trình xem 3D trong cửa sổ nhận bài của tiệm dùng Three.js được lưu cục bộ tại `backend/assets/vendor/three/`; không tải thư viện từ CDN. Mặt trước giữ nguyên giao diện lá bài hiện có; phần khung và mặt sau được vẽ bằng các React renderer trong `frontend/src/renderers/`.
 
-Ảnh tiền tệ dùng chung ở `assets/images/currency/`: `gold.png` cho vàng và `gem.png` cho gem. Các trang sử dụng trực tiếp hai ảnh này thay vì dựng biểu tượng tiền bằng canvas.
+Chỉ ảnh tiền tệ được đặt ở `assets/images/currency/`: `gold.png` cho vàng và `gem.png` cho gem. Ảnh vật phẩm nằm trong `assets/images/items/`; biểu tượng điểm năng động nằm trong `assets/images/progression/`.
 
 ## Artwork lá bài – `assets/images/artwork/`
 
@@ -71,4 +76,4 @@ Trang web sẽ hiện khung chờ nếu ảnh nhân vật không tải được.
 | `backend/assets/images/backgrounds/bg-lobby.jpg` | Ảnh nền **sảnh chính** (thay cho nền SVG hiện tại) |
 | `backend/assets/images/backgrounds/bg-duel.jpg` | Ảnh nền **bàn đấu** (thay cho nền gradient hiện tại) |
 
-> **Lưu ý bản quyền:** nên dùng ảnh bạn tự vẽ/ảnh miễn phí bản quyền để tránh rắc rối khi bảo vệ đồ án.
+
